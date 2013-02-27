@@ -1,6 +1,6 @@
 # SpeedKana
 
-## What is It?
+## What Is It?
 
 An OSX program for practicing reading random Japanese kana.
 
@@ -9,6 +9,12 @@ in the pronunciation as fast as you can manage, it times you, keeps
 track of how fast you do it, and optionally feeds you the characters
 you have the most trouble with.  Lather, rinse, repeat.  Fairly
 simple, really.
+
+## How Do I Build It?
+
+Pop it into XCode, build it.  I suppose at some point I'll have an
+.app or .dmg or some shiznit you can grab.  Like, maybe after I
+actually write the damned thing.
 
 ## License
 
