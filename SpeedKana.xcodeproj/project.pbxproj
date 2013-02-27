@@ -114,6 +114,7 @@
 		2337C81416DDA15500169C9E /* SpeedKana */ = {
 			isa = PBXGroup;
 			children = (
+				2337C84216DDA63300169C9E /* Interface */,
 				2337C82016DDA15500169C9E /* AppDelegate.h */,
 				2337C82116DDA15500169C9E /* AppDelegate.m */,
 				2337C82316DDA15500169C9E /* MainMenu.xib */,
@@ -151,6 +152,13 @@
 				2337C83416DDA15500169C9E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2337C84216DDA63300169C9E /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interface;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

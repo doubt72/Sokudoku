@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MainWindow.h"
 
 @implementation AppDelegate
 
