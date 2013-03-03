@@ -23,7 +23,9 @@
     int min = [minLength intValue];
     if (max < min) {
         [minLength setIntegerValue:max];
+        [minLengthStatus setStringValue:[NSString stringWithFormat:@"%d", max]];
     }
+    [maxLengthStatus setStringValue:[NSString stringWithFormat:@"%d", max]];
 }
 
 - (IBAction)updateMinLength:(id)sender{
@@ -31,7 +33,9 @@
     int min = [minLength intValue];
     if (max < min) {
         [maxLength setIntegerValue:min];
+        [maxLengthStatus setStringValue:[NSString stringWithFormat:@"%d", min]];
     }
+    [minLengthStatus setStringValue:[NSString stringWithFormat:@"%d", min]];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
