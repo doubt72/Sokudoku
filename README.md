@@ -1,8 +1,8 @@
-# SpeedKana
+# Sokudoku
 
 ## What Is It?
 
-An OSX program for practicing reading random Japanese kana.
+An OSX program for practicing reading random characters -- originally Japanese kana, but should work fine for any sort of syllable-based character set, like Korean Hangul, etc.
 
 How will it work?  It displays some characters, you read them and type
 in the pronunciation as fast as you can manage, it times you, keeps
