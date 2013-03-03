@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'SpeedKana' target in the 'SpeedKana' project
+// Prefix header for all source files of the 'Sokudoku' target in the 'Sokudoku' project
 //
 
 #ifdef __OBJC__

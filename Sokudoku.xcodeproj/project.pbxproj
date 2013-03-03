@@ -16,7 +16,7 @@
 		2337C82D16DDA15500169C9E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2337C82C16DDA15500169C9E /* SenTestingKit.framework */; };
 		2337C82E16DDA15500169C9E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2337C80E16DDA15500169C9E /* Cocoa.framework */; };
 		2337C83616DDA15500169C9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2337C83416DDA15500169C9E /* InfoPlist.strings */; };
-		2337C83916DDA15500169C9E /* SpeedKanaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2337C83816DDA15500169C9E /* SpeedKanaTests.m */; };
+		2337C83916DDA15500169C9E /* SokudokuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2337C83816DDA15500169C9E /* SokudokuTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,30 +25,30 @@
 			containerPortal = 2337C80116DDA15500169C9E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2337C80916DDA15500169C9E;
-			remoteInfo = SpeedKana;
+			remoteInfo = Sokudoku;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2337C80A16DDA15500169C9E /* SpeedKana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeedKana.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2337C80A16DDA15500169C9E /* Sokudoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sokudoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2337C80E16DDA15500169C9E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2337C81116DDA15500169C9E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		2337C81216DDA15500169C9E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2337C81316DDA15500169C9E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		2337C81616DDA15500169C9E /* SpeedKana-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpeedKana-Info.plist"; sourceTree = "<group>"; };
+		2337C81616DDA15500169C9E /* Sokudoku-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Sokudoku-Info.plist"; sourceTree = "<group>"; };
 		2337C81816DDA15500169C9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2337C81A16DDA15500169C9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2337C81C16DDA15500169C9E /* SpeedKana-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpeedKana-Prefix.pch"; sourceTree = "<group>"; };
+		2337C81C16DDA15500169C9E /* Sokudoku-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sokudoku-Prefix.pch"; sourceTree = "<group>"; };
 		2337C81E16DDA15500169C9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2337C82016DDA15500169C9E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2337C82116DDA15500169C9E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2337C82416DDA15500169C9E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		2337C82B16DDA15500169C9E /* SpeedKanaTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeedKanaTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2337C82B16DDA15500169C9E /* SokudokuTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SokudokuTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2337C82C16DDA15500169C9E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		2337C83316DDA15500169C9E /* SpeedKanaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpeedKanaTests-Info.plist"; sourceTree = "<group>"; };
+		2337C83316DDA15500169C9E /* SokudokuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SokudokuTests-Info.plist"; sourceTree = "<group>"; };
 		2337C83516DDA15500169C9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2337C83716DDA15500169C9E /* SpeedKanaTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeedKanaTests.h; sourceTree = "<group>"; };
-		2337C83816DDA15500169C9E /* SpeedKanaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeedKanaTests.m; sourceTree = "<group>"; };
+		2337C83716DDA15500169C9E /* SokudokuTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SokudokuTests.h; sourceTree = "<group>"; };
+		2337C83816DDA15500169C9E /* SokudokuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SokudokuTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +75,8 @@
 		2337C7FF16DDA15500169C9E = {
 			isa = PBXGroup;
 			children = (
-				2337C81416DDA15500169C9E /* SpeedKana */,
-				2337C83116DDA15500169C9E /* SpeedKanaTests */,
+				2337C81416DDA15500169C9E /* Sokudoku */,
+				2337C83116DDA15500169C9E /* SokudokuTests */,
 				2337C80D16DDA15500169C9E /* Frameworks */,
 				2337C80B16DDA15500169C9E /* Products */,
 			);
@@ -85,8 +85,8 @@
 		2337C80B16DDA15500169C9E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2337C80A16DDA15500169C9E /* SpeedKana.app */,
-				2337C82B16DDA15500169C9E /* SpeedKanaTests.octest */,
+				2337C80A16DDA15500169C9E /* Sokudoku.app */,
+				2337C82B16DDA15500169C9E /* SokudokuTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,7 +111,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		2337C81416DDA15500169C9E /* SpeedKana */ = {
+		2337C81416DDA15500169C9E /* Sokudoku */ = {
 			isa = PBXGroup;
 			children = (
 				2337C82016DDA15500169C9E /* AppDelegate.h */,
@@ -121,35 +121,35 @@
 				2337C84816DDCB4600169C9E /* Models */,
 				2337C81516DDA15500169C9E /* Supporting Files */,
 			);
-			path = SpeedKana;
+			path = Sokudoku;
 			sourceTree = "<group>";
 		};
 		2337C81516DDA15500169C9E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2337C81616DDA15500169C9E /* SpeedKana-Info.plist */,
+				2337C81616DDA15500169C9E /* Sokudoku-Info.plist */,
 				2337C81716DDA15500169C9E /* InfoPlist.strings */,
 				2337C81A16DDA15500169C9E /* main.m */,
-				2337C81C16DDA15500169C9E /* SpeedKana-Prefix.pch */,
+				2337C81C16DDA15500169C9E /* Sokudoku-Prefix.pch */,
 				2337C81D16DDA15500169C9E /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2337C83116DDA15500169C9E /* SpeedKanaTests */ = {
+		2337C83116DDA15500169C9E /* SokudokuTests */ = {
 			isa = PBXGroup;
 			children = (
-				2337C83716DDA15500169C9E /* SpeedKanaTests.h */,
-				2337C83816DDA15500169C9E /* SpeedKanaTests.m */,
+				2337C83716DDA15500169C9E /* SokudokuTests.h */,
+				2337C83816DDA15500169C9E /* SokudokuTests.m */,
 				2337C83216DDA15500169C9E /* Supporting Files */,
 			);
-			path = SpeedKanaTests;
+			path = SokudokuTests;
 			sourceTree = "<group>";
 		};
 		2337C83216DDA15500169C9E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2337C83316DDA15500169C9E /* SpeedKanaTests-Info.plist */,
+				2337C83316DDA15500169C9E /* SokudokuTests-Info.plist */,
 				2337C83416DDA15500169C9E /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -172,9 +172,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2337C80916DDA15500169C9E /* SpeedKana */ = {
+		2337C80916DDA15500169C9E /* Sokudoku */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2337C83C16DDA15500169C9E /* Build configuration list for PBXNativeTarget "SpeedKana" */;
+			buildConfigurationList = 2337C83C16DDA15500169C9E /* Build configuration list for PBXNativeTarget "Sokudoku" */;
 			buildPhases = (
 				2337C80616DDA15500169C9E /* Sources */,
 				2337C80716DDA15500169C9E /* Frameworks */,
@@ -184,14 +184,14 @@
 			);
 			dependencies = (
 			);
-			name = SpeedKana;
-			productName = SpeedKana;
-			productReference = 2337C80A16DDA15500169C9E /* SpeedKana.app */;
+			name = Sokudoku;
+			productName = Sokudoku;
+			productReference = 2337C80A16DDA15500169C9E /* Sokudoku.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2337C82A16DDA15500169C9E /* SpeedKanaTests */ = {
+		2337C82A16DDA15500169C9E /* SokudokuTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2337C83F16DDA15500169C9E /* Build configuration list for PBXNativeTarget "SpeedKanaTests" */;
+			buildConfigurationList = 2337C83F16DDA15500169C9E /* Build configuration list for PBXNativeTarget "SokudokuTests" */;
 			buildPhases = (
 				2337C82616DDA15500169C9E /* Sources */,
 				2337C82716DDA15500169C9E /* Frameworks */,
@@ -203,9 +203,9 @@
 			dependencies = (
 				2337C83016DDA15500169C9E /* PBXTargetDependency */,
 			);
-			name = SpeedKanaTests;
-			productName = SpeedKanaTests;
-			productReference = 2337C82B16DDA15500169C9E /* SpeedKanaTests.octest */;
+			name = SokudokuTests;
+			productName = SokudokuTests;
+			productReference = 2337C82B16DDA15500169C9E /* SokudokuTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -217,7 +217,7 @@
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Douglas Triggs";
 			};
-			buildConfigurationList = 2337C80416DDA15500169C9E /* Build configuration list for PBXProject "SpeedKana" */;
+			buildConfigurationList = 2337C80416DDA15500169C9E /* Build configuration list for PBXProject "Sokudoku" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -229,8 +229,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2337C80916DDA15500169C9E /* SpeedKana */,
-				2337C82A16DDA15500169C9E /* SpeedKanaTests */,
+				2337C80916DDA15500169C9E /* Sokudoku */,
+				2337C82A16DDA15500169C9E /* SokudokuTests */,
 			);
 		};
 /* End PBXProject section */
@@ -286,7 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2337C83916DDA15500169C9E /* SpeedKanaTests.m in Sources */,
+				2337C83916DDA15500169C9E /* SokudokuTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +295,7 @@
 /* Begin PBXTargetDependency section */
 		2337C83016DDA15500169C9E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2337C80916DDA15500169C9E /* SpeedKana */;
+			target = 2337C80916DDA15500169C9E /* Sokudoku */;
 			targetProxy = 2337C82F16DDA15500169C9E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -394,8 +394,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpeedKana/SpeedKana-Prefix.pch";
-				INFOPLIST_FILE = "SpeedKana/SpeedKana-Info.plist";
+				GCC_PREFIX_HEADER = "Sokudoku/Sokudoku-Prefix.pch";
+				INFOPLIST_FILE = "Sokudoku/Sokudoku-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -406,8 +406,8 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpeedKana/SpeedKana-Prefix.pch";
-				INFOPLIST_FILE = "SpeedKana/SpeedKana-Info.plist";
+				GCC_PREFIX_HEADER = "Sokudoku/Sokudoku-Prefix.pch";
+				INFOPLIST_FILE = "Sokudoku/Sokudoku-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -416,12 +416,12 @@
 		2337C84016DDA15500169C9E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpeedKana.app/Contents/MacOS/SpeedKana";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Sokudoku.app/Contents/MacOS/Sokudoku";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpeedKana/SpeedKana-Prefix.pch";
-				INFOPLIST_FILE = "SpeedKanaTests/SpeedKanaTests-Info.plist";
+				GCC_PREFIX_HEADER = "Sokudoku/Sokudoku-Prefix.pch";
+				INFOPLIST_FILE = "SokudokuTests/SokudokuTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -431,12 +431,12 @@
 		2337C84116DDA15500169C9E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SpeedKana.app/Contents/MacOS/SpeedKana";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Sokudoku.app/Contents/MacOS/Sokudoku";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SpeedKana/SpeedKana-Prefix.pch";
-				INFOPLIST_FILE = "SpeedKanaTests/SpeedKanaTests-Info.plist";
+				GCC_PREFIX_HEADER = "Sokudoku/Sokudoku-Prefix.pch";
+				INFOPLIST_FILE = "SokudokuTests/SokudokuTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -446,7 +446,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2337C80416DDA15500169C9E /* Build configuration list for PBXProject "SpeedKana" */ = {
+		2337C80416DDA15500169C9E /* Build configuration list for PBXProject "Sokudoku" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2337C83A16DDA15500169C9E /* Debug */,
@@ -455,7 +455,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2337C83C16DDA15500169C9E /* Build configuration list for PBXNativeTarget "SpeedKana" */ = {
+		2337C83C16DDA15500169C9E /* Build configuration list for PBXNativeTarget "Sokudoku" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2337C83D16DDA15500169C9E /* Debug */,
@@ -463,7 +463,7 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		2337C83F16DDA15500169C9E /* Build configuration list for PBXNativeTarget "SpeedKanaTests" */ = {
+		2337C83F16DDA15500169C9E /* Build configuration list for PBXNativeTarget "SokudokuTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2337C84016DDA15500169C9E /* Debug */,

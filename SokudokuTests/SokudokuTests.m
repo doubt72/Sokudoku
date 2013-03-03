@@ -1,14 +1,14 @@
 //
-//  SpeedKanaTests.m
-//  SpeedKanaTests
+//  SokudokuTests.m
+//  SokudokuTests
 //
 //  Created by Douglas Triggs on 2/26/13.
 //  Copyright (c) 2013 Douglas Triggs. All rights reserved.
 //
 
-#import "SpeedKanaTests.h"
+#import "SokudokuTests.h"
 
-@implementation SpeedKanaTests
+@implementation SokudokuTests
 
 - (void)setUp
 {
@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in SpeedKanaTests");
+    STFail(@"Unit tests are not implemented yet in SokudokuTests");
 }
 
 @end
