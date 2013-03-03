@@ -396,6 +396,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sokudoku/Sokudoku-Prefix.pch";
 				INFOPLIST_FILE = "Sokudoku/Sokudoku-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -408,6 +409,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Sokudoku/Sokudoku-Prefix.pch";
 				INFOPLIST_FILE = "Sokudoku/Sokudoku-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -462,6 +464,7 @@
 				2337C83E16DDA15500169C9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2337C83F16DDA15500169C9E /* Build configuration list for PBXNativeTarget "SokudokuTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +473,7 @@
 				2337C84116DDA15500169C9E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,6 +9,14 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize dataSet;
+@synthesize minLength, maxLength, sessionLength;
+@synthesize weightHistory;
+@synthesize minLengthStatus, maxLengthStatus, sessionLengthStatus;
+@synthesize currentPackage;
+@synthesize beginSession;
+@synthesize loadPackage, importPackage, forgetPackage, deletePackage;
+@synthesize showHistory, showHistogram, resetPackage, forgetHistory;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
