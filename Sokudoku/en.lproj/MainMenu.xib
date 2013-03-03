@@ -1535,7 +1535,7 @@
 												<reference key="NSControlView" ref="1015603216"/>
 												<double key="NSMaxValue">12</double>
 												<double key="NSMinValue">1</double>
-												<double key="NSValue">5</double>
+												<double key="NSValue">1</double>
 												<double key="NSAltIncValue">0.0</double>
 												<int key="NSNumberOfTickMarks">12</int>
 												<int key="NSTickMarkPosition">0</int>
@@ -1561,7 +1561,7 @@
 												<reference key="NSControlView" ref="425158544"/>
 												<double key="NSMaxValue">12</double>
 												<double key="NSMinValue">1</double>
-												<double key="NSValue">2</double>
+												<double key="NSValue">1</double>
 												<double key="NSAltIncValue">0.0</double>
 												<int key="NSNumberOfTickMarks">12</int>
 												<int key="NSTickMarkPosition">0</int>
@@ -1582,7 +1582,7 @@
 											<object class="NSTextFieldCell" key="NSCell" id="513791124">
 												<int key="NSCellFlags">68157504</int>
 												<int key="NSCellFlags2">272630784</int>
-												<string key="NSContents">2</string>
+												<string key="NSContents">1</string>
 												<reference key="NSSupport" ref="726422061"/>
 												<string key="NSCellIdentifier">_NS:1535</string>
 												<reference key="NSControlView" ref="846631908"/>
@@ -1603,7 +1603,7 @@
 											<object class="NSTextFieldCell" key="NSCell" id="971946176">
 												<int key="NSCellFlags">68157504</int>
 												<int key="NSCellFlags2">272630784</int>
-												<string key="NSContents">5</string>
+												<string key="NSContents">1</string>
 												<reference key="NSSupport" ref="726422061"/>
 												<string key="NSCellIdentifier">_NS:1535</string>
 												<reference key="NSControlView" ref="84043763"/>
@@ -1629,7 +1629,7 @@
 												<reference key="NSControlView" ref="318073870"/>
 												<double key="NSMaxValue">15</double>
 												<double key="NSMinValue">1</double>
-												<double key="NSValue">5</double>
+												<double key="NSValue">1</double>
 												<double key="NSAltIncValue">0.0</double>
 												<int key="NSNumberOfTickMarks">15</int>
 												<int key="NSTickMarkPosition">0</int>
@@ -1650,7 +1650,7 @@
 											<object class="NSTextFieldCell" key="NSCell" id="949893748">
 												<int key="NSCellFlags">68157504</int>
 												<int key="NSCellFlags2">272630784</int>
-												<string key="NSContents">5</string>
+												<string key="NSContents">1</string>
 												<reference key="NSSupport" ref="726422061"/>
 												<string key="NSCellIdentifier">_NS:1535</string>
 												<reference key="NSControlView" ref="505843122"/>
@@ -3045,19 +3045,19 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">takeIntegerValueFrom:</string>
-						<reference key="source" ref="846631908"/>
-						<reference key="destination" ref="425158544"/>
+						<string key="label">updateMaxLength:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1015603216"/>
 					</object>
-					<int key="connectionID">789</int>
+					<int key="connectionID">1279</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">takeIntegerValueFrom:</string>
-						<reference key="source" ref="84043763"/>
-						<reference key="destination" ref="1015603216"/>
+						<string key="label">updateMinLength:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="425158544"/>
 					</object>
-					<int key="connectionID">788</int>
+					<int key="connectionID">1280</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -5188,16 +5188,6 @@
 						<reference key="parent" ref="682631485"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">813</int>
-						<reference key="object" ref="794496839"/>
-						<reference key="parent" ref="682631485"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">814</int>
-						<reference key="object" ref="599166325"/>
-						<reference key="parent" ref="682631485"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">815</int>
 						<reference key="object" ref="380034268"/>
 						<reference key="parent" ref="682631485"/>
@@ -5228,16 +5218,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">822</int>
 						<reference key="object" ref="466794448"/>
-						<reference key="parent" ref="682631485"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">831</int>
-						<reference key="object" ref="310923109"/>
-						<reference key="parent" ref="682631485"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">887</int>
-						<reference key="object" ref="622313730"/>
 						<reference key="parent" ref="682631485"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -5330,16 +5310,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">1020</int>
 						<reference key="object" ref="935959670"/>
-						<reference key="parent" ref="682631485"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1021</int>
-						<reference key="object" ref="1063582239"/>
-						<reference key="parent" ref="682631485"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1022</int>
-						<reference key="object" ref="71223997"/>
 						<reference key="parent" ref="682631485"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -6299,6 +6269,36 @@
 						<reference key="object" ref="225453733"/>
 						<reference key="parent" ref="439893737"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">814</int>
+						<reference key="object" ref="599166325"/>
+						<reference key="parent" ref="682631485"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1022</int>
+						<reference key="object" ref="71223997"/>
+						<reference key="parent" ref="682631485"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">831</int>
+						<reference key="object" ref="310923109"/>
+						<reference key="parent" ref="682631485"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">813</int>
+						<reference key="object" ref="794496839"/>
+						<reference key="parent" ref="682631485"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1021</int>
+						<reference key="object" ref="1063582239"/>
+						<reference key="parent" ref="682631485"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">887</int>
+						<reference key="object" ref="622313730"/>
+						<reference key="parent" ref="682631485"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -6749,13 +6749,27 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1268</int>
+			<int key="maxID">1280</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">AppDelegate</string>
 					<string key="superclassName">NSObject</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="updateMaxLength:">id</string>
+						<string key="updateMinLength:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="updateMaxLength:">
+							<string key="name">updateMaxLength:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="updateMinLength:">
+							<string key="name">updateMinLength:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="beginSession">NSButton</string>
 						<string key="currentPackage">NSTextField</string>

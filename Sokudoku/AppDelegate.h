@@ -43,4 +43,7 @@
 @property IBOutlet NSButton *resetPackage;
 @property IBOutlet NSButton *forgetHistory;
 
+-(IBAction)updateMaxLength:(id)sender;
+-(IBAction)updateMinLength:(id)sender;
+
 @end

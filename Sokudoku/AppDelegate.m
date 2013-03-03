@@ -18,9 +18,35 @@
 @synthesize loadPackage, importPackage, forgetPackage, deletePackage;
 @synthesize showHistory, showHistogram, resetPackage, forgetHistory;
 
+- (IBAction)updateMaxLength:(id)sender {
+    int max = [maxLength intValue];
+    int min = [minLength intValue];
+    if (max < min) {
+        [minLength setIntegerValue:max];
+    }
+}
+
+- (IBAction)updateMinLength:(id)sender{
+    int max = [maxLength intValue];
+    int min = [minLength intValue];
+    if (max < min) {
+        [maxLength setIntegerValue:min];
+    }
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+    // Default Settings if no config file found
+
+    [currentPackage setStringValue:@"No Package Loaded"];
+    [dataSet removeAllItems];
+    [dataSet addItemWithTitle:@"All Characters"];
+    [minLength setIntegerValue:2];
+    [minLengthStatus setStringValue:@"2"];
+    [maxLength setIntegerValue:5];
+    [maxLengthStatus setStringValue:@"5"];
+    [sessionLength setIntegerValue:5];
+    [sessionLengthStatus setStringValue:@"5"];
 }
 
 @end
