@@ -94,7 +94,7 @@
     return [[activeSettings valueForKey:@"adaptiveDrillEnabled"] boolValue];
 }
 
--(id)init {
+- (id)init {
     if (self = [super init]) {
         [self setSettingsFile];
         

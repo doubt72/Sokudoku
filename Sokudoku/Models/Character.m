@@ -58,7 +58,7 @@
     [pronunciations addObject:pronunciation];
 }
 
--(id)init {
+- (id)init {
     if (self = [super init]) {
         tags = [NSMutableArray arrayWithCapacity:1];
         pronunciations = [NSMutableArray arrayWithCapacity:1];

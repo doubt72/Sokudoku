@@ -7,6 +7,7 @@
 //
 
 #import "Event.h"
+#import "Character.h"
 
 @implementation Event
 

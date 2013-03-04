@@ -7,7 +7,41 @@
 //
 
 #import "Package.h"
+#import "History.h"
+#import "Character.h"
+#import "Event.h"
 
 @implementation Package
+
+@synthesize name;
+
+- (void)addCharacter:(Character *)character {
+    [characters addObject:character];
+}
+
+- (void)addTag:(NSString *)tag :(NSString *)description {
+    [tags addObject:tag];
+    [tagDescriptions addObject:description];
+}
+
+- (void)newEvent:(NSArray *)chars :(float)time {
+    unsigned long int length = [chars count];
+    for (int i = 0; i < length; i++) {
+        Character *character = [chars objectAtIndex:i];
+        Event *event = [character newEvent:length:time];
+        [history addEvent:event];
+    }
+}
+
+- (id)init {
+    if (self = [super init]) {
+        history = [[History alloc] init];
+        
+        characters = [NSMutableArray arrayWithCapacity:10];
+        tags = [NSMutableArray arrayWithCapacity:1];
+        tagDescriptions = [NSMutableArray arrayWithCapacity:1];
+    }
+    return self;
+}
 
 @end

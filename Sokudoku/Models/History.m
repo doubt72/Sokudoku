@@ -7,6 +7,7 @@
 //
 
 #import "History.h"
+#import "Event.h"
 
 @implementation History
 
@@ -14,7 +15,7 @@
     [events addObject:event];
 }
 
--(id)init {
+- (id)init {
     if (self = [super init]) {
         events = [NSMutableArray arrayWithCapacity:256];
     }
