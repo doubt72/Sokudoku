@@ -18,6 +18,6 @@ actually write the damned thing.
 
 ## License
 
-I'll almost certainly Apache-fy this at some point, but at the moment
-I'm just getting it started.  So Copyright 2013 Douglas Triggs
-(douglas@triggs.org) and all that.
+I'll Apache-fy this at some point, but at the moment I'm just getting
+it started and it's too much trouble.  So Copyright 2013 Douglas
+Triggs (douglas@triggs.org) and all that.
