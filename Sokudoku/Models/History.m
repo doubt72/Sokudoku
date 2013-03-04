@@ -10,4 +10,8 @@
 
 @implementation History
 
+- (void)addEvent:(Event *)event {
+    [events addObject:event];
+}
+
 @end

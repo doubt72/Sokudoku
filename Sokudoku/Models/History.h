@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+@class Event;
 
-@interface History : NSObject
+@interface History : NSObject {
+@private
+    NSMutableArray *events;
+}
+
+- (void) addEvent:(Event *)event;
 
 @end
