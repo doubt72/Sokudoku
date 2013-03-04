@@ -48,5 +48,7 @@
 
 -(IBAction)updateMaxLength:(id)sender;
 -(IBAction)updateMinLength:(id)sender;
+-(IBAction)updateSessionLength:(id)sender;
+-(IBAction)updateWeightHistory:(id)sender;
 
 @end

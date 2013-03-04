@@ -17,7 +17,7 @@
                                              NSUserDomainMask, YES) objectAtIndex:0];
     NSString *dir =
         [NSString stringWithFormat:@"%@/Sokudoku", appSupport];
-        [fileManager createDirectoryAtPath:dir withIntermediateDirectories:YES
+    [fileManager createDirectoryAtPath:dir withIntermediateDirectories:YES
                                 attributes:nil error:nil];
     settingsFile = [dir stringByAppendingPathComponent:@"settings.plist"];
 }
@@ -99,16 +99,17 @@
         [self setSettingsFile];
         
         if ([[NSFileManager defaultManager] fileExistsAtPath:settingsFile]) {
-            [NSMutableDictionary dictionaryWithContentsOfFile:settingsFile];
+            activeSettings = [NSMutableDictionary dictionaryWithContentsOfFile:settingsFile];
         } else {
             activeSettings = [NSMutableDictionary dictionaryWithCapacity:7];
-            [activeSettings setValue:@"" forKey:@"packageName"];
+            [activeSettings setValue:nil forKey:@"packageName"];
             [activeSettings setValue:nil forKey:@"availablePackages"];
             [activeSettings setValue:[NSNumber numberWithInt:2] forKey:@"minLength"];
             [activeSettings setValue:[NSNumber numberWithInt:5] forKey:@"maxLength"];
             [activeSettings setValue:[NSNumber numberWithInt:5] forKey:@"sessionLength"];
             [activeSettings setValue:[NSNumber numberWithInt:0] forKey:@"dataSetIndex"];
-            [activeSettings setValue:[NSNumber numberWithBool:NO] forKey:@"minLength"];
+            [activeSettings setValue:[NSNumber numberWithBool:NO]
+                              forKey:@"adaptiveDrillEnabled"];
         }
     }
     return self;
