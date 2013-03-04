@@ -10,7 +10,7 @@
 
 @implementation Settings
 
--(void)setSettingsFile {
+- (void)setSettingsFile {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *appSupport =
         [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory,
@@ -22,75 +22,75 @@
     settingsFile = [dir stringByAppendingPathComponent:@"settings.plist"];
 }
 
--(void)saveSettings {
+- (void)saveSettings {
     [activeSettings writeToFile:settingsFile atomically:YES];
 }
 
-- (void) setCurrentPackageName:(NSString *)name {
+- (void)setCurrentPackageName:(NSString *)name {
     [activeSettings setValue:name forKey:@"packageName"];
     [self saveSettings];
 }
 
-- (void) setAvailablePackages:(NSArray *)packageNames {
+- (void)setAvailablePackages:(NSArray *)packageNames {
     [activeSettings setValue:packageNames forKey:@"availablePackages"];
     [self saveSettings];
 }
 
-- (void) setDataSetIndex:(int)index {
+- (void)setDataSetIndex:(int)index {
     [activeSettings setValue:[NSNumber numberWithInt:index] forKey:@"dataSetIndex"];
     [self saveSettings];
 }
 
-- (void) setMinLength:(int)length {
+- (void)setMinLength:(int)length {
     [activeSettings setValue:[NSNumber numberWithInt:length] forKey:@"minLength"];
     [self saveSettings];
 }
 
-- (void) setMaxLength:(int)length {
+- (void)setMaxLength:(int)length {
     [activeSettings setValue:[NSNumber numberWithInt:length] forKey:@"maxLength"];
     [self saveSettings];
 }
 
-- (void) setSessionLength:(int)length {
+- (void)setSessionLength:(int)length {
     [activeSettings setValue:[NSNumber numberWithInt:length] forKey:@"sessionLength"];
     [self saveSettings];
 }
 
-- (void) enableAdaptiveDrill {
+- (void)enableAdaptiveDrill {
     [activeSettings setValue:[NSNumber numberWithBool:YES] forKey:@"adaptiveDrillEnabled"];
     [self saveSettings];
 }
 
-- (void) disableAdaptiveDrill {
+- (void)disableAdaptiveDrill {
     [activeSettings setValue:[NSNumber numberWithBool:NO] forKey:@"adaptiveDrillEnabled"];
     [self saveSettings];
 }
 
-- (NSString *) currentPackageName {
+- (NSString *)currentPackageName {
     return [activeSettings valueForKey:@"packageName"];
 }
 
-- (NSArray *) availablePackages {
+- (NSArray *)availablePackages {
     return [activeSettings valueForKey:@"availablePackages"];
 }
 
-- (int) dataSetIndex {
+- (int)dataSetIndex {
     return [[activeSettings valueForKey:@"dataSetIndex"] intValue];
 }
 
-- (int) minLength {
+- (int)minLength {
     return [[activeSettings valueForKey:@"minLength"] intValue];
 }
 
-- (int) maxLength {
+- (int)maxLength {
     return [[activeSettings valueForKey:@"maxLength"] intValue];
 }
 
-- (int) sessionLength {
+- (int)sessionLength {
     return [[activeSettings valueForKey:@"sessionLength"] intValue];
 }
 
-- (BOOL) adaptiveDrillEnabled {
+- (BOOL)adaptiveDrillEnabled {
     return [[activeSettings valueForKey:@"adaptiveDrillEnabled"] boolValue];
 }
 

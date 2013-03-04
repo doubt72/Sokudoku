@@ -10,6 +10,7 @@
 #import "Settings.h"
 
 @implementation AppDelegate
+
 @synthesize dataSet;
 @synthesize minLength, maxLength, sessionLength;
 @synthesize weightHistory;
@@ -58,8 +59,7 @@
     }
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     settings = [[Settings alloc] init];
     NSString *name = [settings currentPackageName];
     if (name == nil) {

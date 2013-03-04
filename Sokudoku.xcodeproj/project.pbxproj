@@ -18,6 +18,10 @@
 		2337C83616DDA15500169C9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2337C83416DDA15500169C9E /* InfoPlist.strings */; };
 		2337C83916DDA15500169C9E /* SokudokuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2337C83816DDA15500169C9E /* SokudokuTests.m */; };
 		2352AB0F16E4257E00C6FAF6 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352AB0E16E4257E00C6FAF6 /* Settings.m */; };
+		2352AB1216E4615F00C6FAF6 /* Package.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352AB1116E4615F00C6FAF6 /* Package.m */; };
+		2352AB1516E461A700C6FAF6 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352AB1416E461A700C6FAF6 /* Character.m */; };
+		2352AB1816E4623800C6FAF6 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352AB1716E4623800C6FAF6 /* History.m */; };
+		2352AB1B16E4624600C6FAF6 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352AB1A16E4624600C6FAF6 /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,14 @@
 		2337C83816DDA15500169C9E /* SokudokuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SokudokuTests.m; sourceTree = "<group>"; };
 		2352AB0D16E4257E00C6FAF6 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		2352AB0E16E4257E00C6FAF6 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		2352AB1016E4615F00C6FAF6 /* Package.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Package.h; sourceTree = "<group>"; };
+		2352AB1116E4615F00C6FAF6 /* Package.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Package.m; sourceTree = "<group>"; };
+		2352AB1316E461A700C6FAF6 /* Character.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Character.h; sourceTree = "<group>"; };
+		2352AB1416E461A700C6FAF6 /* Character.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Character.m; sourceTree = "<group>"; };
+		2352AB1616E4623800C6FAF6 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		2352AB1716E4623800C6FAF6 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		2352AB1916E4624600C6FAF6 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		2352AB1A16E4624600C6FAF6 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +180,14 @@
 		2337C84816DDCB4600169C9E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2352AB1316E461A700C6FAF6 /* Character.h */,
+				2352AB1416E461A700C6FAF6 /* Character.m */,
+				2352AB1916E4624600C6FAF6 /* Event.h */,
+				2352AB1A16E4624600C6FAF6 /* Event.m */,
+				2352AB1616E4623800C6FAF6 /* History.h */,
+				2352AB1716E4623800C6FAF6 /* History.m */,
+				2352AB1016E4615F00C6FAF6 /* Package.h */,
+				2352AB1116E4615F00C6FAF6 /* Package.m */,
 				2352AB0D16E4257E00C6FAF6 /* Settings.h */,
 				2352AB0E16E4257E00C6FAF6 /* Settings.m */,
 			);
@@ -285,6 +305,10 @@
 				2337C81B16DDA15500169C9E /* main.m in Sources */,
 				2337C82216DDA15500169C9E /* AppDelegate.m in Sources */,
 				2352AB0F16E4257E00C6FAF6 /* Settings.m in Sources */,
+				2352AB1216E4615F00C6FAF6 /* Package.m in Sources */,
+				2352AB1516E461A700C6FAF6 /* Character.m in Sources */,
+				2352AB1816E4623800C6FAF6 /* History.m in Sources */,
+				2352AB1B16E4624600C6FAF6 /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
