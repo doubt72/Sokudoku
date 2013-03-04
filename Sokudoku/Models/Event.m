@@ -10,4 +10,9 @@
 
 @implementation Event
 
+@synthesize character;
+@synthesize timeStamp;
+
+@synthesize weight, weightedTime;
+
 @end

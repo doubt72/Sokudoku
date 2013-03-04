@@ -7,6 +7,7 @@
 //
 
 #import "Character.h"
+#import "Event.h"
 
 @implementation Character
 
@@ -29,10 +30,17 @@
 // Because characters are only tested in isolation when the string being tested is
 // one character long, we weigh the results so that long strings affect the average
 // time less than shorter strings
-- (void)newEvent:(float)forLength :(float)time {
+- (Event *)newEvent:(float)forLength :(float)time {
     float weight = 1.0 / (forLength * forLength);
     timesTested += weight;
     totalTime += time * weight;
+    
+    Event *event = [[Event alloc] init];
+    [event setCharacter:self];
+    [event setTimeStamp:[NSDate date]];
+    [event setWeight:weight];
+    [event setWeightedTime:totalTime];
+    return event;
 }
 
 - (float)averageSpeed {

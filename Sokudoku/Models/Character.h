@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+@class Event;
 
 @interface Character : NSObject {
 @private
@@ -25,7 +26,7 @@
 
 // withLength is the length of the total string that was tested; time is the total
 // time.  From that, newEvent calculates the weighting internally
-- (void) newEvent:(float)forLength:(float)time;
+- (Event *) newEvent:(float)forLength:(float)time;
 
 - (float) averageSpeed;
 

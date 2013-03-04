@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+@class Character;
 
-@interface Event : NSObject
+@interface Event : NSObject {
+@private
+    Character *character;
+    NSDate *timeStamp;
+    
+    float weight;
+    float weightedTime;
+}
+
+@property(copy) Character *character;
+@property(copy) NSDate *timeStamp;
+@property float weight, weightedTime;
 
 @end
