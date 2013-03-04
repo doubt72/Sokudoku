@@ -14,4 +14,11 @@
     [events addObject:event];
 }
 
+-(id)init {
+    if (self = [super init]) {
+        events = [NSMutableArray arrayWithCapacity:256];
+    }
+    return self;
+}
+
 @end

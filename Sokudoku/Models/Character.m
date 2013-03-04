@@ -12,7 +12,6 @@
 @implementation Character
 
 @synthesize literal;
-@synthesize pronunciation;
 
 - (BOOL)pronunciationCorrect:(NSString *)input {
     return [literal isEqualToString:input];
@@ -45,6 +44,26 @@
 
 - (float)averageSpeed {
     return totalTime / timesTested;
+}
+
+- (void)addTag:(NSString *)tag {
+    [tags addObject:tag];
+}
+
+- (BOOL)hasTag:(NSString *)tag {
+    return [tags containsObject:tag];
+}
+
+- (void)addPronunciation:(NSString *)pronunciation {
+    [pronunciations addObject:pronunciation];
+}
+
+-(id)init {
+    if (self = [super init]) {
+        tags = [NSMutableArray arrayWithCapacity:1];
+        pronunciations = [NSMutableArray arrayWithCapacity:1];
+    }
+    return self;
 }
 
 @end

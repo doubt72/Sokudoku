@@ -12,14 +12,14 @@
 @interface Character : NSObject {
 @private
     NSString *literal;
-    NSArray *pronunciations;
+    NSMutableArray *pronunciations;
+    NSMutableArray *tags;
     
     float timesTested;
     float totalTime;
 }
 
 @property(copy) NSString *literal;
-@property(copy) NSArray *pronunciation;
 
 - (BOOL) pronunciationCorrect:(NSString *)input;
 - (BOOL) startsWithPronunciation:(NSString *)input;
@@ -29,5 +29,10 @@
 - (Event *) newEvent:(float)forLength:(float)time;
 
 - (float) averageSpeed;
+
+- (void) addTag:(NSString *)tag;
+- (BOOL) hasTag:(NSString *)tag;
+
+- (void) addPronunciation:(NSString *)pronunciation;
 
 @end
