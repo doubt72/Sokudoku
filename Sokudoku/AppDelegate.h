@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class Settings;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
 @private
@@ -20,6 +21,8 @@
     NSButton *beginSession;
     NSButton *loadPackage, *importPackage, *forgetPackage, *deletePackage;
     NSButton *showHistory, *showHistogram, *resetPackage, *forgetHistory;
+    
+    Settings *settings;
 }
 
 @property (assign) IBOutlet NSWindow *window;

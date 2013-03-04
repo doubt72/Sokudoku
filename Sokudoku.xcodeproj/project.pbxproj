@@ -17,6 +17,7 @@
 		2337C82E16DDA15500169C9E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2337C80E16DDA15500169C9E /* Cocoa.framework */; };
 		2337C83616DDA15500169C9E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2337C83416DDA15500169C9E /* InfoPlist.strings */; };
 		2337C83916DDA15500169C9E /* SokudokuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2337C83816DDA15500169C9E /* SokudokuTests.m */; };
+		2352AB0F16E4257E00C6FAF6 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352AB0E16E4257E00C6FAF6 /* Settings.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		2337C83516DDA15500169C9E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2337C83716DDA15500169C9E /* SokudokuTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SokudokuTests.h; sourceTree = "<group>"; };
 		2337C83816DDA15500169C9E /* SokudokuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SokudokuTests.m; sourceTree = "<group>"; };
+		2352AB0D16E4257E00C6FAF6 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		2352AB0E16E4257E00C6FAF6 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,8 @@
 		2337C84816DDCB4600169C9E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2352AB0D16E4257E00C6FAF6 /* Settings.h */,
+				2352AB0E16E4257E00C6FAF6 /* Settings.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 			files = (
 				2337C81B16DDA15500169C9E /* main.m in Sources */,
 				2337C82216DDA15500169C9E /* AppDelegate.m in Sources */,
+				2352AB0F16E4257E00C6FAF6 /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Settings.h"
 
 @implementation AppDelegate
 @synthesize dataSet;
@@ -26,6 +27,7 @@
         [minLengthStatus setStringValue:[NSString stringWithFormat:@"%d", max]];
     }
     [maxLengthStatus setStringValue:[NSString stringWithFormat:@"%d", max]];
+    //[settings setMaxLength:max];
 }
 
 - (IBAction)updateMinLength:(id)sender{
@@ -35,22 +37,12 @@
         [maxLength setIntegerValue:min];
         [maxLengthStatus setStringValue:[NSString stringWithFormat:@"%d", min]];
     }
-    [minLengthStatus setStringValue:[NSString stringWithFormat:@"%d", min]];
+    //[minLengthStatus setStringValue:[NSString stringWithFormat:@"%d", min]];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Default Settings if no config file found
-
-    [currentPackage setStringValue:@"No Package Loaded"];
-    [dataSet removeAllItems];
-    [dataSet addItemWithTitle:@"All Characters"];
-    [minLength setIntegerValue:2];
-    [minLengthStatus setStringValue:@"2"];
-    [maxLength setIntegerValue:5];
-    [maxLengthStatus setStringValue:@"5"];
-    [sessionLength setIntegerValue:5];
-    [sessionLengthStatus setStringValue:@"5"];
+    settings = [Settings init];
 }
 
 @end
