@@ -60,8 +60,13 @@
 
 - (id)init {
     if (self = [super init]) {
+        literal = nil;
+        
         tags = [NSMutableArray arrayWithCapacity:1];
         pronunciations = [NSMutableArray arrayWithCapacity:1];
+        
+        timesTested = 0;
+        totalTime = 0;
     }
     return self;
 }

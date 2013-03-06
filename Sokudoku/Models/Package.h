@@ -25,6 +25,13 @@
 - (void) addCharacter:(Character *)character;
 - (void) addTag:(NSString *)tag:(NSString *)description;
 
+- (BOOL) hasTag:(NSString *)tag;
+
 - (void) newEvent:(NSArray *)chars:(float)totalTime;
+
+- (void) save;
+
+- (void) import:(NSString *)fileName;
+- (void) load:(NSString *)name;
 
 @end

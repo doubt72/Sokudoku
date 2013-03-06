@@ -25,7 +25,7 @@
       <array>
         <string>a</string>
       </array>
-      <key>keys</key>
+      <key>tags</keys>
       <array>
         <string>hiragana</string>
         <string>both</string>
@@ -38,7 +38,7 @@
       <array>
         <string>a</string>
       </array>
-      <key>keys</key>
+      <key>tags</keys>
       <array>
         <string>katakana</string>
         <string>both</string>
@@ -51,7 +51,7 @@
       <array>
         <string>ka</string>
       </array>
-      <key>keys</key>
+      <key>tags</keys>
       <array>
         <string>hiragana</string>
         <string>both</string>
@@ -64,7 +64,7 @@
       <array>
         <string>ka</string>
       </array>
-      <key>keys</key>
+      <key>tags</keys>
       <array>
         <string>katakana</string>
         <string>both</string>
@@ -78,7 +78,7 @@
         <string>si</string>
         <string>shi</string>
       </array>
-      <key>keys</key>
+      <key>tags</keys>
       <array>
         <string>hiragana</string>
         <string>both</string>
@@ -92,7 +92,7 @@
         <string>si</string>
         <string>shi</string>
       </array>
-      <key>keys</key>
+      <key>tags</keys>
       <array>
         <string>katakana</string>
         <string>both</string>
@@ -106,7 +106,7 @@
         <string>sha</string>
         <string>sya</string>
       </array>
-      <key>keys</key>
+      <key>tags</keys>
       <array>
         <string>hiragana</string>
         <string>both</string>
@@ -120,7 +120,7 @@
         <string>sha</string>
         <string>sya</string>
       </array>
-      <key>keys</key>
+      <key>tags</keys>
       <array>
         <string>katakana</string>
         <string>both</string>
@@ -133,7 +133,7 @@
       <array>
         <string>nya</string>
       </array>
-      <key>keys</key>
+      <key>tags</keys>
       <array>
         <string>hiragana</string>
         <string>both</string>
@@ -146,7 +146,7 @@
       <array>
         <string>nya</string>
       </array>
-      <key>keys</key>
+      <key>tags</keys>
       <array>
         <string>katakana</string>
         <string>both</string>

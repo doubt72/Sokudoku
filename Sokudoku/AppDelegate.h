@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 @class Settings;
+@class Package;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
 @private
@@ -17,12 +18,13 @@
     NSSlider *minLength, *maxLength, *sessionLength;
     NSButton *weightHistory;
     NSTextField *minLengthStatus, *maxLengthStatus, *sessionLengthStatus;
-    NSTextField *currentPackage;
+    NSTextField *currentPackageName;
     NSButton *beginSession;
     NSButton *loadPackage, *importPackage, *forgetPackage, *deletePackage;
     NSButton *showHistory, *showHistogram, *resetPackage, *forgetHistory;
     
     Settings *settings;
+    Package *currentPackage;
 }
 
 @property (assign) IBOutlet NSWindow *window;
@@ -35,7 +37,7 @@
 @property IBOutlet NSTextField *minLengthStatus;
 @property IBOutlet NSTextField *maxLengthStatus;
 @property IBOutlet NSTextField *sessionLengthStatus;
-@property IBOutlet NSTextField *currentPackage;
+@property IBOutlet NSTextField *currentPackageName;
 @property IBOutlet NSButton *beginSession;
 @property IBOutlet NSButton *loadPackage;
 @property IBOutlet NSButton *importPackage;
@@ -50,5 +52,7 @@
 -(IBAction)updateMinLength:(id)sender;
 -(IBAction)updateSessionLength:(id)sender;
 -(IBAction)updateWeightHistory:(id)sender;
+
+-(IBAction)importFile:(id)sender;
 
 @end

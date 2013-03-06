@@ -24,6 +24,10 @@
     [tagDescriptions addObject:description];
 }
 
+- (BOOL)hasTag:(NSString *)tag {
+    return [tags containsObject:tag];
+}
+
 - (void)newEvent:(NSArray *)chars :(float)totalTime {
     unsigned long int length = [chars count];
     for (int i = 0; i < length; i++) {
@@ -33,8 +37,47 @@
     }
 }
 
+- (void)import:(NSString *)fileName {
+    NSDictionary *import = [NSDictionary dictionaryWithContentsOfFile:fileName];
+    NSArray *importTags = [import objectForKey:@"tags"];
+    NSArray *importTagDescriptions = [import objectForKey:@"tagDescriptions"];
+    if ([importTags count] != [importTagDescriptions count]) {
+        return;
+    }
+    for (int i = 0; i < [importTags count]; i++) {
+        [self addTag:[importTags objectAtIndex:i]:[importTagDescriptions objectAtIndex:i]];
+    }
+    NSArray *importCharacters = [import objectForKey:@"characters"];
+    for (int i = 0; i < [importCharacters count]; i++) {
+        Character *character = [[Character alloc] init];
+        NSDictionary *current = [importCharacters objectAtIndex:i];
+        NSString *literal = [current objectForKey:@"literal"];
+        [character setLiteral:literal];
+        NSArray *pronunciations = [current objectForKey:@"pronunciations"];
+        for (int j = 0; j < [pronunciations count]; j++) {
+            [character addPronunciation:[pronunciations objectAtIndex:j]];
+        }
+        NSArray *cTags = [current objectForKey:@"tags"];
+        for (int j = 0; j < [cTags count]; j++) {
+            [character addTag:[cTags objectAtIndex:j]];
+        }
+        [self addCharacter:character];
+    }
+    name = [import objectForKey:@"name"];
+}
+
+- (void)save {
+    ;
+}
+
+- (void)load:(NSString *)name {
+    ;
+}
+
 - (id)init {
     if (self = [super init]) {
+        name = nil;
+
         history = [[History alloc] init];
         
         characters = [NSMutableArray arrayWithCapacity:10];

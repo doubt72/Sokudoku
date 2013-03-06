@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Settings.h"
+#import "Package.h"
 
 @implementation AppDelegate
 
@@ -15,7 +16,7 @@
 @synthesize minLength, maxLength, sessionLength;
 @synthesize weightHistory;
 @synthesize minLengthStatus, maxLengthStatus, sessionLengthStatus;
-@synthesize currentPackage;
+@synthesize currentPackageName;
 @synthesize beginSession;
 @synthesize loadPackage, importPackage, forgetPackage, deletePackage;
 @synthesize showHistory, showHistogram, resetPackage, forgetHistory;
@@ -59,16 +60,57 @@
     }
 }
 
+- (IBAction)importFile:(id)sender {
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    
+    [panel setCanChooseFiles:YES];
+    [panel setCanChooseDirectories:NO];
+    [panel setAllowsMultipleSelection:NO];
+    [panel setTitle:@"Import Package"];
+    [panel setPrompt:@"Import"];
+    [panel setAllowedFileTypes:[NSArray arrayWithObject:@"spkg"]];
+
+    if ([panel runModal] == NSFileHandlingPanelOKButton) {
+        NSURL *url = [[panel URLs] objectAtIndex:0];
+        NSString *fileName = [url path];
+        Package *package = [[Package alloc] init];
+        NSLog(@"%@", fileName);
+        [package import:fileName];
+        if ([package name] != nil) {
+            NSLog(@"%@", [package name]);
+            [package save];
+            [settings setCurrentPackageName:[package name]];
+            currentPackage = package;
+        } else {
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:@"Continue"];
+            [alert setMessageText:@"Failed to Import File"];
+            [alert setInformativeText:[NSString stringWithFormat:@"There was an error importing the selected file: %@", fileName]];
+            // TODO: add an accessory view with an active link
+            [alert setAlertStyle:NSCriticalAlertStyle];
+            [alert runModal];
+        }
+    }
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     settings = [[Settings alloc] init];
-    NSString *name = [settings currentPackageName];
-    if (name == nil) {
-        [currentPackage setStringValue:@"no package loaded"];
-        // TODO: trigger package load
-    } else {
-        [currentPackage setStringValue:name];
-        // TODO: set package dataset options
+    while ([settings currentPackageName] == nil) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:@"Continue"];
+        [alert setMessageText:@"Please Select a Package"];
+        [alert setInformativeText:@"You must import a package before you can begin using Sokudoku; please select a package to begin.  If you do not currently have any packages to import, you can visit https://github.com/doubt72/Sokudoku/tree/master/Packages to find one."];
+        // TODO: add an accessory view with an active link
+        [alert setAlertStyle:NSCriticalAlertStyle];
+        [alert runModal];
+        
+        [currentPackageName setStringValue:@"no package loaded"];
+        [self importFile:self];
     }
+
+    [currentPackageName setStringValue:[settings currentPackageName]];
+    // TODO: set package dataset options
+
     [minLength setIntValue:[settings minLength]];
     [maxLength setIntValue:[settings maxLength]];
     [sessionLength setIntValue:[settings sessionLength]];
