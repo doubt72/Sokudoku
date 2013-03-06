@@ -74,10 +74,13 @@
         NSURL *url = [[panel URLs] objectAtIndex:0];
         NSString *fileName = [url path];
         Package *package = [[Package alloc] init];
-        NSLog(@"%@", fileName);
         [package import:fileName];
+        // TODO: handle possible errors:
+        //   - name already exists
+        //   - tags different length from descriptions
+        //   - tag for character doesn't match tag for package
+        //   - generic load failure
         if ([package name] != nil) {
-            NSLog(@"%@", [package name]);
             [package save];
             [settings setCurrentPackageName:[package name]];
             currentPackage = package;
@@ -86,7 +89,6 @@
             [alert addButtonWithTitle:@"Continue"];
             [alert setMessageText:@"Failed to Import File"];
             [alert setInformativeText:[NSString stringWithFormat:@"There was an error importing the selected file: %@", fileName]];
-            // TODO: add an accessory view with an active link
             [alert setAlertStyle:NSCriticalAlertStyle];
             [alert runModal];
         }

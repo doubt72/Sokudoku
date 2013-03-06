@@ -37,6 +37,7 @@
     }
 }
 
+// TODO: return errors
 - (void)import:(NSString *)fileName {
     NSDictionary *import = [NSDictionary dictionaryWithContentsOfFile:fileName];
     NSArray *importTags = [import objectForKey:@"tags"];
@@ -59,6 +60,7 @@
         }
         NSArray *cTags = [current objectForKey:@"tags"];
         for (int j = 0; j < [cTags count]; j++) {
+            // TODO: check to make sure tags exist
             [character addTag:[cTags objectAtIndex:j]];
         }
         [self addCharacter:character];
