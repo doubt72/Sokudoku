@@ -25,8 +25,6 @@
 - (void) addCharacter:(Character *)character;
 - (void) addTag:(NSString *)tag:(NSString *)description;
 
-// withLength is the length of the total string that was tested; time is the total
-// time.  From that, newEvent calculates the weighting internally
-- (void) newEvent:(NSArray *)chars:(float)time;
+- (void) newEvent:(NSArray *)chars:(float)totalTime;
 
 @end

@@ -24,11 +24,11 @@
     [tagDescriptions addObject:description];
 }
 
-- (void)newEvent:(NSArray *)chars :(float)time {
+- (void)newEvent:(NSArray *)chars :(float)totalTime {
     unsigned long int length = [chars count];
     for (int i = 0; i < length; i++) {
         Character *character = [chars objectAtIndex:i];
-        Event *event = [character newEvent:length:time];
+        Event *event = [character newEvent:length:totalTime];
         [history addEvent:event];
     }
 }
