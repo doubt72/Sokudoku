@@ -24,6 +24,10 @@
     [tagDescriptions addObject:description];
 }
 
+- (NSArray *)allTagDescriptions {
+    return [NSArray arrayWithArray:tagDescriptions];
+}
+
 - (BOOL)hasTag:(NSString *)tag {
     return [tags containsObject:tag];
 }
@@ -37,18 +41,25 @@
     }
 }
 
-// TODO: return errors
-- (void)import:(NSString *)fileName {
+- (NSString *)import:(NSString *)fileName {
+    NSLog(@"filename: %@", fileName);
     NSDictionary *import = [NSDictionary dictionaryWithContentsOfFile:fileName];
+    if (import == nil) {
+        return @"Unable to parse supplied file";
+    }
+    NSLog(@"data: %@", import);
     NSArray *importTags = [import objectForKey:@"tags"];
+    NSLog(@"tags: %@", importTags);
     NSArray *importTagDescriptions = [import objectForKey:@"tagDescriptions"];
+    NSLog(@"descriptions: %@", importTagDescriptions);
     if ([importTags count] != [importTagDescriptions count]) {
-        return;
+        return @"Tag and Tag Description arrays have different counts";
     }
     for (int i = 0; i < [importTags count]; i++) {
         [self addTag:[importTags objectAtIndex:i]:[importTagDescriptions objectAtIndex:i]];
     }
     NSArray *importCharacters = [import objectForKey:@"characters"];
+    NSLog(@"characters: %@", importCharacters);
     for (int i = 0; i < [importCharacters count]; i++) {
         Character *character = [[Character alloc] init];
         NSDictionary *current = [importCharacters objectAtIndex:i];
@@ -60,12 +71,17 @@
         }
         NSArray *cTags = [current objectForKey:@"tags"];
         for (int j = 0; j < [cTags count]; j++) {
-            // TODO: check to make sure tags exist
-            [character addTag:[cTags objectAtIndex:j]];
+            NSString *cTag = [cTags objectAtIndex:j];
+            if ([self hasTag:cTag]) {
+                [character addTag:cTag];
+            } else {
+                return [NSString stringWithFormat:@"unexpected tag %@ for character %@", literal, cTag];
+            }
         }
         [self addCharacter:character];
     }
     name = [import objectForKey:@"name"];
+    return nil;
 }
 
 - (void)save {

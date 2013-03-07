@@ -14,8 +14,11 @@
     NSMutableDictionary *activeSettings;
 }
 
+
+- (void) addPackage:(NSString *)packageName;
+- (void) removePackage:(NSString *)packageName;
+
 - (void) setCurrentPackageName:(NSString *)name;
-- (void) setAvailablePackages:(NSArray *)packageNames;
 - (void) setDataSetIndex:(int)index;
 - (void) setMinLength:(int)length;
 - (void) setMaxLength:(int)length;

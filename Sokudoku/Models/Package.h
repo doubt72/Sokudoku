@@ -24,6 +24,7 @@
 
 - (void) addCharacter:(Character *)character;
 - (void) addTag:(NSString *)tag:(NSString *)description;
+- (NSArray *) allTagDescriptions;
 
 - (BOOL) hasTag:(NSString *)tag;
 
@@ -31,7 +32,7 @@
 
 - (void) save;
 
-- (void) import:(NSString *)fileName;
+- (NSString *) import:(NSString *)fileName;
 - (void) load:(NSString *)name;
 
 @end

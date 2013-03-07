@@ -26,13 +26,22 @@
     [activeSettings writeToFile:settingsFile atomically:YES];
 }
 
-- (void)setCurrentPackageName:(NSString *)name {
-    [activeSettings setValue:name forKey:@"packageName"];
+- (void)addPackage:(NSString *)packageName {
+    NSMutableArray *packages = [activeSettings objectForKey:@"availablePackages"];
+    [packages addObject:packageName];
+    [activeSettings setValue:packages forKey:@"availablePackages"];
     [self saveSettings];
 }
 
-- (void)setAvailablePackages:(NSArray *)packageNames {
-    [activeSettings setValue:packageNames forKey:@"availablePackages"];
+- (void)removePackage:(NSString *)packageName {
+    NSMutableArray *packages = [activeSettings objectForKey:@"availablePackages"];
+    [packages removeObjectIdenticalTo:packageName];
+    [activeSettings setValue:packages forKey:@"availablePackages"];
+    [self saveSettings];
+}
+
+- (void)setCurrentPackageName:(NSString *)name {
+    [activeSettings setValue:name forKey:@"packageName"];
     [self saveSettings];
 }
 
@@ -71,7 +80,7 @@
 }
 
 - (NSArray *)availablePackages {
-    return [activeSettings valueForKey:@"availablePackages"];
+    return [NSArray arrayWithArray:[activeSettings valueForKey:@"availablePackages"]];
 }
 
 - (int)dataSetIndex {
@@ -103,7 +112,7 @@
         } else {
             activeSettings = [NSMutableDictionary dictionaryWithCapacity:7];
             [activeSettings setValue:nil forKey:@"packageName"];
-            [activeSettings setValue:nil forKey:@"availablePackages"];
+            [activeSettings setValue:[NSMutableArray arrayWithCapacity:1] forKey:@"availablePackages"];
             [activeSettings setValue:[NSNumber numberWithInt:2] forKey:@"minLength"];
             [activeSettings setValue:[NSNumber numberWithInt:5] forKey:@"maxLength"];
             [activeSettings setValue:[NSNumber numberWithInt:5] forKey:@"sessionLength"];

@@ -60,6 +60,21 @@
     }
 }
 
+- (void)displayAlertForImport:(NSString *)fileName:(NSString *)why {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"Continue"];
+    [alert setMessageText:@"Failed to Import File"];
+    [alert setInformativeText:[NSString stringWithFormat:@"There was an error importing the selected file (%@): %@", fileName, why]];
+    [alert setAlertStyle:NSCriticalAlertStyle];
+    [alert runModal];
+}
+
+- (void)configureDataSetButton {
+    [dataSet removeAllItems];
+    NSArray *tagNames = [currentPackage allTagDescriptions];
+    [dataSet addItemsWithTitles:tagNames];
+}
+
 - (IBAction)importFile:(id)sender {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     
@@ -74,23 +89,25 @@
         NSURL *url = [[panel URLs] objectAtIndex:0];
         NSString *fileName = [url path];
         Package *package = [[Package alloc] init];
-        [package import:fileName];
-        // TODO: handle possible errors:
-        //   - name already exists
-        //   - tags different length from descriptions
-        //   - tag for character doesn't match tag for package
-        //   - generic load failure
-        if ([package name] != nil) {
-            [package save];
-            [settings setCurrentPackageName:[package name]];
-            currentPackage = package;
+        NSString *rc = [package import:fileName];
+        if (rc != nil) {
+            [self displayAlertForImport:fileName:rc];
         } else {
-            NSAlert *alert = [[NSAlert alloc] init];
-            [alert addButtonWithTitle:@"Continue"];
-            [alert setMessageText:@"Failed to Import File"];
-            [alert setInformativeText:[NSString stringWithFormat:@"There was an error importing the selected file: %@", fileName]];
-            [alert setAlertStyle:NSCriticalAlertStyle];
-            [alert runModal];
+            NSLog(@"no error loading package");
+            NSString *name = [package name];
+            NSLog(@"name: %@", name);
+            NSLog(@"tags: %@", [package allTagDescriptions]);
+            if ([[settings availablePackages] containsObject:name]) {
+                [self displayAlertForImport:fileName:@"package with the same name already exists"];
+            } else {
+                [package save];
+                [settings setCurrentPackageName:name];
+                [settings addPackage:name];
+                [settings setDataSetIndex:0];
+                currentPackage = package;
+                
+                [self configureDataSetButton];
+            }
         }
     }
 }
@@ -110,8 +127,12 @@
         [self importFile:self];
     }
 
-    [currentPackageName setStringValue:[settings currentPackageName]];
-    // TODO: set package dataset options
+    NSString *name = [settings currentPackageName];
+    [currentPackageName setStringValue:name];
+    currentPackage = [[Package alloc] init];
+    [currentPackage load:name];
+
+    [self configureDataSetButton];
 
     [minLength setIntValue:[settings minLength]];
     [maxLength setIntValue:[settings maxLength]];
