@@ -42,16 +42,12 @@
 }
 
 - (NSString *)import:(NSString *)fileName {
-    NSLog(@"filename: %@", fileName);
     NSDictionary *import = [NSDictionary dictionaryWithContentsOfFile:fileName];
     if (import == nil) {
         return @"Unable to parse supplied file";
     }
-    NSLog(@"data: %@", import);
     NSArray *importTags = [import objectForKey:@"tags"];
-    NSLog(@"tags: %@", importTags);
     NSArray *importTagDescriptions = [import objectForKey:@"tagDescriptions"];
-    NSLog(@"descriptions: %@", importTagDescriptions);
     if ([importTags count] != [importTagDescriptions count]) {
         return @"Tag and Tag Description arrays have different counts";
     }
@@ -59,7 +55,6 @@
         [self addTag:[importTags objectAtIndex:i]:[importTagDescriptions objectAtIndex:i]];
     }
     NSArray *importCharacters = [import objectForKey:@"characters"];
-    NSLog(@"characters: %@", importCharacters);
     for (int i = 0; i < [importCharacters count]; i++) {
         Character *character = [[Character alloc] init];
         NSDictionary *current = [importCharacters objectAtIndex:i];

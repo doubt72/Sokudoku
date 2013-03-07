@@ -60,6 +60,29 @@
     }
 }
 
+- (void)displayAlertForFirstPackage {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"Continue"];
+    [alert setMessageText:@"Please Select a Package"];
+    [alert setInformativeText:@"You must import a package before you can begin using Sokudoku; please select a package to begin.  If you do not currently have any packages to import, you can visit the following link to find one:"];
+    NSTextView *accessory = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, 320, 15)];
+    NSURL *url = [NSURL URLWithString:@"https://github.com/doubt72/Sokudoku/"];
+    NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"https://github.com/doubt72/Sokudoku/"];
+    NSRange range = NSMakeRange(0, [text length]);
+    [text beginEditing];
+    [text addAttribute:NSLinkAttributeName value:[url absoluteString] range:range];
+    [text addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:range];
+    [text endEditing];
+    [accessory insertText:text];
+    [accessory setEditable:NO];
+    [accessory setDrawsBackground:NO];
+    [accessory setAutomaticLinkDetectionEnabled:YES];
+    [alert setAccessoryView:accessory];
+    
+    [alert setAlertStyle:NSCriticalAlertStyle];
+    [alert runModal];
+}
+
 - (void)displayAlertForImport:(NSString *)fileName:(NSString *)why {
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"Continue"];
@@ -93,10 +116,7 @@
         if (rc != nil) {
             [self displayAlertForImport:fileName:rc];
         } else {
-            NSLog(@"no error loading package");
             NSString *name = [package name];
-            NSLog(@"name: %@", name);
-            NSLog(@"tags: %@", [package allTagDescriptions]);
             if ([[settings availablePackages] containsObject:name]) {
                 [self displayAlertForImport:fileName:@"package with the same name already exists"];
             } else {
@@ -106,6 +126,7 @@
                 [settings setDataSetIndex:0];
                 currentPackage = package;
                 
+                [currentPackageName setStringValue:name];
                 [self configureDataSetButton];
             }
         }
@@ -114,23 +135,20 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     settings = [[Settings alloc] init];
-    while ([settings currentPackageName] == nil) {
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert addButtonWithTitle:@"Continue"];
-        [alert setMessageText:@"Please Select a Package"];
-        [alert setInformativeText:@"You must import a package before you can begin using Sokudoku; please select a package to begin.  If you do not currently have any packages to import, you can visit https://github.com/doubt72/Sokudoku/tree/master/Packages to find one."];
-        // TODO: add an accessory view with an active link
-        [alert setAlertStyle:NSCriticalAlertStyle];
-        [alert runModal];
-        
-        [currentPackageName setStringValue:@"no package loaded"];
-        [self importFile:self];
-    }
-
+    
     NSString *name = [settings currentPackageName];
-    [currentPackageName setStringValue:name];
-    currentPackage = [[Package alloc] init];
-    [currentPackage load:name];
+    if (name == nil) {
+        while ([settings currentPackageName] == nil) {
+            [self displayAlertForFirstPackage];
+            
+            [currentPackageName setStringValue:@"no package loaded"];
+            [self importFile:self];
+        }
+    } else {
+        [currentPackageName setStringValue:name];
+        currentPackage = [[Package alloc] init];
+        [currentPackage load:name];
+    }
 
     [self configureDataSetButton];
 
