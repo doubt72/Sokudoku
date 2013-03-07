@@ -18,7 +18,8 @@
 @synthesize minLengthStatus, maxLengthStatus, sessionLengthStatus;
 @synthesize currentPackageName;
 @synthesize beginSession;
-@synthesize loadPackage, importPackage, forgetPackage, deletePackage;
+@synthesize packageList;
+@synthesize importPackage, forgetPackage, rememberPackage, deletePackage;
 @synthesize showHistory, showHistogram, resetPackage, forgetHistory;
 
 - (IBAction)updateMaxLength:(id)sender {
@@ -65,13 +66,13 @@
     [alert addButtonWithTitle:@"Continue"];
     [alert setMessageText:@"Please Select a Package"];
     [alert setInformativeText:@"You must import a package before you can begin using Sokudoku; please select a package to begin.  If you do not currently have any packages to import, you can visit the following link to find one:"];
-    NSTextView *accessory = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, 320, 15)];
+
+    NSTextView *accessory = [[NSTextView alloc] initWithFrame:NSMakeRect(0, 0, 250, 12)];
     NSURL *url = [NSURL URLWithString:@"https://github.com/doubt72/Sokudoku/"];
     NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"https://github.com/doubt72/Sokudoku/"];
     NSRange range = NSMakeRange(0, [text length]);
     [text beginEditing];
     [text addAttribute:NSLinkAttributeName value:[url absoluteString] range:range];
-    [text addAttribute:NSForegroundColorAttributeName value:[NSColor blueColor] range:range];
     [text endEditing];
     [accessory insertText:text];
     [accessory setEditable:NO];
@@ -96,6 +97,13 @@
     [dataSet removeAllItems];
     NSArray *tagNames = [currentPackage allTagDescriptions];
     [dataSet addItemsWithTitles:tagNames];
+}
+
+- (void)configurePackageList {
+    [packageList removeAllItems];
+    NSArray *available = [settings availablePackages];
+    [packageList addItemsWithTitles:available];
+    [packageList selectItemWithTitle:[settings currentPackageName]];
 }
 
 - (IBAction)importFile:(id)sender {
@@ -151,6 +159,7 @@
     }
 
     [self configureDataSetButton];
+    [self configurePackageList];
 
     [minLength setIntValue:[settings minLength]];
     [maxLength setIntValue:[settings maxLength]];

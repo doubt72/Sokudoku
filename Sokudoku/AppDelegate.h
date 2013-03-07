@@ -20,7 +20,8 @@
     NSTextField *minLengthStatus, *maxLengthStatus, *sessionLengthStatus;
     NSTextField *currentPackageName;
     NSButton *beginSession;
-    NSButton *loadPackage, *importPackage, *forgetPackage, *deletePackage;
+    NSPopUpButton *packageList;
+    NSButton *importPackage, *forgetPackage, *rememberPackage, *deletePackage;
     NSButton *showHistory, *showHistogram, *resetPackage, *forgetHistory;
     
     Settings *settings;
@@ -39,9 +40,10 @@
 @property IBOutlet NSTextField *sessionLengthStatus;
 @property IBOutlet NSTextField *currentPackageName;
 @property IBOutlet NSButton *beginSession;
-@property IBOutlet NSButton *loadPackage;
+@property IBOutlet NSPopUpButton *packageList;
 @property IBOutlet NSButton *importPackage;
 @property IBOutlet NSButton *forgetPackage;
+@property IBOutlet NSButton *rememberPackage;
 @property IBOutlet NSButton *deletePackage;
 @property IBOutlet NSButton *showHistory;
 @property IBOutlet NSButton *showHistogram;
