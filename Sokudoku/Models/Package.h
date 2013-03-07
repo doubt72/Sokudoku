@@ -33,6 +33,6 @@
 - (void) save;
 
 - (NSString *) import:(NSString *)fileName;
-- (void) load:(NSString *)name;
+- (void) load:(NSString *)packageName;
 
 @end

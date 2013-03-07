@@ -35,4 +35,7 @@
 
 - (void) addPronunciation:(NSString *)pronunciation;
 
+- (NSMutableDictionary *) toDictionary;
+- (void) fromDictionary:(NSMutableDictionary *)dict;
+
 @end

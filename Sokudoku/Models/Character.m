@@ -58,6 +58,24 @@
     [pronunciations addObject:pronunciation];
 }
 
+- (NSMutableDictionary *)toDictionary {
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:5];
+    [dict setValue:literal forKey:@"literal"];
+    [dict setValue:[NSArray arrayWithArray:pronunciations] forKey:@"pronunciations"];
+    [dict setValue:[NSArray arrayWithArray:tags] forKey:@"tags"];
+    [dict setValue:[NSNumber numberWithFloat:timesTested] forKey:@"timesTested"];
+    [dict setValue:[NSNumber numberWithFloat:totalTime] forKey:@"totalTimes"];
+    return dict;
+}
+
+- (void)fromDictionary:(NSMutableDictionary *)dict {
+    literal = [dict objectForKey:@"literal"];
+    pronunciations = [NSMutableArray arrayWithArray:[dict objectForKey:@"pronunciations"]];
+    tags = [NSMutableArray arrayWithArray:[dict objectForKey:@"tags"]];
+    timesTested = [[dict objectForKey:@"timesTested"] floatValue];
+    totalTime = [[dict objectForKey:@"totalTimes"] floatValue];
+}
+
 - (id)init {
     if (self = [super init]) {
         literal = nil;

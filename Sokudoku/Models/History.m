@@ -15,6 +15,14 @@
     [events addObject:event];
 }
 
+- (void)save:(NSString *)fileName {
+    ;
+}
+
+- (void)load:(NSString *)fileName {
+    ;
+}
+
 - (id)init {
     if (self = [super init]) {
         events = [NSMutableArray arrayWithCapacity:256];

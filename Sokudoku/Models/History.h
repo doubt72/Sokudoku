@@ -16,4 +16,7 @@
 
 - (void) addEvent:(Event *)event;
 
+- (void) save:(NSString *)fileName;
+- (void) load:(NSString *)fileName;
+
 @end

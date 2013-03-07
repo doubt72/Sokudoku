@@ -14,7 +14,6 @@
     NSMutableDictionary *activeSettings;
 }
 
-
 - (void) addPackage:(NSString *)packageName;
 - (void) removePackage:(NSString *)packageName;
 

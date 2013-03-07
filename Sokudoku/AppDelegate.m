@@ -97,6 +97,7 @@
     [dataSet removeAllItems];
     NSArray *tagNames = [currentPackage allTagDescriptions];
     [dataSet addItemsWithTitles:tagNames];
+    [dataSet selectItemAtIndex:[settings dataSetIndex]];
 }
 
 - (void)configurePackageList {

@@ -79,12 +79,51 @@
     return nil;
 }
 
-- (void)save {
-    ;
+- (NSString *)packageFile:(NSString *)fileName {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *appSupport =
+    [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory,
+                                         NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *dir =
+    [NSString stringWithFormat:@"%@/Sokudoku/%@", appSupport, name];
+    [fileManager createDirectoryAtPath:dir withIntermediateDirectories:YES
+                            attributes:nil error:nil];
+    return [dir stringByAppendingPathComponent:fileName];
 }
 
-- (void)load:(NSString *)name {
-    ;
+- (void)save {
+    NSMutableDictionary *packageDict = [NSMutableDictionary dictionaryWithCapacity:4];
+    [packageDict setValue:[NSArray arrayWithArray:tags] forKey:@"tags"];
+    [packageDict setValue:[NSArray arrayWithArray:tagDescriptions] forKey:@"tagDescriptions"];
+    NSString *packageFile = [self packageFile:@"package.plist"];
+    [packageDict writeToFile:packageFile atomically:YES];
+    
+    NSMutableArray *characterArray = [NSMutableArray arrayWithCapacity:[characters count]];
+    for (int i = 0; i < [characters count]; i++) {
+        [characterArray addObject:[[characters objectAtIndex:i] toDictionary]];
+    }
+    NSString *characterFile = [self packageFile:@"characters.plist"];
+    [characterArray writeToFile:packageFile atomically:YES];
+
+    NSString *historyFile = [self packageFile:@"history.plist"];
+    [history save:historyFile];
+}
+
+- (void)load:(NSString *)packageName {
+    name = packageName;
+    NSDictionary *packageDict = [NSDictionary dictionaryWithContentsOfFile:[self packageFile:@"package.plist"]];
+    tags = [NSMutableArray arrayWithArray:[packageDict objectForKey:@"tags"]];
+    tagDescriptions = [NSMutableArray arrayWithArray:[packageDict objectForKey:@"tagDescriptions"]];
+    
+    NSArray *characterArray = [NSArray arrayWithContentsOfFile:[self packageFile:@"characters.plist"]];
+    [characters removeAllObjects];
+    for (int i = 0; i < [characterArray count]; i++) {
+        Character *character = [[Character alloc] init];
+        [character fromDictionary:[characterArray objectAtIndex:i]];
+        [self addCharacter:character];
+    }
+    
+    [history load:[self packageFile:@"history.plist"]];
 }
 
 - (id)init {
