@@ -16,10 +16,12 @@
 }
 
 - (void)save:(NSString *)fileName {
+    // TODO: save history
     ;
 }
 
 - (void)load:(NSString *)fileName {
+    // TODO: load history
     ;
 }
 

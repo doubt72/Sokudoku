@@ -103,7 +103,7 @@
         [characterArray addObject:[[characters objectAtIndex:i] toDictionary]];
     }
     NSString *characterFile = [self packageFile:@"characters.plist"];
-    [characterArray writeToFile:packageFile atomically:YES];
+    [characterArray writeToFile:characterFile atomically:YES];
 
     NSString *historyFile = [self packageFile:@"history.plist"];
     [history save:historyFile];
