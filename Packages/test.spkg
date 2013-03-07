@@ -25,12 +25,12 @@
       <array>
         <string>a</string>
       </array>
-      <key>tags</keys>
+      <key>tags</key>
       <array>
         <string>hiragana</string>
         <string>both</string>
       </array>
-    <dict>
+    </dict>
     <dict>
       <key>literal</key>
       <string>ア</string>
@@ -38,12 +38,12 @@
       <array>
         <string>a</string>
       </array>
-      <key>tags</keys>
+      <key>tags</key>
       <array>
         <string>katakana</string>
         <string>both</string>
       </array>
-    <dict>
+    </dict>
     <dict>
       <key>literal</key>
       <string>か</string>
@@ -51,12 +51,12 @@
       <array>
         <string>ka</string>
       </array>
-      <key>tags</keys>
+      <key>tags</key>
       <array>
         <string>hiragana</string>
         <string>both</string>
       </array>
-    <dict>
+    </dict>
     <dict>
       <key>literal</key>
       <string>カ</string>
@@ -64,12 +64,12 @@
       <array>
         <string>ka</string>
       </array>
-      <key>tags</keys>
+      <key>tags</key>
       <array>
         <string>katakana</string>
         <string>both</string>
       </array>
-    <dict>
+    </dict>
     <dict>
       <key>literal</key>
       <string>し</string>
@@ -78,12 +78,12 @@
         <string>si</string>
         <string>shi</string>
       </array>
-      <key>tags</keys>
+      <key>tags</key>
       <array>
         <string>hiragana</string>
         <string>both</string>
       </array>
-    <dict>
+    </dict>
     <dict>
       <key>literal</key>
       <string>シ</string>
@@ -92,12 +92,12 @@
         <string>si</string>
         <string>shi</string>
       </array>
-      <key>tags</keys>
+      <key>tags</key>
       <array>
         <string>katakana</string>
         <string>both</string>
       </array>
-    <dict>
+    </dict>
     <dict>
       <key>literal</key>
       <string>しゃ</string>
@@ -106,12 +106,12 @@
         <string>sha</string>
         <string>sya</string>
       </array>
-      <key>tags</keys>
+      <key>tags</key>
       <array>
         <string>hiragana</string>
         <string>both</string>
       </array>
-    <dict>
+    </dict>
     <dict>
       <key>literal</key>
       <string>シャ</string>
@@ -120,12 +120,12 @@
         <string>sha</string>
         <string>sya</string>
       </array>
-      <key>tags</keys>
+      <key>tags</key>
       <array>
         <string>katakana</string>
         <string>both</string>
       </array>
-    <dict>
+    </dict>
     <dict>
       <key>literal</key>
       <string>にゃ</string>
@@ -133,12 +133,12 @@
       <array>
         <string>nya</string>
       </array>
-      <key>tags</keys>
+      <key>tags</key>
       <array>
         <string>hiragana</string>
         <string>both</string>
       </array>
-    <dict>
+    </dict>
     <dict>
       <key>literal</key>
       <string>ニャ</string>
@@ -146,12 +146,12 @@
       <array>
         <string>nya</string>
       </array>
-      <key>tags</keys>
+      <key>tags</key>
       <array>
         <string>katakana</string>
         <string>both</string>
       </array>
-    <dict>
+    </dict>
   </array>
 </dict>
 </plist>
