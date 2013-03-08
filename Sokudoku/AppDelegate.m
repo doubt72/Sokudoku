@@ -61,6 +61,11 @@
     }
 }
 
+- (IBAction)updateDataSet:(id)sender {
+    NSInteger set = [dataSet indexOfSelectedItem];
+    [settings setDataSetIndex:(int)set];
+}
+
 - (void)displayAlertForFirstPackage {
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"Continue"];
