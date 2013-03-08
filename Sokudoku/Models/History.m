@@ -16,13 +16,21 @@
 }
 
 - (void)save:(NSString *)fileName {
-    // TODO: save history
-    ;
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:[events count]];
+    for (int i = 0; i < [events count]; i++) {
+        [array addObject:[[events objectAtIndex:i] toDictionary]];
+    }
+    [array writeToFile:fileName atomically:YES];
 }
 
 - (void)load:(NSString *)fileName {
-    // TODO: load history
-    ;
+    NSMutableArray *array = [NSMutableArray arrayWithContentsOfFile:fileName];
+    [events removeAllObjects];
+    for (int i = 0; i < [array count]; i++) {
+        Event *event = [[Event alloc] init];
+        [event fromDictionary:[array objectAtIndex:i]];
+        [events addObject:event];
+    }
 }
 
 - (id)init {

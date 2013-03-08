@@ -7,19 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
-@class Character;
 
 @interface Event : NSObject {
 @private
-    Character *character;
+    NSString *character;
     NSDate *timeStamp;
     
     float weight;
     float weightedTime;
 }
 
-@property(copy) Character *character;
+@property(copy) NSString *character;
 @property(copy) NSDate *timeStamp;
 @property float weight, weightedTime;
+
+- (NSMutableDictionary *) toDictionary;
+- (void) fromDictionary:(NSMutableDictionary *)dict;
 
 @end
