@@ -58,5 +58,8 @@
 -(IBAction)updatePackage:(id)sender;
 
 -(IBAction)importFile:(id)sender;
+-(IBAction)forgetPackage:(id)sender;
+-(IBAction)rememberPackage:(id)sender;
+-(IBAction)deletePackage:(id)sender;
 
 @end

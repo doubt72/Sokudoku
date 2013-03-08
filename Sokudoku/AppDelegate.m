@@ -68,6 +68,7 @@
 
 - (IBAction)updatePackage:(id)sender {
     NSString *name = [packageList titleOfSelectedItem];
+    [currentPackage save];
     [currentPackage load:name];
 
     [settings setCurrentPackageName:name];
@@ -115,11 +116,39 @@
     [dataSet selectItemAtIndex:[settings dataSetIndex]];
 }
 
+- (BOOL)checkForgottenPackages {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *appSupport =
+    [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory,
+                                         NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *dir =
+    [NSString stringWithFormat:@"%@/Sokudoku", appSupport];
+    if ([[fileManager contentsOfDirectoryAtPath:dir error:nil] count] ==
+        [[settings availablePackages] count] + 1) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 - (void)configurePackageList {
     [packageList removeAllItems];
     NSArray *available = [settings availablePackages];
     [packageList addItemsWithTitles:available];
     [packageList selectItemWithTitle:[settings currentPackageName]];
+    
+    if ([[settings availablePackages] count] == 1) {
+        [forgetPackage setEnabled:NO];
+        [deletePackage setEnabled:NO];
+    } else {
+        [forgetPackage setEnabled:YES];
+        [deletePackage setEnabled:YES];
+    }
+    if ([self checkForgottenPackages]) {
+        [rememberPackage setEnabled:YES];
+    } else {
+        [rememberPackage setEnabled:NO];
+    }
 }
 
 - (IBAction)importFile:(id)sender {
@@ -142,6 +171,7 @@
         } else {
             NSString *name = [package name];
             if ([[settings availablePackages] containsObject:name]) {
+                // TODO: this needs to also be for forgotten packages
                 [self displayAlertForImport:fileName:@"package with the same name already exists"];
             } else {
                 [package save];
@@ -156,6 +186,25 @@
             }
         }
     }
+}
+
+- (IBAction)forgetPackage:(id)sender {
+    [currentPackage save];
+    [settings removePackage:[settings currentPackageName]];
+    
+    [settings setCurrentPackageName:[[settings availablePackages] objectAtIndex:0]];
+    [currentPackage load:[settings currentPackageName]];
+    [settings setDataSetIndex:0];
+    [self configureDataSetButton];
+    [self configurePackageList];
+}
+
+- (IBAction)rememberPackage:(id)sender {
+    // TODO: REMEMBER
+}
+
+- (IBAction)deletePackage:(id)sender {
+    // TODO: DELETE PACKAGE
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
