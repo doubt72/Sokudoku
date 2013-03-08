@@ -35,7 +35,7 @@
     totalTime += time * weight;
     
     Event *event = [[Event alloc] init];
-    [event setCharacter:self];
+    [event setCharacter:[NSString stringWithString:literal]];
     [event setTimeStamp:[NSDate date]];
     [event setWeight:weight];
     [event setWeightedTime:totalTime];
