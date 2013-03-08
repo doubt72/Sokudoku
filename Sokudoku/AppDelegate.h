@@ -55,6 +55,7 @@
 -(IBAction)updateSessionLength:(id)sender;
 -(IBAction)updateWeightHistory:(id)sender;
 -(IBAction)updateDataSet:(id)sender;
+-(IBAction)updatePackage:(id)sender;
 
 -(IBAction)importFile:(id)sender;
 

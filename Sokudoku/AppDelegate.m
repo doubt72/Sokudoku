@@ -66,6 +66,16 @@
     [settings setDataSetIndex:(int)set];
 }
 
+- (IBAction)updatePackage:(id)sender {
+    NSString *name = [packageList titleOfSelectedItem];
+    [currentPackage load:name];
+
+    [settings setCurrentPackageName:name];
+    [settings setDataSetIndex:0];
+    [currentPackageName setStringValue:name];
+    [self configureDataSetButton];
+}
+
 - (void)displayAlertForFirstPackage {
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"Continue"];
@@ -142,6 +152,7 @@
                 
                 [currentPackageName setStringValue:name];
                 [self configureDataSetButton];
+                [self configurePackageList];
             }
         }
     }
