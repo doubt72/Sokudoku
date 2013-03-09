@@ -22,6 +22,10 @@
 		2352AB1516E461A700C6FAF6 /* Character.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352AB1416E461A700C6FAF6 /* Character.m */; };
 		2352AB1816E4623800C6FAF6 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352AB1716E4623800C6FAF6 /* History.m */; };
 		2352AB1B16E4624600C6FAF6 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2352AB1A16E4624600C6FAF6 /* Event.m */; };
+		2371EB5E16EB00E8008D9645 /* RecallPackageWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2371EB5C16EB00E8008D9645 /* RecallPackageWindow.m */; };
+		2371EB5F16EB00E8008D9645 /* RecallPackageWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2371EB5D16EB00E8008D9645 /* RecallPackageWindow.xib */; };
+		2371EB6316EB01CA008D9645 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2371EB6116EB01CA008D9645 /* MainWindow.m */; };
+		2371EB6416EB01CA008D9645 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2371EB6216EB01CA008D9645 /* MainWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,12 @@
 		2352AB1716E4623800C6FAF6 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
 		2352AB1916E4624600C6FAF6 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		2352AB1A16E4624600C6FAF6 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		2371EB5B16EB00E8008D9645 /* RecallPackageWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecallPackageWindow.h; sourceTree = "<group>"; };
+		2371EB5C16EB00E8008D9645 /* RecallPackageWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecallPackageWindow.m; sourceTree = "<group>"; };
+		2371EB5D16EB00E8008D9645 /* RecallPackageWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecallPackageWindow.xib; sourceTree = "<group>"; };
+		2371EB6016EB01CA008D9645 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+		2371EB6116EB01CA008D9645 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		2371EB6216EB01CA008D9645 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +183,12 @@
 		2337C84216DDA63300169C9E /* Interface */ = {
 			isa = PBXGroup;
 			children = (
+				2371EB5B16EB00E8008D9645 /* RecallPackageWindow.h */,
+				2371EB5C16EB00E8008D9645 /* RecallPackageWindow.m */,
+				2371EB5D16EB00E8008D9645 /* RecallPackageWindow.xib */,
+				2371EB6016EB01CA008D9645 /* MainWindow.h */,
+				2371EB6116EB01CA008D9645 /* MainWindow.m */,
+				2371EB6216EB01CA008D9645 /* MainWindow.xib */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -268,6 +284,8 @@
 				2337C81916DDA15500169C9E /* InfoPlist.strings in Resources */,
 				2337C81F16DDA15500169C9E /* Credits.rtf in Resources */,
 				2337C82516DDA15500169C9E /* MainMenu.xib in Resources */,
+				2371EB5F16EB00E8008D9645 /* RecallPackageWindow.xib in Resources */,
+				2371EB6416EB01CA008D9645 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +327,8 @@
 				2352AB1516E461A700C6FAF6 /* Character.m in Sources */,
 				2352AB1816E4623800C6FAF6 /* History.m in Sources */,
 				2352AB1B16E4624600C6FAF6 /* Event.m in Sources */,
+				2371EB5E16EB00E8008D9645 /* RecallPackageWindow.m in Sources */,
+				2371EB6316EB01CA008D9645 /* MainWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
