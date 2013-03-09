@@ -164,9 +164,6 @@
             [self displayAlertForImport:fileName:rc];
         } else {
             NSString *name = [package name];
-            NSLog(@"name %@", name);
-            NSLog(@"available %@", [settings availablePackages]);
-            NSLog(@"all %@", [settings allPackages]);
             if ([[settings availablePackages] containsObject:name]) {
                 [self displayAlertForImport:fileName:@"package with the same name already exists"];
             } else if ([[settings allPackages] containsObject:name]) {
@@ -202,22 +199,34 @@
 }
 
 - (IBAction)deletePackage:(id)sender {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *appSupport =
-    [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory,
-                                         NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *dir =
-    [NSString stringWithFormat:@"%@/Sokudoku/%@", appSupport,
-     [settings currentPackageName]];
-    [fileManager removeItemAtPath:dir error:nil];
-    
-    [settings deletePackage:[settings currentPackageName]];
-    
-    [settings setCurrentPackageName:[[settings availablePackages] objectAtIndex:0]];
-    [currentPackage load:[settings currentPackageName]];
-    [settings setDataSetIndex:0];
-    [self configureDataSetButton];
-    [self configurePackageList];
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"Delete"];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:@"Delete Package?"];
+    [alert setInformativeText:@"Are you sure you want to delete this package?  If this package is deleted, all history and settings for it will be permanently lost."];
+    [alert setAlertStyle:NSCriticalAlertStyle];
+    [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(executeDeletePackage:returnCode:contextInfo:) contextInfo:nil];
+}
+
+- (void)executeDeletePackage:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    if (returnCode == NSAlertFirstButtonReturn) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSString *appSupport =
+        [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory,
+                                             NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *dir =
+        [NSString stringWithFormat:@"%@/Sokudoku/%@", appSupport,
+         [settings currentPackageName]];
+        [fileManager removeItemAtPath:dir error:nil];
+        
+        [settings deletePackage:[settings currentPackageName]];
+        
+        [settings setCurrentPackageName:[[settings availablePackages] objectAtIndex:0]];
+        [currentPackage load:[settings currentPackageName]];
+        [settings setDataSetIndex:0];
+        [self configureDataSetButton];
+        [self configurePackageList];
+    }
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -235,11 +244,25 @@
         [currentPackageName setStringValue:name];
         currentPackage = [[Package alloc] init];
         [currentPackage load:name];
+        
+        [self configureDataSetButton];
+        [self configurePackageList];
     }
-
-    [self configureDataSetButton];
-    [self configurePackageList];
-
+    
+    [dataSet setEnabled:YES];
+    [weightHistory setEnabled:YES];
+    [beginSession setEnabled:YES];
+    [packageList setEnabled:YES];
+    [importPackage setEnabled:YES];
+    [minLength setEnabled:YES];
+    [maxLength setEnabled:YES];
+    [sessionLength setEnabled:YES];
+    
+    [showHistory setEnabled:YES];
+    [showHistogram setEnabled:YES];
+    [resetPackage setEnabled:YES];
+    [forgetHistory setEnabled:YES];
+    
     [minLength setIntValue:[settings minLength]];
     [maxLength setIntValue:[settings maxLength]];
     [sessionLength setIntValue:[settings sessionLength]];
