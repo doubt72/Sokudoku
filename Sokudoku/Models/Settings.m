@@ -30,6 +30,11 @@
     NSMutableArray *packages = [activeSettings objectForKey:@"availablePackages"];
     [packages addObject:packageName];
     [activeSettings setValue:packages forKey:@"availablePackages"];
+
+    packages = [activeSettings objectForKey:@"allPackages"];
+    [packages addObject:packageName];
+    [activeSettings setValue:packages forKey:@"allPackages"];
+
     [self saveSettings];
 }
 
@@ -37,6 +42,19 @@
     NSMutableArray *packages = [activeSettings objectForKey:@"availablePackages"];
     [packages removeObjectIdenticalTo:packageName];
     [activeSettings setValue:packages forKey:@"availablePackages"];
+
+    [self saveSettings];
+}
+
+- (void)deletePackage:(NSString *)packageName {
+    NSMutableArray *packages = [activeSettings objectForKey:@"availablePackages"];
+    [packages removeObjectIdenticalTo:packageName];
+    [activeSettings setValue:packages forKey:@"availablePackages"];
+
+    packages = [activeSettings objectForKey:@"allPackages"];
+    [packages removeObjectIdenticalTo:packageName];
+    [activeSettings setValue:packages forKey:@"allPackages"];
+
     [self saveSettings];
 }
 
@@ -83,6 +101,10 @@
     return [NSArray arrayWithArray:[activeSettings valueForKey:@"availablePackages"]];
 }
 
+- (NSArray *)allPackages {
+    return [NSArray arrayWithArray:[activeSettings valueForKey:@"allPackages"]];
+}
+
 - (int)dataSetIndex {
     return [[activeSettings valueForKey:@"dataSetIndex"] intValue];
 }
@@ -113,6 +135,7 @@
             activeSettings = [NSMutableDictionary dictionaryWithCapacity:7];
             [activeSettings setValue:nil forKey:@"packageName"];
             [activeSettings setValue:[NSMutableArray arrayWithCapacity:1] forKey:@"availablePackages"];
+            [activeSettings setValue:[NSMutableArray arrayWithCapacity:1] forKey:@"allPackages"];
             [activeSettings setValue:[NSNumber numberWithInt:2] forKey:@"minLength"];
             [activeSettings setValue:[NSNumber numberWithInt:5] forKey:@"maxLength"];
             [activeSettings setValue:[NSNumber numberWithInt:5] forKey:@"sessionLength"];

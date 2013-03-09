@@ -117,14 +117,8 @@
 }
 
 - (BOOL)checkForgottenPackages {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *appSupport =
-    [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory,
-                                         NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *dir =
-    [NSString stringWithFormat:@"%@/Sokudoku", appSupport];
-    if ([[fileManager contentsOfDirectoryAtPath:dir error:nil] count] ==
-        [[settings availablePackages] count] + 1) {
+    if ([[settings allPackages] count] ==
+        [[settings availablePackages] count]) {
         return NO;
     } else {
         return YES;
@@ -170,9 +164,13 @@
             [self displayAlertForImport:fileName:rc];
         } else {
             NSString *name = [package name];
+            NSLog(@"name %@", name);
+            NSLog(@"available %@", [settings availablePackages]);
+            NSLog(@"all %@", [settings allPackages]);
             if ([[settings availablePackages] containsObject:name]) {
-                // TODO: this needs to also be for forgotten packages
                 [self displayAlertForImport:fileName:@"package with the same name already exists"];
+            } else if ([[settings allPackages] containsObject:name]) {
+                [self displayAlertForImport:fileName:@"forgotten package with the same name already exists, please recall that package instead"];
             } else {
                 [package save];
                 [settings setCurrentPackageName:name];
@@ -204,7 +202,22 @@
 }
 
 - (IBAction)deletePackage:(id)sender {
-    // TODO: DELETE PACKAGE
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *appSupport =
+    [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory,
+                                         NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *dir =
+    [NSString stringWithFormat:@"%@/Sokudoku/%@", appSupport,
+     [settings currentPackageName]];
+    [fileManager removeItemAtPath:dir error:nil];
+    
+    [settings deletePackage:[settings currentPackageName]];
+    
+    [settings setCurrentPackageName:[[settings availablePackages] objectAtIndex:0]];
+    [currentPackage load:[settings currentPackageName]];
+    [settings setDataSetIndex:0];
+    [self configureDataSetButton];
+    [self configurePackageList];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {

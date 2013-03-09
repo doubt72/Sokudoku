@@ -16,6 +16,7 @@
 
 - (void) addPackage:(NSString *)packageName;
 - (void) removePackage:(NSString *)packageName;
+- (void) deletePackage:(NSString *)packageName;
 
 - (void) setCurrentPackageName:(NSString *)name;
 - (void) setDataSetIndex:(int)index;
@@ -27,6 +28,7 @@
 
 - (NSString *) currentPackageName;
 - (NSArray *) availablePackages;
+- (NSArray *) allPackages;
 - (int) dataSetIndex;
 - (int) minLength;
 - (int) maxLength;
