@@ -38,11 +38,19 @@
     [self saveSettings];
 }
 
-- (void)removePackage:(NSString *)packageName {
+- (void)forgetPackage:(NSString *)packageName {
     NSMutableArray *packages = [activeSettings objectForKey:@"availablePackages"];
     [packages removeObjectIdenticalTo:packageName];
     [activeSettings setValue:packages forKey:@"availablePackages"];
 
+    [self saveSettings];
+}
+
+- (void)rememberPackage:(NSString *)packageName {
+    NSMutableArray *packages = [activeSettings objectForKey:@"availablePackages"];
+    [packages addObject:packageName];
+    [activeSettings setValue:packages forKey:@"availablePackages"];
+    
     [self saveSettings];
 }
 

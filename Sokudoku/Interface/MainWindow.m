@@ -9,6 +9,7 @@
 #import "MainWindow.h"
 #import "Settings.h"
 #import "Package.h"
+#import "RecallPackageWindow.h"
 
 @implementation MainWindow
 
@@ -162,7 +163,7 @@
 
 - (IBAction)forgetPackage:(id)sender {
     [currentPackage save];
-    [settings removePackage:[settings currentPackageName]];
+    [settings forgetPackage:[settings currentPackageName]];
     
     [settings setCurrentPackageName:[[settings availablePackages] objectAtIndex:0]];
     [currentPackage load:[settings currentPackageName]];
@@ -171,8 +172,55 @@
     [self configurePackageList];
 }
 
+- (void)setEnabled:(BOOL)value {
+    [dataSet setEnabled:value];
+    [weightHistory setEnabled:value];
+    [beginSession setEnabled:value];
+    [packageList setEnabled:value];
+    [importPackage setEnabled:value];
+    [forgetPackage setEnabled:value];
+    [rememberPackage setEnabled:value];
+    [deletePackage setEnabled:value];
+    [minLength setEnabled:value];
+    [maxLength setEnabled:value];
+    [sessionLength setEnabled:value];
+    [showHistory setEnabled:value];
+    [showHistogram setEnabled:value];
+    [resetPackage setEnabled:value];
+    [forgetHistory setEnabled:value];
+}
+
+- (void)doRecall:(NSString *)packageName {
+    [settings rememberPackage:packageName];
+    [settings setCurrentPackageName:packageName];
+    [currentPackage load:packageName];
+    [settings setDataSetIndex:0];
+    
+    [self setEnabled:YES];
+    [self configureDataSetButton];
+    [self configurePackageList];
+    recallDialog = nil;
+}
+
+- (void)abortRecall {
+    [self setEnabled:YES];
+    [self configurePackageList];
+    recallDialog = nil;
+}
+
 - (IBAction)rememberPackage:(id)sender {
-    // TODO: REMEMBER
+    [self setEnabled:NO];
+
+    recallDialog = [[RecallPackageWindow alloc] initWithWindowNibName:@"RecallPackageWindow"];
+    [recallDialog setParent:self];
+    [recallDialog showWindow:[recallDialog window]];
+    [[recallDialog forgottenPackages] removeAllItems];
+    for (int i = 0; i < [[settings allPackages] count]; i++) {
+        NSString *package = [[settings allPackages] objectAtIndex:i];
+        if (![[settings availablePackages] containsObject:package]) {
+            [[recallDialog forgottenPackages] addItemWithTitle:package];
+        }
+    }
 }
 
 - (IBAction)deletePackage:(id)sender {
@@ -257,24 +305,11 @@
         [currentPackageName setStringValue:name];
         currentPackage = [[Package alloc] init];
         [currentPackage load:name];
-        
-        [self configureDataSetButton];
-        [self configurePackageList];
     }
-    
-    [dataSet setEnabled:YES];
-    [weightHistory setEnabled:YES];
-    [beginSession setEnabled:YES];
-    [packageList setEnabled:YES];
-    [importPackage setEnabled:YES];
-    [minLength setEnabled:YES];
-    [maxLength setEnabled:YES];
-    [sessionLength setEnabled:YES];
-    
-    [showHistory setEnabled:YES];
-    [showHistogram setEnabled:YES];
-    [resetPackage setEnabled:YES];
-    [forgetHistory setEnabled:YES];
+
+    [self setEnabled:YES];
+    [self configureDataSetButton];
+    [self configurePackageList];
     
     [minLength setIntValue:[settings minLength]];
     [maxLength setIntValue:[settings maxLength]];

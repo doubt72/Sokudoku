@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 @class Settings;
 @class Package;
+@class RecallPackageWindow;
 
 @interface MainWindow : NSWindowController {
 @private
@@ -24,6 +25,7 @@
     
     Settings *settings;
     Package *currentPackage;
+    RecallPackageWindow *recallDialog;
 }
 
 @property IBOutlet NSPopUpButton *dataSet;
@@ -57,5 +59,8 @@
 -(IBAction)forgetPackage:(id)sender;
 -(IBAction)rememberPackage:(id)sender;
 -(IBAction)deletePackage:(id)sender;
+
+-(void)doRecall:(NSString *)packageName;
+-(void)abortRecall;
 
 @end

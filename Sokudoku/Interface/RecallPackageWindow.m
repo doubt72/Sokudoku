@@ -7,18 +7,27 @@
 //
 
 #import "RecallPackageWindow.h"
-
-@interface RecallPackageWindow ()
-
-@end
+#import "MainWindow.h"
 
 @implementation RecallPackageWindow
+@synthesize forgottenPackages;
+@synthesize cancelButton, recallButton;
+@synthesize parent;
+
+- (IBAction)cancel:(id)sender {
+    [parent abortRecall];
+}
+
+- (IBAction)recall:(id)sender {
+    NSString *package = [forgottenPackages titleOfSelectedItem];
+    [parent doRecall:package];
+}
 
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
     if (self) {
-        // Initialization code here.
+        ;
     }
     
     return self;
@@ -27,8 +36,6 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
 @end

@@ -15,8 +15,9 @@
 }
 
 - (void) addPackage:(NSString *)packageName;
-- (void) removePackage:(NSString *)packageName;
+- (void) forgetPackage:(NSString *)packageName;
 - (void) deletePackage:(NSString *)packageName;
+- (void) rememberPackage:(NSString *)packageName;
 
 - (void) setCurrentPackageName:(NSString *)name;
 - (void) setDataSetIndex:(int)index;
