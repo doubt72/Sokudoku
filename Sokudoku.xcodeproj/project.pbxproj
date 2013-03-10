@@ -26,6 +26,12 @@
 		2371EB5F16EB00E8008D9645 /* RecallPackageWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2371EB5D16EB00E8008D9645 /* RecallPackageWindow.xib */; };
 		2371EB6316EB01CA008D9645 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2371EB6116EB01CA008D9645 /* MainWindow.m */; };
 		2371EB6416EB01CA008D9645 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2371EB6216EB01CA008D9645 /* MainWindow.xib */; };
+		2371EB6816EC6FCB008D9645 /* DrillWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2371EB6616EC6FCB008D9645 /* DrillWindow.m */; };
+		2371EB6916EC6FCB008D9645 /* DrillWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2371EB6716EC6FCB008D9645 /* DrillWindow.xib */; };
+		2371EB6D16EC6FEC008D9645 /* GraphWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2371EB6B16EC6FEC008D9645 /* GraphWindow.m */; };
+		2371EB6E16EC6FEC008D9645 /* GraphWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2371EB6C16EC6FEC008D9645 /* GraphWindow.xib */; };
+		2371EB7216EC700D008D9645 /* HistogramWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2371EB7016EC700D008D9645 /* HistogramWindow.m */; };
+		2371EB7316EC700D008D9645 /* HistogramWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2371EB7116EC700D008D9645 /* HistogramWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +80,15 @@
 		2371EB6016EB01CA008D9645 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
 		2371EB6116EB01CA008D9645 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		2371EB6216EB01CA008D9645 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		2371EB6516EC6FCB008D9645 /* DrillWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrillWindow.h; sourceTree = "<group>"; };
+		2371EB6616EC6FCB008D9645 /* DrillWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrillWindow.m; sourceTree = "<group>"; };
+		2371EB6716EC6FCB008D9645 /* DrillWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DrillWindow.xib; sourceTree = "<group>"; };
+		2371EB6A16EC6FEC008D9645 /* GraphWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphWindow.h; sourceTree = "<group>"; };
+		2371EB6B16EC6FEC008D9645 /* GraphWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphWindow.m; sourceTree = "<group>"; };
+		2371EB6C16EC6FEC008D9645 /* GraphWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GraphWindow.xib; sourceTree = "<group>"; };
+		2371EB6F16EC700D008D9645 /* HistogramWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistogramWindow.h; sourceTree = "<group>"; };
+		2371EB7016EC700D008D9645 /* HistogramWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistogramWindow.m; sourceTree = "<group>"; };
+		2371EB7116EC700D008D9645 /* HistogramWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistogramWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,12 +198,21 @@
 		2337C84216DDA63300169C9E /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				2371EB5B16EB00E8008D9645 /* RecallPackageWindow.h */,
-				2371EB5C16EB00E8008D9645 /* RecallPackageWindow.m */,
-				2371EB5D16EB00E8008D9645 /* RecallPackageWindow.xib */,
+				2371EB6516EC6FCB008D9645 /* DrillWindow.h */,
+				2371EB6616EC6FCB008D9645 /* DrillWindow.m */,
+				2371EB6716EC6FCB008D9645 /* DrillWindow.xib */,
+				2371EB6A16EC6FEC008D9645 /* GraphWindow.h */,
+				2371EB6B16EC6FEC008D9645 /* GraphWindow.m */,
+				2371EB6C16EC6FEC008D9645 /* GraphWindow.xib */,
+				2371EB6F16EC700D008D9645 /* HistogramWindow.h */,
+				2371EB7016EC700D008D9645 /* HistogramWindow.m */,
+				2371EB7116EC700D008D9645 /* HistogramWindow.xib */,
 				2371EB6016EB01CA008D9645 /* MainWindow.h */,
 				2371EB6116EB01CA008D9645 /* MainWindow.m */,
 				2371EB6216EB01CA008D9645 /* MainWindow.xib */,
+				2371EB5B16EB00E8008D9645 /* RecallPackageWindow.h */,
+				2371EB5C16EB00E8008D9645 /* RecallPackageWindow.m */,
+				2371EB5D16EB00E8008D9645 /* RecallPackageWindow.xib */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -286,6 +310,9 @@
 				2337C82516DDA15500169C9E /* MainMenu.xib in Resources */,
 				2371EB5F16EB00E8008D9645 /* RecallPackageWindow.xib in Resources */,
 				2371EB6416EB01CA008D9645 /* MainWindow.xib in Resources */,
+				2371EB6916EC6FCB008D9645 /* DrillWindow.xib in Resources */,
+				2371EB6E16EC6FEC008D9645 /* GraphWindow.xib in Resources */,
+				2371EB7316EC700D008D9645 /* HistogramWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +356,9 @@
 				2352AB1B16E4624600C6FAF6 /* Event.m in Sources */,
 				2371EB5E16EB00E8008D9645 /* RecallPackageWindow.m in Sources */,
 				2371EB6316EB01CA008D9645 /* MainWindow.m in Sources */,
+				2371EB6816EC6FCB008D9645 /* DrillWindow.m in Sources */,
+				2371EB6D16EC6FEC008D9645 /* GraphWindow.m in Sources */,
+				2371EB7216EC700D008D9645 /* HistogramWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
