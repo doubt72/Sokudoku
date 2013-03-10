@@ -9,6 +9,7 @@
 #import "MainWindow.h"
 #import "Settings.h"
 #import "Package.h"
+#import "DrillWindow.h"
 #import "RecallPackageWindow.h"
 
 @implementation MainWindow
@@ -173,6 +174,9 @@
 }
 
 - (void)setEnabled:(BOOL)value {
+    [[[self window] standardWindowButton:NSWindowCloseButton] setEnabled:value];
+    [[[self window] standardWindowButton:NSWindowMiniaturizeButton] setEnabled:value];
+
     [dataSet setEnabled:value];
     [weightHistory setEnabled:value];
     [beginSession setEnabled:value];
@@ -252,6 +256,27 @@
         [self configureDataSetButton];
         [self configurePackageList];
     }
+}
+
+- (IBAction)startDrill:(id)sender {
+    [self setEnabled:NO];
+
+    drillWindow = [[DrillWindow alloc] initWithWindowNibName:@"DrillWindow"];
+    [drillWindow setPackage:currentPackage];
+    [drillWindow setParent:self];
+    [drillWindow setMinLength:[settings minLength]];
+    [drillWindow setMaxLength:[settings maxLength]];
+    [drillWindow setSessionLength:([settings sessionLength] * 60.0)];
+    [drillWindow setWeighted:[settings adaptiveDrillEnabled]];
+    [drillWindow nextQuestion];
+    [drillWindow showWindow:[drillWindow window]];
+}
+
+- (void)endDrill {
+    [self setEnabled:YES];
+    [self configurePackageList];
+    [currentPackage save];
+    drillWindow = nil;
 }
 
 - (void)displayAlertForFirstPackage {

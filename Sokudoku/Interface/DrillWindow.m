@@ -7,20 +7,38 @@
 //
 
 #import "DrillWindow.h"
-
-@interface DrillWindow ()
-
-@end
+#import "MainWindow.h"
+#import "Package.h"
 
 @implementation DrillWindow
+@synthesize testString, statusString, timer;
+@synthesize answerField;
+@synthesize abortButton;
+
+@synthesize parent;
+@synthesize package;
+
+@synthesize minLength, maxLength, sessionLength, weighted;
+
+- (IBAction)abort:(id)sender {
+    [parent endDrill];
+}
+
+- (IBAction)answer:(id)sender {
+    [answerField setStringValue:@""];
+    [self nextQuestion];
+}
+
+- (void)nextQuestion {
+    time = [NSDate date];
+}
 
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
     if (self) {
-        // Initialization code here.
+        
     }
-    
     return self;
 }
 
@@ -28,7 +46,6 @@
 {
     [super windowDidLoad];
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
 @end

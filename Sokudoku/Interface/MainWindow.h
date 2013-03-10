@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 @class Settings;
 @class Package;
+@class DrillWindow;
 @class RecallPackageWindow;
 
 @interface MainWindow : NSWindowController {
@@ -26,6 +27,8 @@
     Settings *settings;
     Package *currentPackage;
     RecallPackageWindow *recallDialog;
+    DrillWindow *drillWindow;
+    
 }
 
 @property IBOutlet NSPopUpButton *dataSet;
@@ -62,5 +65,8 @@
 
 -(void)doRecall:(NSString *)packageName;
 -(void)abortRecall;
+
+-(IBAction)startDrill:(id)sender;
+-(void)endDrill;
 
 @end
