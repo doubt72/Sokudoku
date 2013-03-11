@@ -28,10 +28,11 @@
     float timeLeft;
     BOOL weighted;
     NSString *tag;
-    NSString *question;
     
     int correctAnswers;
     int incorrectAnswers;
+    
+    NSArray *literals;
 
     NSDate *time;
 }

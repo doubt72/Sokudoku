@@ -203,13 +203,13 @@
     [self setEnabled:YES];
     [self configureDataSetButton];
     [self configurePackageList];
-    recallDialog = nil;
+    [recallDialog close];
 }
 
 - (void)abortRecall {
     [self setEnabled:YES];
     [self configurePackageList];
-    recallDialog = nil;
+    [recallDialog close];
 }
 
 - (IBAction)rememberPackage:(id)sender {
@@ -279,7 +279,7 @@
     [self setEnabled:YES];
     [self configurePackageList];
     [currentPackage save];
-    drillWindow = nil;
+    [drillWindow close];
 }
 
 - (void)displayAlertForFirstPackage {

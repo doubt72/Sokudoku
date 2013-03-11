@@ -37,7 +37,7 @@
 - (NSString *) import:(NSString *)fileName;
 - (void) load:(NSString *)packageName;
 
-- (NSString *) generate:(int)min:(int)max:(BOOL)weight:(NSString *)tag;
+- (NSArray *) generate:(int)min:(int)max:(BOOL)weight:(NSString *)tag;
 - (BOOL) test:(NSString *)question:(NSString *)answer;
 
 @end

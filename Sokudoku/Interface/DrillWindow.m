@@ -50,11 +50,20 @@
     [self nextQuestion];
 }
 
+- (NSString *)literalStrings {
+    NSMutableString *rc = [[NSMutableString alloc] initWithCapacity:[literals count]];
+    for (int i = 0; i < [literals count]; i++) {
+        [rc appendString:[literals objectAtIndex:i]];
+    }
+    return [NSString stringWithString:rc];
+}
+
 - (void)nextQuestion {
     int seconds = (int)timeLeft % 60;
     int minutes = (int)(timeLeft / 60);
     [timer setStringValue:[NSString stringWithFormat:@"%.2d:%.2d", minutes, seconds]];
-    [testString setStringValue:[package generate:minLength :maxLength :weighted :tag]];
+    literals = [package generate:minLength:maxLength:weighted:tag];
+    [testString setStringValue:[self literalStrings]];
 
     time = [NSDate date];
 }
