@@ -28,6 +28,11 @@
     return [NSArray arrayWithArray:tagDescriptions];
 }
 
+- (NSString *) tagForDescription:(NSString *)description {
+    unsigned long index = [tagDescriptions indexOfObject:description];
+    return [tags objectAtIndex:index];
+}
+
 - (BOOL)hasTag:(NSString *)tag {
     return [tags containsObject:tag];
 }
@@ -124,6 +129,30 @@
     }
     
     [history load:[self packageFile:@"history.plist"]];
+}
+
+- (NSString *)generate:(int)min:(int)max:(BOOL)weight:(NSString *)tag {
+    NSMutableArray *charSet = [NSMutableArray arrayWithCapacity:[characters count]];
+    for (int i = 0; i < [characters count]; i++) {
+        Character *character = [characters objectAtIndex:i];
+        if ([character hasTag:tag]) {
+            [charSet addObject:character];
+        }
+    }
+    int length = min;
+    if (max > min) {
+        length += arc4random() % (max - min);
+    }
+    NSMutableString *rc = [[NSMutableString alloc] initWithCapacity:length];
+    for (int i = 0; i < length; i++) {
+        int index = arc4random() % [charSet count];
+        [rc appendString:[[charSet objectAtIndex:index] literal]];
+    }
+    return [NSString stringWithString:rc];
+}
+
+- (BOOL)test:(NSString *)question :(NSString *)answer {
+    return YES;
 }
 
 - (id)init {

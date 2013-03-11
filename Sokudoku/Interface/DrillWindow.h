@@ -13,7 +13,7 @@
 @interface DrillWindow : NSWindowController {
 @private
     NSTextField *testString;
-    NSTextField *statusString;
+    NSTextField *statusField;
     NSTextField *timer;
 
     NSTextField *answerField;
@@ -21,17 +21,23 @@
 
     MainWindow *parent;
     Package *package;
-    
+
     int minLength;
     int maxLength;
     float sessionLength;
+    float timeLeft;
     BOOL weighted;
+    NSString *tag;
+    NSString *question;
     
+    int correctAnswers;
+    int incorrectAnswers;
+
     NSDate *time;
 }
 
 @property IBOutlet NSTextField *testString;
-@property IBOutlet NSTextField *statusString;
+@property IBOutlet NSTextField *statusField;
 @property IBOutlet NSTextField *timer;
 @property IBOutlet NSTextField *answerField;
 @property IBOutlet NSButton *abortButton;
@@ -40,8 +46,9 @@
 @property Package *package;
 
 @property int minLength, maxLength;
-@property float sessionLength;
+@property float sessionLength, timeLeft;
 @property BOOL weighted;
+@property NSString *tag;
 
 - (IBAction)abort:(id)sender;
 - (IBAction)answer:(id)sender;

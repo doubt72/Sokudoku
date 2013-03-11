@@ -26,6 +26,8 @@
 - (void) addTag:(NSString *)tag:(NSString *)description;
 - (NSArray *) allTagDescriptions;
 
+- (NSString *) tagForDescription:(NSString *)description;
+
 - (BOOL) hasTag:(NSString *)tag;
 
 - (void) newEvent:(NSArray *)chars:(float)totalTime;
@@ -34,5 +36,8 @@
 
 - (NSString *) import:(NSString *)fileName;
 - (void) load:(NSString *)packageName;
+
+- (NSString *) generate:(int)min:(int)max:(BOOL)weight:(NSString *)tag;
+- (BOOL) test:(NSString *)question:(NSString *)answer;
 
 @end

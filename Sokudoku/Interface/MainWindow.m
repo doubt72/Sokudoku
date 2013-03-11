@@ -267,9 +267,12 @@
     [drillWindow setMinLength:[settings minLength]];
     [drillWindow setMaxLength:[settings maxLength]];
     [drillWindow setSessionLength:([settings sessionLength] * 60.0)];
+    [drillWindow setTimeLeft:([settings sessionLength] * 60.0)];
     [drillWindow setWeighted:[settings adaptiveDrillEnabled]];
-    [drillWindow nextQuestion];
+    [drillWindow setTag:[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+
     [drillWindow showWindow:[drillWindow window]];
+    [drillWindow nextQuestion];
 }
 
 - (void)endDrill {
