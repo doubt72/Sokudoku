@@ -150,8 +150,32 @@
     return [NSArray arrayWithArray:rc];
 }
 
+- (void)event:(NSMutableArray *)forCharacters :(float)time {
+    ;
+}
+
 - (BOOL)test:(NSArray *)question :(NSString *)answer :(float)time {
-    return YES;
+    NSMutableArray *qChars = [[NSMutableArray alloc] initWithCapacity:[question count]];
+    for (int i = 0; i < [question count]; i++) {
+        for (int j = 0; j < [characters count]; j++) {
+            if ([[[characters objectAtIndex:j] literal] isEqualToString:[question objectAtIndex:i]]) {
+                [qChars addObject:[characters objectAtIndex:j]];
+            }
+        }
+    }
+    NSArray *allPron = [[NSArray alloc] initWithObjects:@"", nil];
+    for (int i = 0; i < [qChars count]; i++) {
+        allPron = [[qChars objectAtIndex:i] appendAllPronunciations:allPron];
+    }
+    NSLog(@"allpron count %ld", [allPron count]);
+    for (int i = 0; i < [allPron count]; i++) {
+        if ([[allPron objectAtIndex:i] isEqualToString:answer]) {
+            [self event:qChars:time];
+            return YES;
+        }
+    }
+    [self event:qChars:10.0 * [qChars count]];
+    return NO;
 }
 
 - (id)init {

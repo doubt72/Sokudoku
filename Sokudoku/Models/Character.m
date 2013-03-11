@@ -13,19 +13,6 @@
 
 @synthesize literal;
 
-- (BOOL)pronunciationCorrect:(NSString *)input {
-    return [literal isEqualToString:input];
-}
-
-- (BOOL)startsWithPronunciation:(NSString *)input {
-    for (int i = 1; i <= [input length]; i++) {
-        if ([self pronunciationCorrect:[input substringToIndex:i]]) {
-            return YES;
-        }
-    }
-    return NO;
-}
-
 // Because characters are only tested in isolation when the string being tested is
 // one character long, we weigh the results so that long strings affect the average
 // time less than shorter strings
@@ -74,6 +61,19 @@
     tags = [NSMutableArray arrayWithArray:[dict objectForKey:@"tags"]];
     timesTested = [[dict objectForKey:@"timesTested"] floatValue];
     totalTime = [[dict objectForKey:@"totalTimes"] floatValue];
+}
+
+- (NSArray *)appendAllPronunciations:(NSArray *)list {
+    NSMutableArray *rc = [[NSMutableArray alloc] initWithCapacity:[list count] * [pronunciations count]];
+    for (int i = 0; i < [list count]; i++) {
+        for (int j = 0; j < [pronunciations count]; j++) {
+            [rc addObject:[NSString stringWithFormat:@"%@%@",
+                           [list objectAtIndex:i], [pronunciations objectAtIndex:j]]];
+        }
+        [rc addObject:[NSString stringWithFormat:@"%@%@",
+                       [list objectAtIndex:i], literal]];
+    }
+    return [NSArray arrayWithArray:rc];
 }
 
 - (id)init {

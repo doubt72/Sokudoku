@@ -21,9 +21,6 @@
 
 @property(copy) NSString *literal;
 
-- (BOOL) pronunciationCorrect:(NSString *)input;
-- (BOOL) startsWithPronunciation:(NSString *)input;
-
 // withLength is the length of the total string that was tested; time is the total
 // time.  From that, newEvent calculates the weighting internally
 - (Event *) newEvent:(float)forLength:(float)time;
@@ -37,5 +34,7 @@
 
 - (NSMutableDictionary *) toDictionary;
 - (void) fromDictionary:(NSMutableDictionary *)dict;
+
+- (NSArray *)appendAllPronunciations:(NSArray *)list;
 
 @end
