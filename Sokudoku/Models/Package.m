@@ -151,7 +151,11 @@
 }
 
 - (void)event:(NSMutableArray *)forCharacters :(float)time {
-    ;
+    for (int i = 0; i < [forCharacters count]; i++) {
+        Character *current = [forCharacters objectAtIndex:i];
+        Event *event = [current newEvent:[forCharacters count] :time];
+        [history addEvent:event];
+    }
 }
 
 - (BOOL)test:(NSArray *)question :(NSString *)answer :(float)time {
@@ -167,7 +171,6 @@
     for (int i = 0; i < [qChars count]; i++) {
         allPron = [[qChars objectAtIndex:i] appendAllPronunciations:allPron];
     }
-    NSLog(@"allpron count %ld", [allPron count]);
     for (int i = 0; i < [allPron count]; i++) {
         if ([[allPron objectAtIndex:i] isEqualToString:answer]) {
             [self event:qChars:time];
