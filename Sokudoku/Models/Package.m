@@ -140,7 +140,7 @@
     }
     int length = min;
     if (max > min) {
-        length += arc4random() % (max - min);
+        length += arc4random() % (max - min + 1);
     }
     NSMutableArray *rc = [[NSMutableArray alloc] initWithCapacity:length];
     for (int i = 0; i < length; i++) {
