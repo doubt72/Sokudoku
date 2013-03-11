@@ -150,7 +150,7 @@
     return [NSArray arrayWithArray:rc];
 }
 
-- (BOOL)test:(NSString *)question :(NSString *)answer {
+- (BOOL)test:(NSArray *)question :(NSString *)answer :(float)time {
     return YES;
 }
 

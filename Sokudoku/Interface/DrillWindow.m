@@ -25,9 +25,32 @@
     [parent endDrill];
 }
 
-- (void)finish {
-    // TODO: Dialog box, yadda yadda.
+- (IBAction)deletePackage:(id)sender {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"Delete"];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:@"Delete Package?"];
+    [alert setInformativeText:@"Are you sure you want to delete this package?  If this package is deleted, all history and settings for it will be permanently lost."];
+    [alert setAlertStyle:NSCriticalAlertStyle];
+    [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(executeDeletePackage:returnCode:contextInfo:) contextInfo:nil];
+}
+
+- (void)sessionFinished:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
     [parent endDrill];
+}
+
+- (void)finish {
+    [testString setStringValue:@""];
+    int seconds = (int)(sessionLength - timeLeft) % 60;
+    int minutes = (int)((sessionLength - timeLeft) / 60);
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"Continue"];
+    [alert setMessageText:@"Session Complete"];
+    [alert setInformativeText:[NSString stringWithFormat:@"Drill session is complete.  %d questions finished (with %d correct) during a total session time of %.2d:%.2d.",
+                               correctAnswers + incorrectAnswers,
+                               correctAnswers, minutes, seconds]];
+    [alert setAlertStyle:NSInformationalAlertStyle];
+    [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(sessionFinished:returnCode:contextInfo:) contextInfo:nil];
 }
 
 - (IBAction)answer:(id)sender {
@@ -35,19 +58,21 @@
     timeLeft += elapsed;
     NSString *answer = [answerField stringValue];
     NSString *status;
-    if ([package test:[testString stringValue]:answer]) {
+    if ([package test:literals:answer:-elapsed]) {
+        correctAnswers++;
         status = [NSString stringWithFormat:@"Answer %@ correct (in %.2f seconds)",
                             answer, -elapsed];
     } else {
+        incorrectAnswers++;
         status = [NSString stringWithFormat:@"Answer %@ incorrect", answer];
     }
     [statusField setStringValue:status];
     if (timeLeft < 0) {
         [self finish];
+    } else {
+        [answerField setStringValue:@""];
+        [self nextQuestion];
     }
-    
-    [answerField setStringValue:@""];
-    [self nextQuestion];
 }
 
 - (NSString *)literalStrings {

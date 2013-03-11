@@ -38,6 +38,6 @@
 - (void) load:(NSString *)packageName;
 
 - (NSArray *) generate:(int)min:(int)max:(BOOL)weight:(NSString *)tag;
-- (BOOL) test:(NSString *)question:(NSString *)answer;
+- (BOOL) test:(NSArray *)question:(NSString *)answer:(float)time;
 
 @end
