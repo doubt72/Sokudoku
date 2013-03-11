@@ -25,16 +25,6 @@
     [parent endDrill];
 }
 
-- (IBAction)deletePackage:(id)sender {
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle:@"Delete"];
-    [alert addButtonWithTitle:@"Cancel"];
-    [alert setMessageText:@"Delete Package?"];
-    [alert setInformativeText:@"Are you sure you want to delete this package?  If this package is deleted, all history and settings for it will be permanently lost."];
-    [alert setAlertStyle:NSCriticalAlertStyle];
-    [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(executeDeletePackage:returnCode:contextInfo:) contextInfo:nil];
-}
-
 - (void)sessionFinished:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
     [parent endDrill];
 }
