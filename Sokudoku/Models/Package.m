@@ -218,7 +218,9 @@
                               [NSNumber numberWithFloat:time], nil]];
         }
     }
-    return [NSArray arrayWithArray:array];
+    return [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [[obj2 objectAtIndex:1] compare:[obj1 objectAtIndex:1]];
+    } ];
 }
 
 - (void)clearHistory {

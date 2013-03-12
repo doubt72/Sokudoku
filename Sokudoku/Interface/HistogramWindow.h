@@ -13,7 +13,7 @@
 
 @interface HistogramWindow : NSWindowController {
 @package
-    NSBox *boxView;
+    NSScrollView *scrollView;
     NSButton *returnButton;
     NSPopUpButton *dataSets;
     
@@ -23,9 +23,10 @@
     Package *package;
 }
 
-@property IBOutlet NSView *boxView;
+@property IBOutlet NSScrollView *scrollView;
 @property IBOutlet NSButton *returnButton;
 @property IBOutlet NSPopUpButton *dataSets;
+@property IBOutlet HistogramView *histogramView;
 
 @property MainWindow *parent;
 @property Package *package;

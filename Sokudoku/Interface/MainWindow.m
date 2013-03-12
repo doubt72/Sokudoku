@@ -269,6 +269,7 @@
     [[histogramWindow dataSets] removeAllItems];
     [[histogramWindow dataSets] addItemsWithTitles:[currentPackage allTagDescriptions]];
     [[histogramWindow dataSets] selectItemAtIndex:[settings dataSetIndex]];
+    [histogramWindow selectTag:self];
 }
 
 - (void)endShowHistogram {

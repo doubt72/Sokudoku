@@ -12,7 +12,8 @@
 #import "Package.h"
 
 @implementation HistogramWindow
-@synthesize boxView, returnButton, dataSets;
+@synthesize scrollView, returnButton, dataSets;
+@synthesize histogramView;
 @synthesize parent;
 @synthesize package;
 
@@ -38,10 +39,7 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    histogramView = [[HistogramView alloc] init];
     [histogramView setPackage:package];
-    
-    [boxView setContentView:histogramView];
 }
 
 @end
