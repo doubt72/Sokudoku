@@ -79,6 +79,11 @@
     return [NSArray arrayWithArray:rc];
 }
 
+- (void)reset {
+    timesTested = 0;
+    totalTime = 0;
+}
+
 - (id)init {
     if (self = [super init]) {
         literal = nil;

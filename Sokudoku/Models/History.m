@@ -33,6 +33,10 @@
     }
 }
 
+- (void)clear {
+    [events removeAllObjects];
+}
+
 - (id)init {
     if (self = [super init]) {
         events = [NSMutableArray arrayWithCapacity:256];

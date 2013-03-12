@@ -1046,70 +1046,6 @@
 					<int key="connectionID">337</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">importPackage</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="44910884"/>
-					</object>
-					<int key="connectionID">338</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">forgetPackage</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="340954078"/>
-					</object>
-					<int key="connectionID">339</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">rememberPackage</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="394837269"/>
-					</object>
-					<int key="connectionID">340</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">deletePackage</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="123780733"/>
-					</object>
-					<int key="connectionID">341</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">showHistory</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="665614669"/>
-					</object>
-					<int key="connectionID">342</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">showHistogram</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="297448221"/>
-					</object>
-					<int key="connectionID">343</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">resetPackage</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="604419402"/>
-					</object>
-					<int key="connectionID">344</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
-						<string key="label">forgetHistory</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="788282011"/>
-					</object>
-					<int key="connectionID">345</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">updateMinLength:</string>
 						<reference key="source" ref="1001"/>
@@ -1196,6 +1132,86 @@
 						<reference key="destination" ref="289297204"/>
 					</object>
 					<int key="connectionID">358</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">importPackageButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="44910884"/>
+					</object>
+					<int key="connectionID">359</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">forgetPackageButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="340954078"/>
+					</object>
+					<int key="connectionID">360</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">rememberPackageButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="394837269"/>
+					</object>
+					<int key="connectionID">361</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">deletePackageButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="123780733"/>
+					</object>
+					<int key="connectionID">362</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">showHistoryButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="665614669"/>
+					</object>
+					<int key="connectionID">363</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">showHistogramButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="297448221"/>
+					</object>
+					<int key="connectionID">364</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">resetPackageButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="604419402"/>
+					</object>
+					<int key="connectionID">365</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">forgetHistoryButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="788282011"/>
+					</object>
+					<int key="connectionID">366</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">forgetHistory:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="788282011"/>
+					</object>
+					<int key="connectionID">367</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">resetPackage:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="604419402"/>
+					</object>
+					<int key="connectionID">368</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -3975,7 +3991,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">358</int>
+			<int key="maxID">368</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3984,9 +4000,11 @@
 					<string key="superclassName">NSWindowController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="deletePackage:">id</string>
+						<string key="forgetHistory:">id</string>
 						<string key="forgetPackage:">id</string>
 						<string key="importFile:">id</string>
 						<string key="rememberPackage:">id</string>
+						<string key="resetPackage:">id</string>
 						<string key="startDrill:">id</string>
 						<string key="updateDataSet:">id</string>
 						<string key="updateMaxLength:">id</string>
@@ -4000,6 +4018,10 @@
 							<string key="name">deletePackage:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="forgetHistory:">
+							<string key="name">forgetHistory:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="forgetPackage:">
 							<string key="name">forgetPackage:</string>
 							<string key="candidateClassName">id</string>
@@ -4010,6 +4032,10 @@
 						</object>
 						<object class="IBActionInfo" key="rememberPackage:">
 							<string key="name">rememberPackage:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="resetPackage:">
+							<string key="name">resetPackage:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="startDrill:">
@@ -4045,21 +4071,21 @@
 						<string key="beginSession">NSButton</string>
 						<string key="currentPackageName">NSTextField</string>
 						<string key="dataSet">NSPopUpButton</string>
-						<string key="deletePackage">NSButton</string>
-						<string key="forgetHistory">NSButton</string>
-						<string key="forgetPackage">NSButton</string>
-						<string key="importPackage">NSButton</string>
+						<string key="deletePackageButton">NSButton</string>
+						<string key="forgetHistoryButton">NSButton</string>
+						<string key="forgetPackageButton">NSButton</string>
+						<string key="importPackageButton">NSButton</string>
 						<string key="maxLength">NSSlider</string>
 						<string key="maxLengthStatus">NSTextField</string>
 						<string key="minLength">NSSlider</string>
 						<string key="minLengthStatus">NSTextField</string>
 						<string key="packageList">NSPopUpButton</string>
-						<string key="rememberPackage">NSButton</string>
-						<string key="resetPackage">NSButton</string>
+						<string key="rememberPackageButton">NSButton</string>
+						<string key="resetPackageButton">NSButton</string>
 						<string key="sessionLength">NSSlider</string>
 						<string key="sessionLengthStatus">NSTextField</string>
-						<string key="showHistogram">NSButton</string>
-						<string key="showHistory">NSButton</string>
+						<string key="showHistogramButton">NSButton</string>
+						<string key="showHistoryButton">NSButton</string>
 						<string key="weightHistory">NSButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -4075,20 +4101,20 @@
 							<string key="name">dataSet</string>
 							<string key="candidateClassName">NSPopUpButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="deletePackage">
-							<string key="name">deletePackage</string>
+						<object class="IBToOneOutletInfo" key="deletePackageButton">
+							<string key="name">deletePackageButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="forgetHistory">
-							<string key="name">forgetHistory</string>
+						<object class="IBToOneOutletInfo" key="forgetHistoryButton">
+							<string key="name">forgetHistoryButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="forgetPackage">
-							<string key="name">forgetPackage</string>
+						<object class="IBToOneOutletInfo" key="forgetPackageButton">
+							<string key="name">forgetPackageButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="importPackage">
-							<string key="name">importPackage</string>
+						<object class="IBToOneOutletInfo" key="importPackageButton">
+							<string key="name">importPackageButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="maxLength">
@@ -4111,12 +4137,12 @@
 							<string key="name">packageList</string>
 							<string key="candidateClassName">NSPopUpButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="rememberPackage">
-							<string key="name">rememberPackage</string>
+						<object class="IBToOneOutletInfo" key="rememberPackageButton">
+							<string key="name">rememberPackageButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="resetPackage">
-							<string key="name">resetPackage</string>
+						<object class="IBToOneOutletInfo" key="resetPackageButton">
+							<string key="name">resetPackageButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="sessionLength">
@@ -4127,12 +4153,12 @@
 							<string key="name">sessionLengthStatus</string>
 							<string key="candidateClassName">NSTextField</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="showHistogram">
-							<string key="name">showHistogram</string>
+						<object class="IBToOneOutletInfo" key="showHistogramButton">
+							<string key="name">showHistogramButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="showHistory">
-							<string key="name">showHistory</string>
+						<object class="IBToOneOutletInfo" key="showHistoryButton">
+							<string key="name">showHistoryButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="weightHistory">

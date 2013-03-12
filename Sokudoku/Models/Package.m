@@ -205,6 +205,17 @@
     return NO;
 }
 
+- (void)clearHistory {
+    [history clear];
+}
+
+- (void)reset {
+    [history clear];
+    for (int i = 0; i < [characters count]; i++) {
+        [[characters objectAtIndex:i] reset];
+    }
+}
+
 - (id)init {
     if (self = [super init]) {
         name = nil;

@@ -21,9 +21,11 @@
     NSTextField *currentPackageName;
     NSButton *beginSession;
     NSPopUpButton *packageList;
-    NSButton *importPackage, *forgetPackage, *rememberPackage, *deletePackage;
-    NSButton *showHistory, *showHistogram, *resetPackage, *forgetHistory;
-    
+    NSButton *importPackageButton, *forgetPackageButton;
+    NSButton *rememberPackageButton, *deletePackageButton;
+    NSButton *showHistoryButton, *showHistogramButton;
+    NSButton *resetPackageButton, *forgetHistoryButton;
+
     Settings *settings;
     Package *currentPackage;
     RecallPackageWindow *recallDialog;
@@ -42,14 +44,14 @@
 @property IBOutlet NSTextField *currentPackageName;
 @property IBOutlet NSButton *beginSession;
 @property IBOutlet NSPopUpButton *packageList;
-@property IBOutlet NSButton *importPackage;
-@property IBOutlet NSButton *forgetPackage;
-@property IBOutlet NSButton *rememberPackage;
-@property IBOutlet NSButton *deletePackage;
-@property IBOutlet NSButton *showHistory;
-@property IBOutlet NSButton *showHistogram;
-@property IBOutlet NSButton *resetPackage;
-@property IBOutlet NSButton *forgetHistory;
+@property IBOutlet NSButton *importPackageButton;
+@property IBOutlet NSButton *forgetPackageButton;
+@property IBOutlet NSButton *rememberPackageButton;
+@property IBOutlet NSButton *deletePackageButton;
+@property IBOutlet NSButton *showHistoryButton;
+@property IBOutlet NSButton *showHistogramButton;
+@property IBOutlet NSButton *resetPackageButton;
+@property IBOutlet NSButton *forgetHistoryButton;
 
 -(IBAction)updateMaxLength:(id)sender;
 -(IBAction)updateMinLength:(id)sender;
@@ -62,6 +64,9 @@
 -(IBAction)forgetPackage:(id)sender;
 -(IBAction)rememberPackage:(id)sender;
 -(IBAction)deletePackage:(id)sender;
+
+-(IBAction)forgetHistory:(id)sender;
+-(IBAction)resetPackage:(id)sender;
 
 -(void)doRecall:(NSString *)packageName;
 -(void)abortRecall;

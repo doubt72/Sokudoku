@@ -19,4 +19,6 @@
 - (void) save:(NSString *)fileName;
 - (void) load:(NSString *)fileName;
 
+- (void) clear;
+
 @end

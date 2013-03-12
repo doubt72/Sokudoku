@@ -37,4 +37,6 @@
 
 - (NSArray *)appendAllPronunciations:(NSArray *)list;
 
+- (void)reset;
+
 @end

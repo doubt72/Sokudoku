@@ -21,8 +21,8 @@
 @synthesize currentPackageName;
 @synthesize beginSession;
 @synthesize packageList;
-@synthesize importPackage, forgetPackage, rememberPackage, deletePackage;
-@synthesize showHistory, showHistogram, resetPackage, forgetHistory;
+@synthesize importPackageButton, forgetPackageButton, rememberPackageButton, deletePackageButton;
+@synthesize showHistoryButton, showHistogramButton, resetPackageButton, forgetHistoryButton;
 
 - (void)configureDataSetButton {
     [dataSet removeAllItems];
@@ -47,16 +47,16 @@
     [packageList selectItemWithTitle:[settings currentPackageName]];
     
     if ([[settings availablePackages] count] == 1) {
-        [forgetPackage setEnabled:NO];
-        [deletePackage setEnabled:NO];
+        [forgetPackageButton setEnabled:NO];
+        [deletePackageButton setEnabled:NO];
     } else {
-        [forgetPackage setEnabled:YES];
-        [deletePackage setEnabled:YES];
+        [forgetPackageButton setEnabled:YES];
+        [deletePackageButton setEnabled:YES];
     }
     if ([self checkForgottenPackages]) {
-        [rememberPackage setEnabled:YES];
+        [rememberPackageButton setEnabled:YES];
     } else {
-        [rememberPackage setEnabled:NO];
+        [rememberPackageButton setEnabled:NO];
     }
 }
 
@@ -181,17 +181,17 @@
     [weightHistory setEnabled:value];
     [beginSession setEnabled:value];
     [packageList setEnabled:value];
-    [importPackage setEnabled:value];
-    [forgetPackage setEnabled:value];
-    [rememberPackage setEnabled:value];
-    [deletePackage setEnabled:value];
+    [importPackageButton setEnabled:value];
+    [forgetPackageButton setEnabled:value];
+    [rememberPackageButton setEnabled:value];
+    [deletePackageButton setEnabled:value];
     [minLength setEnabled:value];
     [maxLength setEnabled:value];
     [sessionLength setEnabled:value];
-    [showHistory setEnabled:value];
-    [showHistogram setEnabled:value];
-    [resetPackage setEnabled:value];
-    [forgetHistory setEnabled:value];
+    [showHistoryButton setEnabled:value];
+    [showHistogramButton setEnabled:value];
+    [resetPackageButton setEnabled:value];
+    [forgetHistoryButton setEnabled:value];
 }
 
 - (void)doRecall:(NSString *)packageName {
@@ -255,6 +255,40 @@
         [settings setDataSetIndex:0];
         [self configureDataSetButton];
         [self configurePackageList];
+    }
+}
+
+- (IBAction)forgetHistory:(id)sender {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"Delete"];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:@"Clear History?"];
+    [alert setInformativeText:@"Are you sure you want to clear the history for this package?  If you continue, all history for this package will be permanently lost."];
+    [alert setAlertStyle:NSCriticalAlertStyle];
+    [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(executeForgetHistory:returnCode:contextInfo:) contextInfo:nil];
+}
+
+- (void)executeForgetHistory:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    if (returnCode == NSAlertFirstButtonReturn) {
+        [currentPackage clearHistory];
+        [currentPackage save];
+    }
+}
+
+- (IBAction)resetPackage:(id)sender {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"Delete"];
+    [alert addButtonWithTitle:@"Cancel"];
+    [alert setMessageText:@"Delete Package?"];
+    [alert setInformativeText:@"Are you sure you want to delete this package?  If this package is deleted, all history and settings for it will be permanently lost."];
+    [alert setAlertStyle:NSCriticalAlertStyle];
+    [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(executeResetPackage:returnCode:contextInfo:) contextInfo:nil];
+}
+
+- (void)executeResetPackage:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    if (returnCode == NSAlertFirstButtonReturn) {
+        [currentPackage reset];
+        [currentPackage save];
     }
 }
 
