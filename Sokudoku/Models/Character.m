@@ -30,6 +30,9 @@
 }
 
 - (float)averageSpeed {
+    if (timesTested == 0.0) {
+        return 10.0;
+    }
     return totalTime / timesTested;
 }
 

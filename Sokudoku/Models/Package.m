@@ -130,12 +130,36 @@
     [history load:[self packageFile:@"history.plist"]];
 }
 
+- (NSString *)objectForIndex:(float)index:(NSArray *)list {
+    NSLog(@"list length: %ld", [list count]);
+    NSLog(@"list length: %f", index);
+    
+    float left = index;
+    for (int i = 0; i < [list count]; i++) {
+        left -= [[[list objectAtIndex:i] objectAtIndex:1] floatValue];
+        if (left < 0) {
+            NSLog(@"list length: %d", i);
+            return [[list objectAtIndex:i] objectAtIndex:0];
+        }
+    }
+    NSLog(@"error: %f", left);
+    return nil;
+}
+
 - (NSArray *)generate:(int)min:(int)max:(BOOL)weight:(NSString *)tag {
+    float totalWeight = 0;
     NSMutableArray *charSet = [NSMutableArray arrayWithCapacity:[characters count]];
     for (int i = 0; i < [characters count]; i++) {
         NSString *literal = [[characters objectAtIndex:i] literal];
+        float speed = 1;
+        if (weight) {
+            speed = [[characters objectAtIndex:i] averageSpeed];
+        }
         if ([[characters objectAtIndex:i] hasTag:tag]) {
-            [charSet addObject:literal];
+            totalWeight += speed;
+            NSArray *temp = [NSArray arrayWithObjects:literal,
+                             [NSNumber numberWithFloat:speed], nil];
+            [charSet addObject:temp];
         }
     }
     int length = min;
@@ -144,8 +168,8 @@
     }
     NSMutableArray *rc = [[NSMutableArray alloc] initWithCapacity:length];
     for (int i = 0; i < length; i++) {
-        int index = arc4random() % [charSet count];
-        [rc addObject:[charSet objectAtIndex:index]];
+        float index = (float)(arc4random() % (int)(totalWeight * 100000)) / 100000;
+        [rc addObject:[self objectForIndex:index:charSet]];
     }
     return [NSArray arrayWithArray:rc];
 }
