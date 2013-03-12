@@ -260,7 +260,7 @@
 
 - (IBAction)forgetHistory:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle:@"Delete"];
+    [alert addButtonWithTitle:@"Clear"];
     [alert addButtonWithTitle:@"Cancel"];
     [alert setMessageText:@"Clear History?"];
     [alert setInformativeText:@"Are you sure you want to clear the history for this package?  If you continue, all history for this package will be permanently lost."];
@@ -277,10 +277,10 @@
 
 - (IBAction)resetPackage:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle:@"Delete"];
+    [alert addButtonWithTitle:@"Reset"];
     [alert addButtonWithTitle:@"Cancel"];
-    [alert setMessageText:@"Delete Package?"];
-    [alert setInformativeText:@"Are you sure you want to delete this package?  If this package is deleted, all history and settings for it will be permanently lost."];
+    [alert setMessageText:@"Reset Package?"];
+    [alert setInformativeText:@"Are you sure you want to reset this package?  If this package is reset, all history and character weightings will be permanently lost."];
     [alert setAlertStyle:NSCriticalAlertStyle];
     [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(executeResetPackage:returnCode:contextInfo:) contextInfo:nil];
 }
