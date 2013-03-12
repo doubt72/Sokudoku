@@ -7,12 +7,23 @@
 //
 
 #import "HistogramWindow.h"
-
-@interface HistogramWindow ()
-
-@end
+#import "MainWindow.h"
+#import "HistogramView.h"
+#import "Package.h"
 
 @implementation HistogramWindow
+@synthesize boxView, returnButton, dataSets;
+@synthesize parent;
+@synthesize package;
+
+- (IBAction)doReturn:(id)sender {
+    [parent endShowHistogram];
+}
+
+- (IBAction)selectTag:(id)sender {
+    [histogramView setTag:[package tagForDescription:[dataSets titleOfSelectedItem]]];
+    [histogramView setNeedsDisplay:YES];
+}
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -27,8 +38,10 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    histogramView = [[HistogramView alloc] init];
+    [histogramView setPackage:package];
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [boxView setContentView:histogramView];
 }
 
 @end

@@ -7,7 +7,30 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class MainWindow;
+@class HistogramView;
+@class Package;
 
-@interface HistogramWindow : NSWindowController
+@interface HistogramWindow : NSWindowController {
+@package
+    NSBox *boxView;
+    NSButton *returnButton;
+    NSPopUpButton *dataSets;
+    
+    MainWindow *parent;
+    HistogramView *histogramView;
+    
+    Package *package;
+}
+
+@property IBOutlet NSView *boxView;
+@property IBOutlet NSButton *returnButton;
+@property IBOutlet NSPopUpButton *dataSets;
+
+@property MainWindow *parent;
+@property Package *package;
+
+- (IBAction)doReturn:(id)sender;
+- (IBAction)selectTag:(id)sender;
 
 @end

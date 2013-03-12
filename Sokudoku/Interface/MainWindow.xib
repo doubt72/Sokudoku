@@ -1214,6 +1214,14 @@
 					<int key="connectionID">368</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showHistogram:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="297448221"/>
+					</object>
+					<int key="connectionID">369</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="1005"/>
@@ -3991,7 +3999,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">368</int>
+			<int key="maxID">369</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4005,6 +4013,7 @@
 						<string key="importFile:">id</string>
 						<string key="rememberPackage:">id</string>
 						<string key="resetPackage:">id</string>
+						<string key="showHistogram:">id</string>
 						<string key="startDrill:">id</string>
 						<string key="updateDataSet:">id</string>
 						<string key="updateMaxLength:">id</string>
@@ -4036,6 +4045,10 @@
 						</object>
 						<object class="IBActionInfo" key="resetPackage:">
 							<string key="name">resetPackage:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showHistogram:">
+							<string key="name">showHistogram:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="startDrill:">

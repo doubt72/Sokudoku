@@ -27,6 +27,8 @@
 
 - (float) averageSpeed;
 
+- (BOOL) tested;
+
 - (void) addTag:(NSString *)tag;
 - (BOOL) hasTag:(NSString *)tag;
 

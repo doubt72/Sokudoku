@@ -11,6 +11,7 @@
 #import "Package.h"
 #import "DrillWindow.h"
 #import "RecallPackageWindow.h"
+#import "HistogramWindow.h"
 
 @implementation MainWindow
 
@@ -175,7 +176,6 @@
 
 - (void)setEnabled:(BOOL)value {
     [[[self window] standardWindowButton:NSWindowCloseButton] setEnabled:value];
-    [[[self window] standardWindowButton:NSWindowMiniaturizeButton] setEnabled:value];
 
     [dataSet setEnabled:value];
     [weightHistory setEnabled:value];
@@ -256,6 +256,26 @@
         [self configureDataSetButton];
         [self configurePackageList];
     }
+}
+
+- (IBAction)showHistogram:(id)sender {
+    [self setEnabled:NO];
+    
+    histogramWindow = [[HistogramWindow alloc] initWithWindowNibName:@"HistogramWindow"];
+    [histogramWindow setPackage:currentPackage];
+    [histogramWindow setParent:self];
+    [histogramWindow showWindow:[histogramWindow window]];
+    
+    [[histogramWindow dataSets] removeAllItems];
+    [[histogramWindow dataSets] addItemsWithTitles:[currentPackage allTagDescriptions]];
+    [[histogramWindow dataSets] selectItemAtIndex:[settings dataSetIndex]];
+}
+
+- (void)endShowHistogram {
+    [self setEnabled:YES];
+    [self configurePackageList];
+    [currentPackage save];
+    [histogramWindow close];
 }
 
 - (IBAction)forgetHistory:(id)sender {

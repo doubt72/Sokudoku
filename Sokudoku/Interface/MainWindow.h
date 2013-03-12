@@ -11,6 +11,7 @@
 @class Package;
 @class DrillWindow;
 @class RecallPackageWindow;
+@class HistogramWindow;
 
 @interface MainWindow : NSWindowController {
 @private
@@ -30,7 +31,7 @@
     Package *currentPackage;
     RecallPackageWindow *recallDialog;
     DrillWindow *drillWindow;
-    
+    HistogramWindow *histogramWindow;
 }
 
 @property IBOutlet NSPopUpButton *dataSet;
@@ -67,6 +68,9 @@
 
 -(IBAction)forgetHistory:(id)sender;
 -(IBAction)resetPackage:(id)sender;
+
+-(IBAction)showHistogram:(id)sender;
+-(void)endShowHistogram;
 
 -(void)doRecall:(NSString *)packageName;
 -(void)abortRecall;

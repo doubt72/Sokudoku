@@ -36,6 +36,14 @@
     return totalTime / timesTested;
 }
 
+- (BOOL)tested {
+    if (timesTested > 0.0) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
 - (void)addTag:(NSString *)tag {
     [tags addObject:tag];
 }

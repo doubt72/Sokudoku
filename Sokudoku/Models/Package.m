@@ -205,6 +205,22 @@
     return NO;
 }
 
+- (NSArray *)statsForTag:(NSString *)tag {
+    NSMutableArray *array = [NSMutableArray arrayWithCapacity:[characters count]];
+    for (int i = 0; i < [characters count]; i++) {
+        Character *character = [characters objectAtIndex:i];
+        if ([character hasTag:tag]) {
+            float time = [character averageSpeed];
+            if ([character tested] == NO) {
+                time = 0;
+            }
+            [array addObject:[NSArray arrayWithObjects:[character literal],
+                              [NSNumber numberWithFloat:time], nil]];
+        }
+    }
+    return [NSArray arrayWithArray:array];
+}
+
 - (void)clearHistory {
     [history clear];
 }
