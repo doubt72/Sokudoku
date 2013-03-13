@@ -205,7 +205,7 @@
     return NO;
 }
 
-- (NSArray *)statsForTag:(NSString *)tag {
+- (NSArray *)statsForTag:(NSString *)tag:(BOOL)top {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:[characters count]];
     for (int i = 0; i < [characters count]; i++) {
         Character *character = [characters objectAtIndex:i];
@@ -218,9 +218,22 @@
                               [NSNumber numberWithFloat:time], nil]];
         }
     }
-    return [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        return [[obj2 objectAtIndex:1] compare:[obj1 objectAtIndex:1]];
-    } ];
+    NSArray *fullArray;
+    if (top) {
+        fullArray = [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            return [[obj2 objectAtIndex:1] compare:[obj1 objectAtIndex:1]];
+        } ];
+    } else {
+        fullArray = [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            return [[obj1 objectAtIndex:1] compare:[obj2 objectAtIndex:1]];
+        } ];
+    }
+    if ([fullArray count] > 100) {
+        NSRange range = NSMakeRange(0, 100);
+        return [fullArray subarrayWithRange:range];
+    } else {
+        return fullArray;
+    }
 }
 
 - (void)clearHistory {

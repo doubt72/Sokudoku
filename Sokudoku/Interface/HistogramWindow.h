@@ -16,16 +16,20 @@
     NSScrollView *scrollView;
     NSButton *returnButton;
     NSPopUpButton *dataSets;
+    NSPopUpButton *subset;
     
     MainWindow *parent;
     HistogramView *histogramView;
     
     Package *package;
+    
+    BOOL top;
 }
 
 @property IBOutlet NSScrollView *scrollView;
 @property IBOutlet NSButton *returnButton;
 @property IBOutlet NSPopUpButton *dataSets;
+@property IBOutlet NSPopUpButton *subset;
 @property IBOutlet HistogramView *histogramView;
 
 @property MainWindow *parent;
@@ -33,5 +37,6 @@
 
 - (IBAction)doReturn:(id)sender;
 - (IBAction)selectTag:(id)sender;
+- (IBAction)selectSubset:(id)sender;
 
 @end

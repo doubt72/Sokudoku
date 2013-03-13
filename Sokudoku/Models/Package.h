@@ -40,7 +40,7 @@
 - (NSArray *) generate:(int)min:(int)max:(BOOL)weight:(NSString *)tag;
 - (BOOL) test:(NSArray *)question:(NSString *)answer:(float)time;
 
-- (NSArray *) statsForTag:(NSString *)tag;
+- (NSArray *) statsForTag:(NSString *)tag:(BOOL)top;
 
 - (void) clearHistory;
 - (void) reset;

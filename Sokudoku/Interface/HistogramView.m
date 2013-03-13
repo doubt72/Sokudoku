@@ -12,6 +12,7 @@
 @implementation HistogramView
 @synthesize package;
 @synthesize tag;
+@synthesize top;
 
 - (BOOL) isFlipped {
     return YES;
@@ -29,7 +30,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
-    NSArray *array = [package statsForTag:tag];
+    NSArray *array = [package statsForTag:tag:top];
     
     NSScrollView *scrollView = [self enclosingScrollView];
     NSSize size = [scrollView contentSize];
@@ -74,7 +75,12 @@
         even = !even;
     }
     currentY = 10;
-    float maxlength = [[[array objectAtIndex:0] objectAtIndex:1] floatValue];
+    float maxlength;
+    if (top) {
+        maxlength = [[[array objectAtIndex:0] objectAtIndex:1] floatValue];
+    } else {
+        maxlength = [[[array lastObject] objectAtIndex:1] floatValue];
+    }
     for (int i = 0; i < [array count]; i++) {
         float time = [[[array objectAtIndex:i] objectAtIndex:1] floatValue];
         NSString *timeString = @"-----";

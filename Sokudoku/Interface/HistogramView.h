@@ -14,9 +14,12 @@
     Package *package;
     
     NSString *tag;
+    
+    BOOL top;
 }
 
 @property Package *package;
 @property NSString *tag;
+@property BOOL top;
 
 @end

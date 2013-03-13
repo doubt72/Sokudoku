@@ -12,7 +12,7 @@
 #import "Package.h"
 
 @implementation HistogramWindow
-@synthesize scrollView, returnButton, dataSets;
+@synthesize scrollView, returnButton, dataSets, subset;
 @synthesize histogramView;
 @synthesize parent;
 @synthesize package;
@@ -23,6 +23,16 @@
 
 - (IBAction)selectTag:(id)sender {
     [histogramView setTag:[package tagForDescription:[dataSets titleOfSelectedItem]]];
+    [histogramView setNeedsDisplay:YES];
+}
+
+- (IBAction)selectSubset:(id)sender {
+    if ([subset indexOfSelectedItem] == 0) {
+        top = YES;
+    } else {
+        top = NO;
+    }
+    [histogramView setTop:top];
     [histogramView setNeedsDisplay:YES];
 }
 
@@ -40,6 +50,16 @@
 {
     [super windowDidLoad];
     [histogramView setPackage:package];
+    
+    top = YES;
+    
+    [histogramView setPackage:package];
+    [histogramView setTop:top];
+    
+    [subset removeAllItems];
+    [subset addItemWithTitle:@"Slowest 100 characters"];
+    [subset addItemWithTitle:@"Fastest 100 characters"];
+    [subset selectItemAtIndex:0];
 }
 
 @end
