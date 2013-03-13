@@ -68,7 +68,7 @@ chars = [
          ['ぶ', ['bu'], ['hiragana', 'both']],
          ['べ', ['be'], ['hiragana', 'both']],
          ['ぼ', ['bo'], ['hiragana', 'both']],
-         ['ぽ', ['pa'], ['hiragana', 'both']],
+         ['ぱ', ['pa'], ['hiragana', 'both']],
          ['ぴ', ['pi'], ['hiragana', 'both']],
          ['ぶ', ['pu'], ['hiragana', 'both']],
          ['ぺ', ['pe'], ['hiragana', 'both']],
