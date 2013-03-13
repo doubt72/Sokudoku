@@ -19,7 +19,7 @@
 - (Event *)newEvent:(float)forLength :(float)time {
     float weight = 1.0 / (forLength * forLength);
     timesTested += weight;
-    totalTime += time * weight;
+    totalTime += time / forLength * weight;
     
     Event *event = [[Event alloc] init];
     [event setCharacter:[NSString stringWithString:literal]];
@@ -31,7 +31,7 @@
 
 - (float)averageSpeed {
     if (timesTested == 0.0) {
-        return 10.0;
+        return 5.0;
     }
     return totalTime / timesTested;
 }
