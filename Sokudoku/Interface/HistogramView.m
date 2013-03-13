@@ -77,7 +77,7 @@
     float maxlength = [[[array objectAtIndex:0] objectAtIndex:1] floatValue];
     for (int i = 0; i < [array count]; i++) {
         float time = [[[array objectAtIndex:i] objectAtIndex:1] floatValue];
-        NSString *timeString = @"99.99";
+        NSString *timeString = @"-----";
         if (time > 0) {
             int seconds = (int)time;
             int hundreds = (int)(time * 100) % 100;

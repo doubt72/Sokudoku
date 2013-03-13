@@ -571,7 +571,7 @@
 												<object class="NSButton" id="297448221">
 													<reference key="NSNextResponder" ref="329360260"/>
 													<int key="NSvFlags">268</int>
-													<string key="NSFrame">{{89, 11}, {90, 32}}</string>
+													<string key="NSFrame">{{89, 11}, {127, 32}}</string>
 													<reference key="NSSuperview" ref="329360260"/>
 													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="604419402"/>
@@ -580,7 +580,7 @@
 													<object class="NSButtonCell" key="NSCell" id="345429266">
 														<int key="NSCellFlags">603979776</int>
 														<int key="NSCellFlags2">134217728</int>
-														<string key="NSContents">Histogram</string>
+														<string key="NSContents">Character Graph</string>
 														<reference key="NSSupport" ref="949396265"/>
 														<string key="NSCellIdentifier">_NS:9</string>
 														<reference key="NSControlView" ref="297448221"/>
@@ -599,6 +599,7 @@
 													<string key="NSFrame">{{530, 11}, {106, 32}}</string>
 													<reference key="NSSuperview" ref="329360260"/>
 													<reference key="NSWindow"/>
+													<reference key="NSNextKeyView"/>
 													<string key="NSReuseIdentifierKey">_NS:9</string>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSButtonCell" key="NSCell" id="740564033">
@@ -940,6 +941,7 @@
 					<string key="NSFrameSize">{688, 360}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
+					<reference key="NSNextKeyView" ref="275062140"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
 				<string key="NSMinSize">{688, 382}</string>
