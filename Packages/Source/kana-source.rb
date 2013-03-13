@@ -70,7 +70,7 @@ chars = [
          ['ぼ', ['bo'], ['hiragana', 'both']],
          ['ぱ', ['pa'], ['hiragana', 'both']],
          ['ぴ', ['pi'], ['hiragana', 'both']],
-         ['ぶ', ['pu'], ['hiragana', 'both']],
+         ['ぷ', ['pu'], ['hiragana', 'both']],
          ['ぺ', ['pe'], ['hiragana', 'both']],
          ['ぽ', ['po'], ['hiragana', 'both']],
          ['きゃ', ['kya'], ['hiragana', 'both']],
