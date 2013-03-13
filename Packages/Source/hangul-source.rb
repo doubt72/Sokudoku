@@ -4,17 +4,20 @@ desc = ["Hangul"]
 
 base = 0xAC00
 
-initial = ["g", "gg", "n", "d", "dd", ["r", "l"], "m", "b", "bb",
-           "s", "ss", ["", "x"], "j", "jj", "c", "k", "t", "p", "h"];
+initial = ["g", ["gg", "kk"], "n", "d", ["dd", "tt"], ["r", "l"],
+           "m", "b", ["bb", "pp"], "s", "ss", ["", "x"], "j", "jj",
+           ["c", "ch"], "k", "t", "p", "h"];
 
 medial = ["a", "ae", "ya", "yae", "eo", "e", "yeo", "ye", "o",
           "wa", "wae", "oe", "yo", "u", "weo", "we", "wi",
           "yu", "eu", ["ui", "yi", "eui"], "i"]
 
-final = ["", "g", "gg", "gs", "n", "nj", "nh", "d", ["l", "r"],
+final = ["", "g", ["gg", "kk"], "gs", "n", "nj", "nh", "d", ["l", "r"],
          ["lg", "rg"], ["lm", "rm"], ["lb", "rb"], ["ls", "rs"],
          ["lt", "rt"], ["lp", "rp"], ["lh", "rh"], "m", "b", "bs",
          "s", "ss", "ng", "j", "c", "k", "t", "p", "h"]
+
+# TODO: add alternate romanization, primarily for final consonants
 
 chars = []
 
