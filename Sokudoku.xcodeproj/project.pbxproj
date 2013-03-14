@@ -33,6 +33,7 @@
 		2371EB6E16EC6FEC008D9645 /* GraphWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2371EB6C16EC6FEC008D9645 /* GraphWindow.xib */; };
 		2371EB7216EC700D008D9645 /* HistogramWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2371EB7016EC700D008D9645 /* HistogramWindow.m */; };
 		2371EB7316EC700D008D9645 /* HistogramWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2371EB7116EC700D008D9645 /* HistogramWindow.xib */; };
+		23CB816116F17E7D0026C608 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 23CB816016F17E7D0026C608 /* icon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		2371EB6F16EC700D008D9645 /* HistogramWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistogramWindow.h; sourceTree = "<group>"; };
 		2371EB7016EC700D008D9645 /* HistogramWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistogramWindow.m; sourceTree = "<group>"; };
 		2371EB7116EC700D008D9645 /* HistogramWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistogramWindow.xib; sourceTree = "<group>"; };
+		23CB816016F17E7D0026C608 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 		2337C81516DDA15500169C9E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				23CB816016F17E7D0026C608 /* icon.icns */,
 				2337C81616DDA15500169C9E /* Sokudoku-Info.plist */,
 				2337C81716DDA15500169C9E /* InfoPlist.strings */,
 				2337C81A16DDA15500169C9E /* main.m */,
@@ -318,6 +321,7 @@
 				2371EB6916EC6FCB008D9645 /* DrillWindow.xib in Resources */,
 				2371EB6E16EC6FEC008D9645 /* GraphWindow.xib in Resources */,
 				2371EB7316EC700D008D9645 /* HistogramWindow.xib in Resources */,
+				23CB816116F17E7D0026C608 /* icon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
