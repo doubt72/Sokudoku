@@ -29,12 +29,13 @@ there, the user is presented with the main window:
 
 ![alt main window](Assets/mainwindow.png)
 
-From there, drill options on the right can be chosen.  Subsets from a
-package can be selected (e.g., for the Japanese Kana package, drills
-can be limited to Hiragana or Katakana).  Session length can be
-chosen, minimum and maximum lengths for drill questions can be chosen,
-and whether or not difficult characters should be prioritized (i.e.,
-whether slower characters should appear more often).
+Everything else launches from there.  Drill options can be chosen on
+the right.  Subsets from a package can be selected (e.g., for the
+Japanese Kana package, drills can be limited to Hiragana or Katakana).
+Session length can be chosen, minimum and maximum lengths for drill
+questions can be selected, and whether or not difficult characters
+should be prioritized can be toggled off and on (i.e., the user can
+choose whether slower characters should appear more often in drills).
 
 On the left are some other options: the top button chooses which
 package is currently loaded.  Below that, more packages can be loaded,
@@ -49,6 +50,8 @@ On the bottom are other options for erasing history (this removes any
 data used by the history graphs) or completely resetting the package
 (restoring it to the state it was in when freshly imported, losing any
 character weightings and history).  The other two buttons load graphs.
+
+TODO: history window once I finish that.
 
 If the character graph button is selected, you get the following
 window (which allows the user to see the average drill time for the
