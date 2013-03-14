@@ -8,18 +8,28 @@
 
 #import "AppDelegate.h"
 #import "MainWindow.h"
+#import "StartupWindow.h"
 
 @implementation AppDelegate
 
-@synthesize mainWindow;
+@synthesize mainWindow, startupWindow;
 
 -(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     return YES;
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void)startupFinished {
+    [startupWindow close];
+    
     mainWindow = [[MainWindow alloc] initWithWindowNibName:@"MainWindow"];
     [mainWindow showWindow:self];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    startupWindow = [[StartupWindow alloc] initWithWindowNibName:@"StartupWindow"];
+    [startupWindow showWindow:self];
+    
+    [startupWindow setParent:self];
 }
 
 @end

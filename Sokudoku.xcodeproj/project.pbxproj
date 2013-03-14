@@ -34,6 +34,8 @@
 		2371EB7216EC700D008D9645 /* HistogramWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2371EB7016EC700D008D9645 /* HistogramWindow.m */; };
 		2371EB7316EC700D008D9645 /* HistogramWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2371EB7116EC700D008D9645 /* HistogramWindow.xib */; };
 		23CB816116F17E7D0026C608 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 23CB816016F17E7D0026C608 /* icon.icns */; };
+		23CB816916F182C80026C608 /* StartupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CB816716F182C80026C608 /* StartupWindow.m */; };
+		23CB816A16F182C80026C608 /* StartupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CB816816F182C80026C608 /* StartupWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,9 @@
 		2371EB7016EC700D008D9645 /* HistogramWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistogramWindow.m; sourceTree = "<group>"; };
 		2371EB7116EC700D008D9645 /* HistogramWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistogramWindow.xib; sourceTree = "<group>"; };
 		23CB816016F17E7D0026C608 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		23CB816616F182C80026C608 /* StartupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupWindow.h; sourceTree = "<group>"; };
+		23CB816716F182C80026C608 /* StartupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupWindow.m; sourceTree = "<group>"; };
+		23CB816816F182C80026C608 /* StartupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartupWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +226,9 @@
 				2371EB5B16EB00E8008D9645 /* RecallPackageWindow.h */,
 				2371EB5C16EB00E8008D9645 /* RecallPackageWindow.m */,
 				2371EB5D16EB00E8008D9645 /* RecallPackageWindow.xib */,
+				23CB816616F182C80026C608 /* StartupWindow.h */,
+				23CB816716F182C80026C608 /* StartupWindow.m */,
+				23CB816816F182C80026C608 /* StartupWindow.xib */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -322,6 +330,7 @@
 				2371EB6E16EC6FEC008D9645 /* GraphWindow.xib in Resources */,
 				2371EB7316EC700D008D9645 /* HistogramWindow.xib in Resources */,
 				23CB816116F17E7D0026C608 /* icon.icns in Resources */,
+				23CB816A16F182C80026C608 /* StartupWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +378,7 @@
 				2371EB6D16EC6FEC008D9645 /* GraphWindow.m in Sources */,
 				2371EB7216EC700D008D9645 /* HistogramWindow.m in Sources */,
 				2360788616EEE4EF00D6E9D3 /* HistogramView.m in Sources */,
+				23CB816916F182C80026C608 /* StartupWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
