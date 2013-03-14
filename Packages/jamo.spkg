@@ -37,6 +37,7 @@
       <key>pronunciations</key>
       <array>
         <string>gg</string>
+        <string>kk</string>
       </array>
       <key>tags</key>
       <array>
@@ -76,6 +77,7 @@
       <key>pronunciations</key>
       <array>
         <string>dd</string>
+        <string>tt</string>
       </array>
       <key>tags</key>
       <array>
@@ -129,6 +131,7 @@
       <key>pronunciations</key>
       <array>
         <string>bb</string>
+        <string>pp</string>
       </array>
       <key>tags</key>
       <array>
@@ -208,6 +211,7 @@
       <key>pronunciations</key>
       <array>
         <string>c</string>
+        <string>ch</string>
       </array>
       <key>tags</key>
       <array>

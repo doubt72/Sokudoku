@@ -12,12 +12,12 @@ medial = ["a", "ae", "ya", "yae", "eo", "e", "yeo", "ye", "o",
           "wa", "wae", "oe", "yo", "u", "weo", "we", "wi",
           "yu", "eu", ["ui", "yi", "eui"], "i"]
 
-final = ["", "g", ["gg", "kk"], "gs", "n", "nj", "nh", "d", ["l", "r"],
-         ["lg", "rg"], ["lm", "rm"], ["lb", "rb"], ["ls", "rs"],
-         ["lt", "rt"], ["lp", "rp"], ["lh", "rh"], "m", "b", "bs",
-         "s", "ss", "ng", "j", "c", "k", "t", "p", "h"]
-
-# TODO: add alternate romanization, primarily for final consonants
+final = ["", ["g", "k"], ["gg", "kk", "k"], ["gs", "k"], "n", ["nj", "n"],
+         ["nh", "n"], ["d", "t"], ["l", "r"], ["lg", "rg", "k"],
+         ["lm", "rm", "m"], ["lb", "rb", "l"], ["ls", "rs", "l"],
+         ["lt", "rt", "l"], ["lp", "rp", "p"], ["lh", "rh", "l"],
+         "m", ["b", "p"], ["bs", "p"], ["s", "t"], ["ss", "t"],
+         "ng", ["j", "t"], ["c", "ch", "t"], "k", "t", "p", ["h", "t"]]
 
 chars = []
 
