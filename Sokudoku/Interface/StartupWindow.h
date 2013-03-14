@@ -11,10 +11,12 @@
 
 @interface StartupWindow : NSWindowController {
 @private
+    NSTextField *versionField;
     NSButton *continueButton;
     AppDelegate *parent;
 }
 
+@property IBOutlet NSTextField *versionField;
 @property IBOutlet NSButton *continueButton;
 @property AppDelegate *parent;
 

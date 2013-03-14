@@ -36,6 +36,7 @@
 		23CB816116F17E7D0026C608 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 23CB816016F17E7D0026C608 /* icon.icns */; };
 		23CB816916F182C80026C608 /* StartupWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CB816716F182C80026C608 /* StartupWindow.m */; };
 		23CB816A16F182C80026C608 /* StartupWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23CB816816F182C80026C608 /* StartupWindow.xib */; };
+		23CB816D16F293550026C608 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CB816C16F293550026C608 /* GraphView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,8 @@
 		23CB816616F182C80026C608 /* StartupWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartupWindow.h; sourceTree = "<group>"; };
 		23CB816716F182C80026C608 /* StartupWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartupWindow.m; sourceTree = "<group>"; };
 		23CB816816F182C80026C608 /* StartupWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StartupWindow.xib; sourceTree = "<group>"; };
+		23CB816B16F293550026C608 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
+		23CB816C16F293550026C608 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +215,8 @@
 				2371EB6516EC6FCB008D9645 /* DrillWindow.h */,
 				2371EB6616EC6FCB008D9645 /* DrillWindow.m */,
 				2371EB6716EC6FCB008D9645 /* DrillWindow.xib */,
+				23CB816B16F293550026C608 /* GraphView.h */,
+				23CB816C16F293550026C608 /* GraphView.m */,
 				2371EB6A16EC6FEC008D9645 /* GraphWindow.h */,
 				2371EB6B16EC6FEC008D9645 /* GraphWindow.m */,
 				2371EB6C16EC6FEC008D9645 /* GraphWindow.xib */,
@@ -379,6 +384,7 @@
 				2371EB7216EC700D008D9645 /* HistogramWindow.m in Sources */,
 				2360788616EEE4EF00D6E9D3 /* HistogramView.m in Sources */,
 				23CB816916F182C80026C608 /* StartupWindow.m in Sources */,
+				23CB816D16F293550026C608 /* GraphView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

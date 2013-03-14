@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 
 @implementation StartupWindow
-@synthesize continueButton, parent;
+@synthesize versionField, continueButton, parent;
 
 - (IBAction)done:(id)sender {
     [parent startupFinished];
@@ -30,7 +30,9 @@
 {
     [super windowDidLoad];
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+	NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
+    [versionField setStringValue:[NSString stringWithFormat:@"version %@", version]];
 }
 
 @end

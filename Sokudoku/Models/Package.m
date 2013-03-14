@@ -131,18 +131,13 @@
 }
 
 - (NSString *)objectForIndex:(float)index:(NSArray *)list {
-    NSLog(@"list length: %ld", [list count]);
-    NSLog(@"list length: %f", index);
-    
     float left = index;
     for (int i = 0; i < [list count]; i++) {
         left -= [[[list objectAtIndex:i] objectAtIndex:1] floatValue];
         if (left < 0) {
-            NSLog(@"list length: %d", i);
             return [[list objectAtIndex:i] objectAtIndex:0];
         }
     }
-    NSLog(@"error: %f", left);
     return nil;
 }
 
