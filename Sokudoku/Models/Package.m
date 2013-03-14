@@ -201,7 +201,7 @@
             return YES;
         }
     }
-    [self event:qChars:10.0 * [qChars count]];
+    [self event:qChars:time + 10.0 * [qChars count]];
     return NO;
 }
 
