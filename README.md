@@ -51,7 +51,11 @@ data used by the history graphs) or completely resetting the package
 (restoring it to the state it was in when freshly imported, losing any
 character weightings and history).  The other two buttons load graphs.
 
-TODO: history window once I finish that.
+If the history button is selected, you get the following window (which
+allows the user to see various graphs of recorded drill result
+statistics):
+
+![alt character window](Assets/graphwindow.png)
 
 If the character graph button is selected, you get the following
 window (which allows the user to see the average drill time for the
