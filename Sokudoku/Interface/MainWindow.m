@@ -12,6 +12,7 @@
 #import "DrillWindow.h"
 #import "RecallPackageWindow.h"
 #import "HistogramWindow.h"
+#import "GraphWindow.h"
 
 @implementation MainWindow
 
@@ -275,8 +276,27 @@
 - (void)endShowHistogram {
     [self setEnabled:YES];
     [self configurePackageList];
-    [currentPackage save];
     [histogramWindow close];
+}
+
+- (IBAction)showGraph:(id)sender {
+    [self setEnabled:NO];
+    
+    graphWindow = [[GraphWindow alloc] initWithWindowNibName:@"GraphWindow"];
+    [graphWindow setPackage:currentPackage];
+    [graphWindow setParent:self];
+    [graphWindow showWindow:[graphWindow window]];
+    
+    [[graphWindow dataSet] removeAllItems];
+    [[graphWindow dataSet] addItemsWithTitles:[currentPackage allTagDescriptions]];
+    [[graphWindow dataSet] selectItemAtIndex:[settings dataSetIndex]];
+    [graphWindow changeDataSet:self];
+}
+
+- (void)endShowGraph {
+    [self setEnabled:YES];
+    [self configurePackageList];
+    [graphWindow close];
 }
 
 - (IBAction)forgetHistory:(id)sender {

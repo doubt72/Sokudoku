@@ -21,4 +21,6 @@
 
 - (void) clear;
 
+- (NSArray *) allEvents;
+
 @end

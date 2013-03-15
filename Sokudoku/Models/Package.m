@@ -231,6 +231,10 @@
     }
 }
 
+- (NSArray *) allEvents {
+    return [history allEvents];
+}
+
 - (void)clearHistory {
     [history clear];
 }

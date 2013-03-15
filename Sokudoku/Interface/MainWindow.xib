@@ -599,7 +599,6 @@
 													<string key="NSFrame">{{530, 11}, {106, 32}}</string>
 													<reference key="NSSuperview" ref="329360260"/>
 													<reference key="NSWindow"/>
-													<reference key="NSNextKeyView"/>
 													<string key="NSReuseIdentifierKey">_NS:9</string>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSButtonCell" key="NSCell" id="740564033">
@@ -1222,6 +1221,14 @@
 						<reference key="destination" ref="297448221"/>
 					</object>
 					<int key="connectionID">369</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showGraph:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="665614669"/>
+					</object>
+					<int key="connectionID">370</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -4001,7 +4008,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">369</int>
+			<int key="maxID">370</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4015,6 +4022,7 @@
 						<string key="importFile:">id</string>
 						<string key="rememberPackage:">id</string>
 						<string key="resetPackage:">id</string>
+						<string key="showGraph:">id</string>
 						<string key="showHistogram:">id</string>
 						<string key="startDrill:">id</string>
 						<string key="updateDataSet:">id</string>
@@ -4047,6 +4055,10 @@
 						</object>
 						<object class="IBActionInfo" key="resetPackage:">
 							<string key="name">resetPackage:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="showGraph:">
+							<string key="name">showGraph:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="showHistogram:">

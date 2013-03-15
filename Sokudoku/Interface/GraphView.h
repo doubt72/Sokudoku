@@ -7,7 +7,19 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class Package;
 
-@interface GraphView : NSView
+@interface GraphView : NSView {
+@private
+    Package *package;
+
+    NSString *tag;
+    int timeFrame;
+    int graphType;
+}
+
+@property Package *package;
+@property NSString *tag;
+@property int timeFrame, graphType;
 
 @end

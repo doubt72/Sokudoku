@@ -42,6 +42,8 @@
 
 - (NSArray *) statsForTag:(NSString *)tag:(BOOL)top;
 
+- (NSArray *) allEvents;
+
 - (void) clearHistory;
 - (void) reset;
 

@@ -37,6 +37,10 @@
     [events removeAllObjects];
 }
 
+- (NSArray *)allEvents {
+    return events;
+}
+
 - (id)init {
     if (self = [super init]) {
         events = [NSMutableArray arrayWithCapacity:256];

@@ -12,6 +12,7 @@
 @class DrillWindow;
 @class RecallPackageWindow;
 @class HistogramWindow;
+@class GraphWindow;
 
 @interface MainWindow : NSWindowController {
 @private
@@ -32,6 +33,7 @@
     RecallPackageWindow *recallDialog;
     DrillWindow *drillWindow;
     HistogramWindow *histogramWindow;
+    GraphWindow *graphWindow;
 }
 
 @property IBOutlet NSPopUpButton *dataSet;
@@ -71,6 +73,9 @@
 
 -(IBAction)showHistogram:(id)sender;
 -(void)endShowHistogram;
+
+-(IBAction)showGraph:(id)sender;
+-(void)endShowGraph;
 
 -(void)doRecall:(NSString *)packageName;
 -(void)abortRecall;
