@@ -189,14 +189,14 @@
             float start = scale*3 + (boundsX - scale*4) * (1 - ((float)i - 0.5) / (float)timeFrame) - width;
             if (line == nil) {
                 line = [NSBezierPath bezierPath];
-                [line moveToPoint:NSMakePoint(scale*3 + 1, scale + (boundsY - scale*3) * (1 - value / altMaxValue))];
-                [line lineToPoint:NSMakePoint(start + 1, scale + (boundsY - scale*3) * (1 - value / altMaxValue))];
+                [line moveToPoint:NSMakePoint(scale*3 + 1, scale + (boundsY - scale*3) * (1 - value / altMaxValue) - 1)];
+                [line lineToPoint:NSMakePoint(start + 1, scale + (boundsY - scale*3) * (1 - value / altMaxValue) - 1)];
             } else {
-                [line lineToPoint:NSMakePoint(start + 1, scale + (boundsY - scale*3) * (1 - value / altMaxValue))];
+                [line lineToPoint:NSMakePoint(start + 1, scale + (boundsY - scale*3) * (1 - value / altMaxValue) - 1)];
             }
         }
     }
-    [line lineToPoint:NSMakePoint(boundsX - scale, scale + (boundsY - scale*3) * (1 - lastValue / altMaxValue))];
+    [line lineToPoint:NSMakePoint(boundsX - scale, scale + (boundsY - scale*3) * (1 - lastValue / altMaxValue) - 1)];
     [line setLineWidth:1];
     [line stroke];
 }
