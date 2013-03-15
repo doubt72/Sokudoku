@@ -42,7 +42,7 @@
 
 - (NSArray *) statsForTag:(NSString *)tag:(BOOL)top;
 
-- (NSArray *) allEvents;
+- (NSArray *) allEvents:(NSString *)tag;
 
 - (void) clearHistory;
 - (void) reset;

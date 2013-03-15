@@ -231,8 +231,22 @@
     }
 }
 
-- (NSArray *) allEvents {
-    return [history allEvents];
+- (NSArray *) allEvents:(NSString *)tag {
+    NSMutableDictionary *dict = [NSMutableDictionary
+                                 dictionaryWithCapacity:[characters count]];
+    for (int i = 0; i < [characters count]; i++) {
+        [dict setObject:[characters objectAtIndex:i] forKey:[[characters objectAtIndex:i] literal]];
+    }
+    NSMutableArray *tagEvents = [NSMutableArray arrayWithCapacity:[characters count]];
+    NSArray *allEvents = [history allEvents];
+    for (int i = 0; i < [allEvents count]; i++) {
+        Event *event = [allEvents objectAtIndex:i];
+        Character *character = [dict objectForKey:[event character]];
+        if ([character hasTag:tag]) {
+            [tagEvents addObject:event];
+        }
+    }
+    return [NSArray arrayWithArray:tagEvents];
 }
 
 - (void)clearHistory {

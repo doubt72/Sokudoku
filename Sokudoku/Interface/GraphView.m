@@ -80,7 +80,7 @@
             [data addObject:[NSNumber numberWithInt:0]];
         }
     }
-    NSArray *events = [package allEvents];
+    NSArray *events = [package allEvents:tag];
     
     NSDate *now = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
