@@ -22,8 +22,9 @@ with.
 
 Really, the program is a bit of a gadget thrown together over a couple
 weeks so I could drill down on Hangul reading practice (with Katakana
-as a bonus).  It's not as useful as a general/configurable
-drill program like Anki, but possibly still useful as a complement.
+as a bonus).  It's not as useful as a general/configurable drill
+program like Anki, but possibly still useful as a complement -- I
+mean, I know why I wanted it, but YMMV.
 
 ## Usage
 
