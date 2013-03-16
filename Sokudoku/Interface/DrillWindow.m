@@ -33,6 +33,9 @@
     [testString setStringValue:@""];
     int seconds = (int)(sessionLength - timeLeft) % 60;
     int minutes = (int)((sessionLength - timeLeft) / 60);
+
+    // Alert for end of session:
+
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"Continue"];
     [alert setMessageText:@"Session Complete"];
@@ -44,6 +47,7 @@
 }
 
 - (IBAction)answer:(id)sender {
+    // Elapsed time is negative (time relative to "now")
     NSTimeInterval elapsed = [time timeIntervalSinceNow];
     timeLeft += elapsed;
     NSString *answer = [answerField stringValue];
@@ -65,6 +69,11 @@
     }
 }
 
+// Generate string from array of literals:
+//
+// Keeping the characters in an array makes it easier to keep track of which
+// characters are being drilled (especially since compound characters are possible,
+// in which case keeping them straight is particularly difficult).
 - (NSString *)literalStrings {
     NSMutableString *rc = [[NSMutableString alloc] initWithCapacity:[literals count]];
     for (int i = 0; i < [literals count]; i++) {
@@ -73,6 +82,7 @@
     return [NSString stringWithString:rc];
 }
 
+// Set up next question
 - (void)nextQuestion {
     int seconds = (int)timeLeft % 60;
     int minutes = (int)(timeLeft / 60);

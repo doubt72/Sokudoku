@@ -30,18 +30,22 @@
 
 - (BOOL) hasTag:(NSString *)tag;
 
-- (void) newEvent:(NSArray *)chars:(float)totalTime;
-
 - (void) save;
 
 - (NSString *) import:(NSString *)fileName;
 - (void) load:(NSString *)packageName;
 
+// Generate new "question" for drill within the specific length for the given tag
+// wieght = whether or not to prioritize slower characters
 - (NSArray *) generate:(int)min:(int)max:(BOOL)weight:(NSString *)tag;
+
+// Test answer against question and record event as appropriate
 - (BOOL) test:(NSArray *)question:(NSString *)answer:(float)time;
 
+// Array of character information for displaying average speeds in the character window
 - (NSArray *) statsForTag:(NSString *)tag:(BOOL)top;
 
+// Array of events filtered by tag for history graph
 - (NSArray *) allEvents:(NSString *)tag;
 
 - (void) clearHistory;

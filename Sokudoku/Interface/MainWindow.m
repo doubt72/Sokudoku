@@ -23,9 +23,12 @@
 @synthesize currentPackageName;
 @synthesize beginSession;
 @synthesize packageList;
-@synthesize importPackageButton, forgetPackageButton, rememberPackageButton, deletePackageButton;
-@synthesize showHistoryButton, showHistogramButton, resetPackageButton, forgetHistoryButton;
+@synthesize importPackageButton, forgetPackageButton;
+@synthesize rememberPackageButton, deletePackageButton;
+@synthesize showHistoryButton, showHistogramButton;
+@synthesize resetPackageButton, forgetHistoryButton;
 
+// Set dataSetButton with options from package
 - (void)configureDataSetButton {
     [dataSet removeAllItems];
     NSArray *tagNames = [currentPackage allTagDescriptions];
@@ -33,6 +36,7 @@
     [dataSet selectItemAtIndex:[settings dataSetIndex]];
 }
 
+// Check whether or not to enable forgotten package button
 - (BOOL)checkForgottenPackages {
     if ([[settings allPackages] count] ==
         [[settings availablePackages] count]) {
@@ -42,6 +46,8 @@
     }
 }
 
+// Set package list with list of available packages and enable or disable controls
+// as appropriate
 - (void)configurePackageList {
     [packageList removeAllItems];
     NSArray *available = [settings availablePackages];
@@ -62,6 +68,7 @@
     }
 }
 
+// If minLength is longer, reset it
 - (IBAction)updateMaxLength:(id)sender {
     int max = [maxLength intValue];
     int min = [minLength intValue];
@@ -74,6 +81,7 @@
     [settings setMaxLength:max];
 }
 
+// If maxLength is shorter, reset it
 - (IBAction)updateMinLength:(id)sender {
     int max = [maxLength intValue];
     int min = [minLength intValue];
@@ -106,6 +114,7 @@
     [settings setDataSetIndex:(int)set];
 }
 
+// When package is changed, options need to be reset as well
 - (IBAction)updatePackage:(id)sender {
     NSString *name = [packageList titleOfSelectedItem];
     [currentPackage save];
@@ -175,6 +184,7 @@
     [self configurePackageList];
 }
 
+// Mainly for when subwindows are created or closed
 - (void)setEnabled:(BOOL)value {
     [[[self window] standardWindowButton:NSWindowCloseButton] setEnabled:value];
 

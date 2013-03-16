@@ -3,11 +3,12 @@
 
 ## What Is It?
 
-Sokudoku is a program for practicing reading random characters.
-Although probably best for syllable-based character sets like Japanese
-Katakana or Hiragana, or Korean Hangul, it probably would work fine
-with "regular" phonetic character sets as well (or something like
-Korean Jomo), taking into account the fact that it more or less
+Sokudoku is a program for practicing reading random characters (a bit
+of a gadget program, really, that I build for my own use in my spare
+time).  Although probably best for syllable-based character sets like
+Japanese Katakana or Hiragana, or Korean Hangul, it probably would
+work fine with "regular" phonetic character sets as well (or something
+like Korean Jomo), taking into account the fact that it more or less
 produces strings of random gibberish.  Things like Japanese or Chinese
 compound words would work as well, although those are probably more
 suited for a general flashcard test program like
@@ -79,19 +80,27 @@ in the main program.
 - Packages/ : package files
 - Packages/Source/ : ruby programs that generate those package files
 
-So far a Japanese kana and Korean Hangul and Jomo packages are included;
-more may follow.
+So far a Japanese kana and Korean Hangul and Jomo packages are
+included; more may follow (as I build packages to practice on, or
+maybe other people do if anyone besides me ever uses the program).
 
 Packages are encoded as plists (Apple's XML format that Cocoa supports
 natively).  The format is actually fairly simple: a dictionary with a
 name, an array of tags, an array of descriptions, and an array of
 characters (each made up of a dictionary containing a literal, tags,
 and pronunciations).  It's unlikely I'll fully document the format
-anytime soon, but there are several examples in the repository of both
-programs that will generate packages and packages themselves.
+anytime soon, but for the curious there are obviously several examples
+in the repository of both programs that will generate packages and
+packages themselves.
 
 Once packages are loaded, the application handles storing the package
 and history internally in the user's account.
+
+## Application DMG
+
+At some point I'll probably build a non-debug version of the
+application and stick it in the repository, but obviously I haven't
+yet.
 
 ## XCode Project
 

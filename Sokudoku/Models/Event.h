@@ -21,6 +21,7 @@
 @property(copy) NSDate *timeStamp;
 @property float weight, weightedTime;
 
+// For loading and saving records
 - (NSMutableDictionary *) toDictionary;
 - (void) fromDictionary:(NSMutableDictionary *)dict;
 

@@ -74,6 +74,9 @@
     totalTime = [[dict objectForKey:@"totalTimes"] floatValue];
 }
 
+// This is used for generating all possible pronunciations (for testing correct answers).
+// This takes a list and appends all the possible pronunciation to the end of the
+// supplied strings and returns them in a list
 - (NSArray *)appendAllPronunciations:(NSArray *)list {
     NSMutableArray *rc = [[NSMutableArray alloc] initWithCapacity:[list count] * [pronunciations count]];
     for (int i = 0; i < [list count]; i++) {

@@ -16,6 +16,7 @@
 
 @interface MainWindow : NSWindowController {
 @private
+    // Controls
     NSPopUpButton *dataSet;
     NSSlider *minLength, *maxLength, *sessionLength;
     NSButton *weightHistory;
@@ -28,6 +29,7 @@
     NSButton *showHistoryButton, *showHistogramButton;
     NSButton *resetPackageButton, *forgetHistoryButton;
 
+    // Data and subwindows
     Settings *settings;
     Package *currentPackage;
     RecallPackageWindow *recallDialog;
@@ -56,6 +58,7 @@
 @property IBOutlet NSButton *resetPackageButton;
 @property IBOutlet NSButton *forgetHistoryButton;
 
+// Need these for saving setting to...  Settings
 -(IBAction)updateMaxLength:(id)sender;
 -(IBAction)updateMinLength:(id)sender;
 -(IBAction)updateSessionLength:(id)sender;
@@ -63,6 +66,7 @@
 -(IBAction)updateDataSet:(id)sender;
 -(IBAction)updatePackage:(id)sender;
 
+// Actions for packages
 -(IBAction)importFile:(id)sender;
 -(IBAction)forgetPackage:(id)sender;
 -(IBAction)rememberPackage:(id)sender;
@@ -71,6 +75,7 @@
 -(IBAction)forgetHistory:(id)sender;
 -(IBAction)resetPackage:(id)sender;
 
+// Subwindow controls
 -(IBAction)showHistogram:(id)sender;
 -(void)endShowHistogram;
 

@@ -30,13 +30,15 @@
 
 - (void)drawRect:(NSRect)dirtyRect
 {
+    // Get characters for graph
     NSArray *array = [package statsForTag:tag:top];
     
     NSScrollView *scrollView = [self enclosingScrollView];
     NSSize size = [scrollView contentSize];
     float boundsX = size.width;
     float boundsY = size.height;
-    
+
+    // Set up attributes for display
     NSColor *color = [NSColor darkGrayColor];
     NSFont *font = [NSFont systemFontOfSize:28];
     NSFont *timeFont = [NSFont systemFontOfSize:14];
@@ -47,22 +49,27 @@
                               NSForegroundColorAttributeName, nil];
     NSString *testText = [[array objectAtIndex:0] objectAtIndex:0];
     CGSize textSize = [testText sizeWithAttributes:attr];
+
+    // Find maximum character size
     for (int i = 0; i < [array count]; i++) {
         NSString *literal = [[array objectAtIndex:i] objectAtIndex:0];
         if (textSize.width < [literal sizeWithAttributes:attr].width) {
             textSize = [literal sizeWithAttributes:attr];
         }
     }
+
+    // Calculate display bounds
     if (boundsY < textSize.height * [array count] + 20) {
         boundsY = textSize.height * [array count] + 20;
     }
     [self setFrameSize:NSMakeSize(boundsX, boundsY)];
-    
+
     // Draw characters
     BOOL even = NO;
     float currentY = 10;
     for (int i = 0; i < [array count]; i++) {
         if (even) {
+            // Draw alternate background
             NSRect rect = NSMakeRect(0, currentY, boundsX, textSize.height);
             [[NSColor colorWithCalibratedRed:0.9 green:0.9 blue:0.9 alpha:1.0] set];
             [NSBezierPath fillRect:rect];
@@ -75,12 +82,16 @@
         even = !even;
     }
     currentY = 10;
+
+    // Find maximum length for longest bar
     float maxlength;
     if (top) {
         maxlength = [[[array objectAtIndex:0] objectAtIndex:1] floatValue];
     } else {
         maxlength = [[[array lastObject] objectAtIndex:1] floatValue];
     }
+
+    // Draw bars a times for average speeds for characters
     for (int i = 0; i < [array count]; i++) {
         float time = [[[array objectAtIndex:i] objectAtIndex:1] floatValue];
         NSString *timeString = @"-----";

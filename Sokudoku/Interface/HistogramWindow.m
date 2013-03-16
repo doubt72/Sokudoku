@@ -27,6 +27,7 @@
 }
 
 - (IBAction)selectSubset:(id)sender {
+    // Select slowest or fastest characters on top
     if ([subset indexOfSelectedItem] == 0) {
         top = YES;
     } else {

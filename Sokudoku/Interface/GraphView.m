@@ -36,10 +36,12 @@
     float boundsY = rect.size.height;
     
     float scale = boundsX / 60;
-    
+
+    // Draw view background
     [[NSColor colorWithCalibratedRed:0.25 green:0.25 blue:0.25 alpha:1.0] set];
     [NSBezierPath fillRect:rect];
 
+    // Draw axes (with values)
     NSColor *baseColor = [NSColor colorWithCalibratedRed:0.75 green:0.75 blue:0.75
                                                    alpha:1.0];
     [baseColor set];
@@ -59,7 +61,8 @@
     CGSize size = [text sizeWithAttributes:attr];
     [text drawAtPoint:NSMakePoint(scale*2.5 - size.width,
                                   boundsY - scale*1.5 - size.height) withAttributes:attr];
-    
+
+    // Draw value intervals (days) on graph bottom
     int interval = timeFrame / 6;
     for (int i = interval; i <= timeFrame; i += interval) {
         text = [NSString stringWithFormat:@"%d", i - 1];
@@ -68,7 +71,8 @@
                                       (boundsX - scale*4) - scale - size.width/2,
                                       boundsY - scale/2 - size.height) withAttributes:attr];
     }
-    
+
+    // Calculate data to graph -- initialize array for graph elements
     NSMutableArray *data = [NSMutableArray arrayWithCapacity:timeFrame];
     for (int i = 0; i < timeFrame; i++) {
         if (graphType == 0 || graphType == 3) {
@@ -81,13 +85,15 @@
         }
     }
     NSArray *events = [package allEvents:tag];
-    
+
+    // Calculate offset (i.e., offset to calculate beginning of yesterday = 1 day ago)
     NSDate *now = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     unsigned unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
     NSDateComponents *components = [calendar components:unitFlags fromDate:now];
     long offset = (23 - [components hour]) * 60 * 60 + (59 - [components minute]) * 60 + (59 - [components second]) + 1;
 
+    // Calculate data for graph from events
     for (int i = 0; i < [events count]; i++) {
         Event *event = [events objectAtIndex:i];
         NSTimeInterval when = [[event timeStamp] timeIntervalSinceNow] - offset;
@@ -107,7 +113,8 @@
             [data replaceObjectAtIndex:bucket withObject:[NSNumber numberWithInt:[[data objectAtIndex:bucket] intValue] + 1]];
         }
     }
-    
+
+    // Find maximum values to caligraph data bars
     float maxValue = 0;
     float altMaxValue = 0;
     for (int i = 0; i < [data count]; i++) {
@@ -139,6 +146,7 @@
             }
         }
     }
+    // Display maximum value on graph
     if (graphType == 1 || graphType == 3) {
         text = [NSString stringWithFormat:@"%d", (int)maxValue / 60];
     } else if (graphType == 2) {
@@ -149,7 +157,8 @@
     size = [text sizeWithAttributes:attr];
     [text drawAtPoint:NSMakePoint(scale*2.5 - size.width,
                                   scale*2 - size.height) withAttributes:attr];
-    
+
+    // Draw data bars
     for (int i = 0; i < timeFrame; i++) {
         float value;
         if (graphType == 0) {
@@ -172,7 +181,8 @@
         rect = NSMakeRect(start + 1, scale + (boundsY - scale*3) * (1 - value / maxValue), width, (boundsY - scale*3) * (value / maxValue) - 1);
         [NSBezierPath fillRect:rect];
     }
-    
+
+    // Draw line for average speed for combination graph
     [[NSColor colorWithCalibratedRed:0.75 green:0.75 blue:0.25 alpha:1.0] set];
 
     float lastValue = 0;

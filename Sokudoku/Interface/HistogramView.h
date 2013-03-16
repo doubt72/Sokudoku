@@ -14,7 +14,8 @@
     Package *package;
     
     NSString *tag;
-    
+
+    // Slowest first, or fastest first
     BOOL top;
 }
 

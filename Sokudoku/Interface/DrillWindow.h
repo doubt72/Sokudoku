@@ -54,6 +54,7 @@
 - (IBAction)abort:(id)sender;
 - (IBAction)answer:(id)sender;
 
+// Set up next question
 - (void)nextQuestion;
 
 @end

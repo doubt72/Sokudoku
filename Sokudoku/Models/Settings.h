@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+// Class for storing all the program settings
 @interface Settings : NSObject {
 @private
     NSString *settingsFile;

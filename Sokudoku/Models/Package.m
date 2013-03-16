@@ -37,15 +37,6 @@
     return [tags containsObject:tag];
 }
 
-- (void)newEvent:(NSArray *)chars :(float)totalTime {
-    unsigned long int length = [chars count];
-    for (int i = 0; i < length; i++) {
-        Character *character = [chars objectAtIndex:i];
-        Event *event = [character newEvent:length:totalTime];
-        [history addEvent:event];
-    }
-}
-
 - (NSString *)import:(NSString *)fileName {
     NSDictionary *import = [NSDictionary dictionaryWithContentsOfFile:fileName];
     if (import == nil) {
@@ -84,6 +75,7 @@
     return nil;
 }
 
+// Path/filenames for package components (as supplied)
 - (NSString *)packageFile:(NSString *)fileName {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *appSupport =
@@ -130,6 +122,7 @@
     [history load:[self packageFile:@"history.plist"]];
 }
 
+// Used for selecting characters by average speed when generating questions
 - (NSString *)objectForIndex:(float)index:(NSArray *)list {
     float left = index;
     for (int i = 0; i < [list count]; i++) {
@@ -141,6 +134,8 @@
     return nil;
 }
 
+// Generate new "question" for drill within the specific length for the given tag
+// wieght = whether or not to prioritize slower characters
 - (NSArray *)generate:(int)min:(int)max:(BOOL)weight:(NSString *)tag {
     float totalWeight = 0;
     NSMutableArray *charSet = [NSMutableArray arrayWithCapacity:[characters count]];
@@ -169,6 +164,7 @@
     return [NSArray arrayWithArray:rc];
 }
 
+// Generates events for each character and stores them in the package history
 - (void)event:(NSMutableArray *)forCharacters :(float)time {
     for (int i = 0; i < [forCharacters count]; i++) {
         Character *current = [forCharacters objectAtIndex:i];
@@ -178,6 +174,7 @@
 }
 
 - (BOOL)test:(NSArray *)question :(NSString *)answer :(float)time {
+    // Get characters to match question
     NSMutableArray *qChars = [[NSMutableArray alloc] initWithCapacity:[question count]];
     for (int i = 0; i < [question count]; i++) {
         for (int j = 0; j < [characters count]; j++) {
@@ -186,20 +183,27 @@
             }
         }
     }
+
+    // Generate all pronunciations to test against
     NSArray *allPron = [[NSArray alloc] initWithObjects:@"", nil];
     for (int i = 0; i < [qChars count]; i++) {
         allPron = [[qChars objectAtIndex:i] appendAllPronunciations:allPron];
     }
+
+    // Any match results in a positive result
     for (int i = 0; i < [allPron count]; i++) {
         if ([[allPron objectAtIndex:i] isEqualToString:answer]) {
             [self event:qChars:time];
             return YES;
         }
     }
+
+    // Incorect answers get a ten-second penalty
     [self event:qChars:time + 10.0 * [qChars count]];
     return NO;
 }
 
+// Character stats for character window
 - (NSArray *)statsForTag:(NSString *)tag:(BOOL)top {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:[characters count]];
     for (int i = 0; i < [characters count]; i++) {
@@ -214,6 +218,8 @@
         }
     }
     NSArray *fullArray;
+
+    // Sort by slowest or fastest
     if (top) {
         fullArray = [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
             return [[obj2 objectAtIndex:1] compare:[obj1 objectAtIndex:1]];
@@ -223,6 +229,8 @@
             return [[obj1 objectAtIndex:1] compare:[obj2 objectAtIndex:1]];
         } ];
     }
+
+    // Limit to 100 characters (too many more overwhelms the window view)
     if ([fullArray count] > 100) {
         NSRange range = NSMakeRange(0, 100);
         return [fullArray subarrayWithRange:range];
@@ -232,11 +240,14 @@
 }
 
 - (NSArray *) allEvents:(NSString *)tag {
+    // Build dictionary with characters keyed by literal value
     NSMutableDictionary *dict = [NSMutableDictionary
                                  dictionaryWithCapacity:[characters count]];
     for (int i = 0; i < [characters count]; i++) {
         [dict setObject:[characters objectAtIndex:i] forKey:[[characters objectAtIndex:i] literal]];
     }
+
+    // Generate list of events filtered by characters with tags
     NSMutableArray *tagEvents = [NSMutableArray arrayWithCapacity:[characters count]];
     NSArray *allEvents = [history allEvents];
     for (int i = 0; i < [allEvents count]; i++) {
