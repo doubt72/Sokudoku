@@ -3,12 +3,11 @@
 
 ## What Is It?
 
-Sokudoku is a program for practicing reading random characters (a bit
-of a gadget program, really, that I build for my own use in my spare
-time).  Although probably best for syllable-based character sets like
-Japanese Katakana or Hiragana, or Korean Hangul, it probably would
-work fine with "regular" phonetic character sets as well (or something
-like Korean Jomo), taking into account the fact that it more or less
+Sokudoku is a program for practicing reading random characters.
+Although probably best for syllable-based character sets like Japanese
+Katakana or Hiragana, or Korean Hangul, it probably would work fine
+with "regular" phonetic character sets as well (or something like
+Korean Jomo), taking into account the fact that it more or less
 produces strings of random gibberish.  Things like Japanese or Chinese
 compound words would work as well, although those are probably more
 suited for a general flashcard test program like
@@ -20,6 +19,11 @@ quickly as possible, it times the user (with a penalty for incorrect
 answers), keeps track of how fast the characters were entered and
 optionally preferentially feeds the user characters they have trouble
 with.
+
+Really, the program is a bit of a gadget thrown together over a couple
+weeks so I could drill down on Hangul reading practice (with Katakana
+as a bonus).  It's not as useful as a general/configurable
+drill program like Anki, but possibly still useful as a complement.
 
 ## Usage
 
@@ -115,6 +119,16 @@ modify it.
 
 ## License
 
-I'll Apache-fy this at some point, but at the moment I'm just getting
-it started and it's too much trouble.  So Copyright 2013 Douglas
-Triggs (douglas@triggs.org) and all that.
+Copyright 2013 Douglas Triggs (douglas@triggs.org), All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you
+may not use this file except in compliance with the License. You may
+obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied. See the License for the specific language governing
+permissions and limitations under the License.
