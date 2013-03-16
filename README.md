@@ -102,9 +102,8 @@ and history internally in the user's account.
 
 ## Application DMG
 
-At some point I'll probably build a non-debug version of the
-application and stick it in the repository, but obviously I haven't
-yet.
+If you just want to install the program, there's a barebones DMG with
+the application in the release directory.
 
 ## XCode Project
 
