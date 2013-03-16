@@ -54,7 +54,7 @@ character weightings and history).  The other two buttons load graphs.
 
 If the history button is selected, you get the following window (which
 allows the user to see various graphs of recorded drill result
-statistics):
+statistics -- hey, look, bogus randomly generated data):
 
 ![alt character window](Assets/graphwindow.png)
 
