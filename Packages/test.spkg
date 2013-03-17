@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>name</key>
+  <string>Japanese Kana</string>
+  <key>tags</key>
+  <array>
+    <string>a</string>
+    <string>b</string>
+    <string>both</string>
+  </array>
+  <key>tagDescriptions</key>
+  <array>
+    <string>Set A</string>
+    <string>Set B</string>
+    <string>All Characters</string>
+  </array>
+  <key>characters</key>
+  <array>
+    <dict>
+      <key>literal</key>
+      <string>a</string>
+      <key>pronunciations</key>
+      <array>
+        <string>a</string>
+      </array>
+      <key>tags</key>
+      <array>
+        <string>a</string>
+        <string>both</string>
+      </array>
+    </dict>
+    <dict>
+      <key>literal</key>
+      <string>b</string>
+      <key>pronunciations</key>
+      <array>
+        <string>b</string>
+      </array>
+      <key>tags</key>
+      <array>
+        <string>b</string>
+        <string>both</string>
+      </array>
+    </dict>
+    <dict>
+      <key>literal</key>
+      <string>ab</string>
+      <key>pronunciations</key>
+      <array>
+        <string>ab</string>
+      </array>
+      <key>tags</key>
+      <array>
+        <string>b</string>
+        <string>both</string>
+      </array>
+    </dict>
+  </array>
+</dict>
+</plist>
