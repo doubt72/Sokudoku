@@ -4,7 +4,8 @@ desc = ["Set A", "Set B", "All Characters"]
 
 chars = [
          ['a', ['a'], ['a', 'both']],
-         ['b', ['b'], ['b', 'both']],
+         ['b', ['b'], ['a', 'both']],
+         ['c', ['b'], ['b', 'both']],
          ['ab', ['ab'], ['b', 'both']]
         ]
 
