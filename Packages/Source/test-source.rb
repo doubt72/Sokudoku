@@ -13,7 +13,7 @@ puts "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.
 puts "<plist version=\"1.0\">"
 puts "<dict>"
 puts "  <key>name</key>"
-puts "  <string>Japanese Kana</string>"
+puts "  <string>Test Package</string>"
 puts "  <key>tags</key>"
 puts "  <array>"
 tags.each do |tag|
