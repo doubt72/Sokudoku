@@ -138,6 +138,7 @@
     float left = index;
     for (int i = 0; i < [list count]; i++) {
         left -= [[[list objectAtIndex:i] objectAtIndex:1] floatValue];
+        NSLog(@"left after i: %d, %f", i, left);
         if (left < 0) {
             return [[list objectAtIndex:i] objectAtIndex:0];
         }
@@ -154,7 +155,7 @@
         NSString *literal = [[characters objectAtIndex:i] literal];
         float speed = 1;
         if (weight) {
-            speed = [[characters objectAtIndex:i] averageSpeed];
+            speed = powf([[characters objectAtIndex:i] averageSpeed], 2);
         }
         if ([[characters objectAtIndex:i] hasTag:tag]) {
             totalWeight += speed;
@@ -170,6 +171,7 @@
     NSMutableArray *rc = [[NSMutableArray alloc] initWithCapacity:length];
     for (int i = 0; i < length; i++) {
         float index = (float)(arc4random() % (int)(totalWeight * 100000)) / 100000;
+        NSLog(@"index: %f", index);
         [rc addObject:[self objectForIndex:index:charSet]];
     }
     return [NSArray arrayWithArray:rc];
