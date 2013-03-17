@@ -44,6 +44,7 @@
     int incorrectAnswers;
     
     NSArray *literals;
+    NSArray *lastQuestion;
 
     NSDate *time;
 }

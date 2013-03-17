@@ -93,12 +93,28 @@
     return [NSString stringWithString:rc];
 }
 
+- (BOOL)compare {
+    if ([literals count] != [lastQuestion count]) {
+        return NO;
+    }
+    for (int i = 0; i < [literals count]; i++) {
+        if ([[literals objectAtIndex:i] compare:[lastQuestion objectAtIndex:i]] !=
+            NSOrderedSame) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 // Set up next question
 - (void)nextQuestion {
     int seconds = (int)timeLeft % 60;
     int minutes = (int)(timeLeft / 60);
     [timer setStringValue:[NSString stringWithFormat:@"%.2d:%.2d", minutes, seconds]];
-    literals = [package generate:minLength:maxLength:weighted:tag];
+    lastQuestion = literals;
+    while ([self compare]) {
+        literals = [package generate:minLength:maxLength:weighted:tag];
+    }
     [testString setStringValue:[self literalStrings]];
 
     time = [NSDate date];
@@ -118,6 +134,7 @@
     [super windowDidLoad];
     correctAnswers = 0;
     incorrectAnswers = 0;
+    lastQuestion = [NSArray arrayWithObject:@""];
 }
 
 @end
