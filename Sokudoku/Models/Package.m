@@ -139,6 +139,7 @@
     for (int i = 0; i < [list count]; i++) {
         left -= [[[list objectAtIndex:i] objectAtIndex:1] floatValue];
         if (left < 0) {
+            NSLog(@"left after i: %d, %f", i, left);
             return [[list objectAtIndex:i] objectAtIndex:0];
         }
     }
@@ -169,7 +170,8 @@
     }
     NSMutableArray *rc = [[NSMutableArray alloc] initWithCapacity:length];
     for (int i = 0; i < length; i++) {
-        float index = (float)(arc4random() % (int)(totalWeight * 100000)) / 100000;
+        float index = (float)(arc4random() % (uint)(totalWeight * 1000)) / 1000;
+        NSLog(@"tot, index: %f, %f", totalWeight, index);
         [rc addObject:[self objectForIndex:index:charSet]];
     }
     return [NSArray arrayWithArray:rc];
