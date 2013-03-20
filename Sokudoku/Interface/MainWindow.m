@@ -42,7 +42,6 @@
 @synthesize characterOrder, graphTime, graphType;
 
 - (void)settingsFromSaveDict:(NSDictionary *)dict {
-    NSLog(@"dict: %@", dict);
     characterOrder = [[dict objectForKey:@"characterOrder"] boolValue];
     graphTime = [[dict objectForKey:@"graphTime"] intValue];
     graphType = [[dict objectForKey:@"graphType"] intValue];
@@ -66,7 +65,6 @@
            forKey:@"sessionLength"];
     [rc setObject:[NSNumber numberWithInt:(int)[weightHistory state]]
            forKey:@"weightHistory"];
-    NSLog(@"rc: %@", rc);
     return [NSDictionary dictionaryWithDictionary:rc];
 }
 

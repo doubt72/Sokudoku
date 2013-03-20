@@ -57,6 +57,16 @@
     [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(sessionFinished:returnCode:contextInfo:) contextInfo:nil];
 }
 
+- (void)finishAnswer:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
+    if (timeLeft < 0) {
+        [self finish];
+    } else {
+        [testString setTextColor:[NSColor blackColor]];
+        [answerField setStringValue:@""];
+        [self nextQuestion];
+    }
+}
+
 - (IBAction)answer:(id)sender {
     // Elapsed time is negative (time relative to "now")
     NSTimeInterval elapsed = [time timeIntervalSinceNow];
@@ -66,17 +76,21 @@
     if ([package test:literals:answer:-elapsed]) {
         correctAnswers++;
         status = [NSString stringWithFormat:@"Answer %@ correct (in %.2f seconds)",
-                            answer, -elapsed];
+                  answer, -elapsed];
+        [statusField setStringValue:status];
+        [self finishAnswer:nil returnCode:0 contextInfo:nil];
     } else {
         incorrectAnswers++;
         status = [NSString stringWithFormat:@"Answer %@ incorrect", answer];
-    }
-    [statusField setStringValue:status];
-    if (timeLeft < 0) {
-        [self finish];
-    } else {
-        [answerField setStringValue:@""];
-        [self nextQuestion];
+        [statusField setStringValue:status];
+        [testString setTextColor:[NSColor redColor]];
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:@"Continue"];
+        [alert setMessageText:@"Incorrect Answer"];
+        [alert setInformativeText:[NSString stringWithFormat:@"Answer %@ incorrect",
+                                   answer]];
+        [alert setAlertStyle:NSInformationalAlertStyle];
+        [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(finishAnswer:returnCode:contextInfo:) contextInfo:nil];
     }
 }
 

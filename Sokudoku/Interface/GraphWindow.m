@@ -38,7 +38,6 @@
 }
 
 - (IBAction)changeGraphType:(id)sender {
-    NSLog(@"graphType: %ld", [graphType indexOfSelectedItem]);
     [graphView setGraphType:(int)[graphType indexOfSelectedItem]];
     [parent setGraphType:(int)[graphType indexOfSelectedItem]];
     [graphView setNeedsDisplay:YES];
@@ -47,8 +46,7 @@
 - (IBAction)changeTimeFrame:(id)sender {
     // Day ranges (1 week, 1 month, 3 months, 6 months, 1 year, 2 years)
     int array[] = {7, 30, 90, 180, 365, 730};
-    
-    NSLog(@"timeFrame: %ld", [timeFrame indexOfSelectedItem]);
+
     [graphView setTimeFrame:array[[timeFrame indexOfSelectedItem]]];
     [parent setGraphTime:(int)[timeFrame indexOfSelectedItem]];
     [graphView setNeedsDisplay:YES];
