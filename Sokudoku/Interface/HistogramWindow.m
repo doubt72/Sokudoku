@@ -45,6 +45,7 @@
         top = NO;
     }
     [histogramView setTop:top];
+    [parent setCharacterOrder:[subset indexOfSelectedItem]];
     [histogramView setNeedsDisplay:YES];
 }
 

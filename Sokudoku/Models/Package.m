@@ -99,10 +99,13 @@
     return [dir stringByAppendingPathComponent:fileName];
 }
 
-- (void)save {
+- (void)save:(NSDictionary *)settings {
     NSMutableDictionary *packageDict = [NSMutableDictionary dictionaryWithCapacity:4];
     [packageDict setValue:[NSArray arrayWithArray:tags] forKey:@"tags"];
-    [packageDict setValue:[NSArray arrayWithArray:tagDescriptions] forKey:@"tagDescriptions"];
+    [packageDict setValue:[NSArray arrayWithArray:tagDescriptions]
+                   forKey:@"tagDescriptions"];
+    [packageDict setValue:[NSDictionary dictionaryWithDictionary:settings]
+                   forKey:@"settings"];
     NSString *packageFile = [self packageFile:@"package.plist"];
     [packageDict writeToFile:packageFile atomically:YES];
     
@@ -117,11 +120,12 @@
     [history save:historyFile];
 }
 
-- (void)load:(NSString *)packageName {
+- (NSDictionary *)load:(NSString *)packageName {
     name = packageName;
     NSDictionary *packageDict = [NSDictionary dictionaryWithContentsOfFile:[self packageFile:@"package.plist"]];
     tags = [NSMutableArray arrayWithArray:[packageDict objectForKey:@"tags"]];
     tagDescriptions = [NSMutableArray arrayWithArray:[packageDict objectForKey:@"tagDescriptions"]];
+    NSDictionary *settings = [packageDict objectForKey:@"settings"];
     
     NSArray *characterArray = [NSArray arrayWithContentsOfFile:[self packageFile:@"characters.plist"]];
     [characters removeAllObjects];
@@ -131,6 +135,7 @@
         [self addCharacter:character];
     }
     [history load:[self packageFile:@"history.plist"]];
+    return settings;
 }
 
 // Used for selecting characters by average speed when generating questions
@@ -139,7 +144,6 @@
     for (int i = 0; i < [list count]; i++) {
         left -= [[[list objectAtIndex:i] objectAtIndex:1] floatValue];
         if (left < 0) {
-            NSLog(@"left after i: %d, %f", i, left);
             return [[list objectAtIndex:i] objectAtIndex:0];
         }
     }
@@ -171,7 +175,6 @@
     NSMutableArray *rc = [[NSMutableArray alloc] initWithCapacity:length];
     for (int i = 0; i < length; i++) {
         float index = (float)(arc4random() % (uint)(totalWeight * 1000)) / 1000;
-        NSLog(@"tot, index: %f, %f", totalWeight, index);
         [rc addObject:[self objectForIndex:index:charSet]];
     }
     return [NSArray arrayWithArray:rc];

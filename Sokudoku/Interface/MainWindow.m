@@ -39,12 +39,43 @@
 @synthesize showHistoryButton, showHistogramButton;
 @synthesize resetPackageButton, forgetHistoryButton;
 
+@synthesize characterOrder, graphTime, graphType;
+
+- (void)settingsFromSaveDict:(NSDictionary *)dict {
+    NSLog(@"dict: %@", dict);
+    characterOrder = [[dict objectForKey:@"characterOrder"] boolValue];
+    graphTime = [[dict objectForKey:@"graphTime"] intValue];
+    graphType = [[dict objectForKey:@"graphType"] intValue];
+    currentDataIndex = [[dict objectForKey:@"dataSet"] intValue];
+    [minLength setIntValue:[[dict objectForKey:@"minLength"] intValue]];
+    [maxLength setIntValue:[[dict objectForKey:@"maxLength"] intValue]];
+    [sessionLength setIntValue:[[dict objectForKey:@"sessionLength"] intValue]];
+    [weightHistory setState:[[dict objectForKey:@"weightHistory"] intValue]];
+}
+
+- (NSDictionary *)saveDictFromSettings {
+    NSMutableDictionary *rc = [NSMutableDictionary dictionaryWithCapacity:5];
+    [rc setObject:[NSNumber numberWithBool:characterOrder] forKey:@"characterOrder"];
+    [rc setObject:[NSNumber numberWithInt:graphTime] forKey:@"graphTime"];
+    [rc setObject:[NSNumber numberWithInt:graphType] forKey:@"graphType"];
+    [rc setObject:[NSNumber numberWithInt:(int)[dataSet indexOfSelectedItem]]
+           forKey:@"dataSet"];
+    [rc setObject:[NSNumber numberWithInt:[minLength intValue]] forKey:@"minLength"];
+    [rc setObject:[NSNumber numberWithInt:[maxLength intValue]] forKey:@"maxLength"];
+    [rc setObject:[NSNumber numberWithInt:[sessionLength intValue]]
+           forKey:@"sessionLength"];
+    [rc setObject:[NSNumber numberWithInt:(int)[weightHistory state]]
+           forKey:@"weightHistory"];
+    NSLog(@"rc: %@", rc);
+    return [NSDictionary dictionaryWithDictionary:rc];
+}
+
 // Set dataSetButton with options from package
 - (void)configureDataSetButton {
     [dataSet removeAllItems];
     NSArray *tagNames = [currentPackage allTagDescriptions];
     [dataSet addItemsWithTitles:tagNames];
-    [dataSet selectItemAtIndex:[settings dataSetIndex]];
+    [dataSet selectItemAtIndex:currentDataIndex];
 }
 
 // Check whether or not to enable forgotten package button
@@ -128,11 +159,10 @@
 // When package is changed, options need to be reset as well
 - (IBAction)updatePackage:(id)sender {
     NSString *name = [packageList titleOfSelectedItem];
-    [currentPackage save];
-    [currentPackage load:name];
+    [currentPackage save:[self saveDictFromSettings]];
+    [self settingsFromSaveDict:[currentPackage load:name]];
     
     [settings setCurrentPackageName:name];
-    [settings setDataSetIndex:0];
     [currentPackageName setStringValue:name];
     [self configureDataSetButton];
 }
@@ -170,7 +200,7 @@
             } else if ([[settings allPackages] containsObject:name]) {
                 [self displayAlertForImport:fileName:@"forgotten package with the same name already exists, please recall that package instead"];
             } else {
-                [package save];
+                [package save:[self saveDictFromSettings]];
                 [settings setCurrentPackageName:name];
                 [settings addPackage:name];
                 [settings setDataSetIndex:0];
@@ -185,11 +215,11 @@
 }
 
 - (IBAction)forgetPackage:(id)sender {
-    [currentPackage save];
+    [currentPackage save:[self saveDictFromSettings]];
     [settings forgetPackage:[settings currentPackageName]];
     
     [settings setCurrentPackageName:[[settings availablePackages] objectAtIndex:0]];
-    [currentPackage load:[settings currentPackageName]];
+    [self settingsFromSaveDict:[currentPackage load:[settings currentPackageName]]];
     [settings setDataSetIndex:0];
     [self configureDataSetButton];
     [self configurePackageList];
@@ -219,7 +249,7 @@
 - (void)doRecall:(NSString *)packageName {
     [settings rememberPackage:packageName];
     [settings setCurrentPackageName:packageName];
-    [currentPackage load:packageName];
+    [self settingsFromSaveDict:[currentPackage load:packageName]];
     [settings setDataSetIndex:0];
     
     [self setEnabled:YES];
@@ -273,7 +303,7 @@
         [settings deletePackage:[settings currentPackageName]];
         
         [settings setCurrentPackageName:[[settings availablePackages] objectAtIndex:0]];
-        [currentPackage load:[settings currentPackageName]];
+        [self settingsFromSaveDict:[currentPackage load:[settings currentPackageName]]];
         [settings setDataSetIndex:0];
         [self configureDataSetButton];
         [self configurePackageList];
@@ -287,7 +317,9 @@
     [histogramWindow setPackage:currentPackage];
     [histogramWindow setParent:self];
     [histogramWindow showWindow:[histogramWindow window]];
-    
+    [[histogramWindow subset] selectItemAtIndex:characterOrder];
+    [histogramWindow selectSubset:self];
+
     [[histogramWindow dataSets] removeAllItems];
     [[histogramWindow dataSets] addItemsWithTitles:[currentPackage allTagDescriptions]];
     [[histogramWindow dataSets] selectItemAtIndex:[settings dataSetIndex]];
@@ -307,6 +339,10 @@
     [graphWindow setPackage:currentPackage];
     [graphWindow setParent:self];
     [graphWindow showWindow:[graphWindow window]];
+    [[graphWindow graphType] selectItemAtIndex:graphType];
+    [[graphWindow timeFrame] selectItemAtIndex:graphTime];
+    [graphWindow changeGraphType:self];
+    [graphWindow changeTimeFrame:self];
     
     [[graphWindow dataSet] removeAllItems];
     [[graphWindow dataSet] addItemsWithTitles:[currentPackage allTagDescriptions]];
@@ -333,7 +369,7 @@
 - (void)executeForgetHistory:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
     if (returnCode == NSAlertFirstButtonReturn) {
         [currentPackage clearHistory];
-        [currentPackage save];
+        [currentPackage save:[self saveDictFromSettings]];
     }
 }
 
@@ -350,7 +386,7 @@
 - (void)executeResetPackage:(NSAlert *)alert returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo {
     if (returnCode == NSAlertFirstButtonReturn) {
         [currentPackage reset];
-        [currentPackage save];
+        [currentPackage save:[self saveDictFromSettings]];
     }
 }
 
@@ -374,7 +410,7 @@
 - (void)endDrill {
     [self setEnabled:YES];
     [self configurePackageList];
-    [currentPackage save];
+    [currentPackage save:[self saveDictFromSettings]];
     [drillWindow close];
 }
 
@@ -419,6 +455,10 @@
     
     NSString *name = [settings currentPackageName];
     if (name == nil) {
+        characterOrder = YES;
+        graphTime = 0;
+        graphType = 0;
+        currentDataIndex = 0;
         while ([settings currentPackageName] == nil) {
             [self displayAlertForFirstPackage];
             
@@ -428,7 +468,7 @@
     } else {
         [currentPackageName setStringValue:name];
         currentPackage = [[Package alloc] init];
-        [currentPackage load:name];
+        [self settingsFromSaveDict:[currentPackage load:name]];
     }
 
     [self setEnabled:YES];

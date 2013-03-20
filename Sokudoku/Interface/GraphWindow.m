@@ -38,7 +38,9 @@
 }
 
 - (IBAction)changeGraphType:(id)sender {
+    NSLog(@"graphType: %ld", [graphType indexOfSelectedItem]);
     [graphView setGraphType:(int)[graphType indexOfSelectedItem]];
+    [parent setGraphType:(int)[graphType indexOfSelectedItem]];
     [graphView setNeedsDisplay:YES];
 }
 
@@ -46,7 +48,9 @@
     // Day ranges (1 week, 1 month, 3 months, 6 months, 1 year, 2 years)
     int array[] = {7, 30, 90, 180, 365, 730};
     
+    NSLog(@"timeFrame: %ld", [timeFrame indexOfSelectedItem]);
     [graphView setTimeFrame:array[[timeFrame indexOfSelectedItem]]];
+    [parent setGraphTime:(int)[timeFrame indexOfSelectedItem]];
     [graphView setNeedsDisplay:YES];
 }
 
@@ -67,7 +71,7 @@
     [graphType removeAllItems];
     [graphType addItemWithTitle:@"Average Answer Speed"];
     [graphType addItemWithTitle:@"Study Time Per Day"];
-    [graphType addItemWithTitle:@"Repetitions Per Day"];
+    [graphType addItemWithTitle:@"Characters Per Day"];
     [graphType addItemWithTitle:@"Average Speed + Study Time"];
     
     [timeFrame removeAllItems];
@@ -77,8 +81,6 @@
     [timeFrame addItemWithTitle:@"Six Months"];
     [timeFrame addItemWithTitle:@"One Year"];
     [timeFrame addItemWithTitle:@"Two Years"];
-    [timeFrame selectItemAtIndex:0];
-    [graphView setTimeFrame:7];
     [graphView setPackage:package];
 }
 

@@ -41,10 +41,10 @@
 
 - (BOOL) hasTag:(NSString *)tag;
 
-- (void) save;
+- (void) save:(NSDictionary *)settings;
 
 - (NSString *) import:(NSString *)fileName;
-- (void) load:(NSString *)packageName;
+- (NSDictionary *) load:(NSString *)packageName;
 
 // Generate new "question" for drill within the specific length for the given tag
 // wieght = whether or not to prioritize slower characters

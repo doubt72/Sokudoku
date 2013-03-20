@@ -47,6 +47,11 @@
     DrillWindow *drillWindow;
     HistogramWindow *histogramWindow;
     GraphWindow *graphWindow;
+    
+    int characterOrder;
+    int graphTime;
+    int graphType;
+    int currentDataIndex;
 }
 
 @property IBOutlet NSPopUpButton *dataSet;
@@ -68,6 +73,8 @@
 @property IBOutlet NSButton *showHistogramButton;
 @property IBOutlet NSButton *resetPackageButton;
 @property IBOutlet NSButton *forgetHistoryButton;
+
+@property int characterOrder, graphTime, graphType;
 
 // Need these for saving setting to...  Settings
 -(IBAction)updateMaxLength:(id)sender;
