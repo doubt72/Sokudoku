@@ -86,6 +86,9 @@
     [minLength setIntValue:[[dict objectForKey:@"minLength"] intValue]];
     [maxLength setIntValue:[[dict objectForKey:@"maxLength"] intValue]];
     [sessionLength setIntValue:[[dict objectForKey:@"sessionLength"] intValue]];
+    [minLengthStatus setIntValue:[[dict objectForKey:@"minLength"] intValue]];
+    [maxLengthStatus setIntValue:[[dict objectForKey:@"maxLength"] intValue]];
+    [sessionLengthStatus setIntValue:[[dict objectForKey:@"sessionLength"] intValue]];
     [weightHistory setState:[[dict objectForKey:@"weightHistory"] intValue]];
 }
 

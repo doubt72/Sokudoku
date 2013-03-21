@@ -12,3 +12,5 @@ Changes from Version 1.0 (alpha) 2013/3/16
 	- Added display for averages (per character, per day) over time
 
 Changes from Version 1.0 (beta) 2013/3/20
+
+	- Fixed bug where labels did not match sliders
