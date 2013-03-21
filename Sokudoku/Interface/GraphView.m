@@ -95,7 +95,7 @@
             [data addObject:[NSNumber numberWithInt:0]];
         }
     }
-    NSArray *events = [package allEvents:tag];
+    NSArray *events = [package eventsForTag:tag];
 
     // Calculate offset (i.e., offset to calculate beginning of yesterday = 1 day ago)
     NSDate *now = [NSDate date];

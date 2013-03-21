@@ -57,7 +57,12 @@
 - (NSArray *) statsForTag:(NSString *)tag:(BOOL)top;
 
 // Array of events filtered by tag for history graph
-- (NSArray *) allEvents:(NSString *)tag;
+- (NSArray *) eventsForTag:(NSString *)tag;
+
+- (float) dailyAverage:(int)period;
+- (float) speedAverage:(int)period;
+- (float) dailyAverageForTag:(int)period:(NSString *)tag;
+- (float) speedAverageForTag:(int)period:(NSString *)tag;
 
 - (void) clearHistory;
 - (void) reset;

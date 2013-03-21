@@ -40,6 +40,9 @@
     NSButton *showHistoryButton, *showHistogramButton;
     NSButton *resetPackageButton, *forgetHistoryButton;
 
+    NSTextField *displayWeekPackage, *displayMonthPackage, *displayYearPackage;
+    NSTextField *displayWeekSet, *displayMonthSet, *displayYearSet;
+    
     // Data and subwindows
     Settings *settings;
     Package *currentPackage;
@@ -73,6 +76,13 @@
 @property IBOutlet NSButton *showHistogramButton;
 @property IBOutlet NSButton *resetPackageButton;
 @property IBOutlet NSButton *forgetHistoryButton;
+
+@property IBOutlet NSTextField *displayWeekPackage;
+@property IBOutlet NSTextField *displayMonthPackage;
+@property IBOutlet NSTextField *displayYearPackage;
+@property IBOutlet NSTextField *displayWeekSet;
+@property IBOutlet NSTextField *displayMonthSet;
+@property IBOutlet NSTextField *displayYearSet;
 
 @property int characterOrder, graphTime, graphType;
 

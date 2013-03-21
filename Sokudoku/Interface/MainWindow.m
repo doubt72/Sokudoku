@@ -39,8 +39,45 @@
 @synthesize showHistoryButton, showHistogramButton;
 @synthesize resetPackageButton, forgetHistoryButton;
 
+@synthesize displayMonthPackage, displayMonthSet, displayWeekPackage;
+@synthesize displayWeekSet, displayYearPackage, displayYearSet;
+
 @synthesize characterOrder, graphTime, graphType;
 
+- (void)updateStats {
+    float speed = [currentPackage speedAverage:7];
+    float daily = [currentPackage dailyAverage:7];
+    NSString *body = [NSString stringWithFormat:@"%.2fs (%.1fm/day)", speed, daily];
+    [displayWeekPackage setStringValue:body];
+    
+    speed = [currentPackage speedAverage:30];
+    daily = [currentPackage dailyAverage:30];
+    body = [NSString stringWithFormat:@"%.2fs (%.1fm/day)", speed, daily];
+    [displayMonthPackage setStringValue:body];
+    
+    speed = [currentPackage speedAverage:365];
+    daily = [currentPackage dailyAverage:365];
+    body = [NSString stringWithFormat:@"%.2fs (%.1fm/day)", speed, daily];
+    [displayYearPackage setStringValue:body];
+    
+    speed = [currentPackage speedAverageForTag:7 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    daily = [currentPackage dailyAverageForTag:7 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    body = [NSString stringWithFormat:@"%.2fs (%.1fm/day)", speed, daily];
+    [displayWeekSet setStringValue:body];
+    
+    speed = [currentPackage speedAverageForTag:30 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    daily = [currentPackage dailyAverageForTag:30 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    body = [NSString stringWithFormat:@"%.2fs (%.1fm/day)", speed, daily];
+    [displayMonthSet setStringValue:body];
+    
+    speed = [currentPackage speedAverageForTag:365 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    daily = [currentPackage dailyAverageForTag:365 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    body = [NSString stringWithFormat:@"%.2fs (%.1fm/day)", speed, daily];
+    [displayYearSet setStringValue:body];
+}
+
+// For saving and loading settings for a particular package independent of the
+// global settings
 - (void)settingsFromSaveDict:(NSDictionary *)dict {
     characterOrder = [[dict objectForKey:@"characterOrder"] boolValue];
     graphTime = [[dict objectForKey:@"graphTime"] intValue];
@@ -74,6 +111,7 @@
     NSArray *tagNames = [currentPackage allTagDescriptions];
     [dataSet addItemsWithTitles:tagNames];
     [dataSet selectItemAtIndex:currentDataIndex];
+    [self updateStats];
 }
 
 // Check whether or not to enable forgotten package button
@@ -152,6 +190,7 @@
 - (IBAction)updateDataSet:(id)sender {
     NSInteger set = [dataSet indexOfSelectedItem];
     [settings setDataSetIndex:(int)set];
+    [self updateStats];
 }
 
 // When package is changed, options need to be reset as well
@@ -163,6 +202,7 @@
     [settings setCurrentPackageName:name];
     [currentPackageName setStringValue:name];
     [self configureDataSetButton];
+    [self updateStats];
 }
 
 - (void)displayAlertForImport:(NSString *)fileName:(NSString *)why {
@@ -254,6 +294,7 @@
     [self configureDataSetButton];
     [self configurePackageList];
     [recallDialog close];
+    [self updateStats];
 }
 
 - (void)abortRecall {
@@ -410,6 +451,7 @@
     [self configurePackageList];
     [currentPackage save:[self saveDictFromSettings]];
     [drillWindow close];
+    [self updateStats];
 }
 
 - (void)displayAlertForFirstPackage {
@@ -453,7 +495,7 @@
     
     NSString *name = [settings currentPackageName];
     if (name == nil) {
-        characterOrder = YES;
+        characterOrder = 0;
         graphTime = 0;
         graphType = 0;
         currentDataIndex = 0;

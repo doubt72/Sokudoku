@@ -255,7 +255,7 @@
     }
 }
 
-- (NSArray *) allEvents:(NSString *)tag {
+- (NSArray *)eventsForTag:(NSString *)tag {
     // Build dictionary with characters keyed by literal value
     NSMutableDictionary *dict = [NSMutableDictionary
                                  dictionaryWithCapacity:[characters count]];
@@ -274,6 +274,82 @@
         }
     }
     return [NSArray arrayWithArray:tagEvents];
+}
+
+- (float)dailyAverage:(int)period {
+    float time = 0;
+    NSArray *allEvents = [history allEvents];
+
+    for (int i = 0; i < [allEvents count]; i++) {
+        Event *event = [allEvents objectAtIndex:i];
+        float offset = [[event timeStamp] timeIntervalSinceNow];
+        if (-offset < 24 * 60 * 60 * period) {
+            float unWeight = sqrtf([event weight]);
+            float unWeightedTime = [event weightedTime] / [event weight] * unWeight;
+            time += unWeightedTime;
+        }
+    }
+    return time / (float)period / 60;
+}
+
+- (float)speedAverage:(int)period {
+    float time = 0;
+    float events = 0;
+    NSArray *allEvents = [history allEvents];
+    
+    for (int i = 0; i < [allEvents count]; i++) {
+        Event *event = [allEvents objectAtIndex:i];
+        float offset = [[event timeStamp] timeIntervalSinceNow];
+        if (-offset < 24 * 60 * 60 * period) {
+            float unWeight = sqrtf([event weight]);
+            float unWeightedTime = [event weightedTime] / [event weight] * unWeight;
+            time += unWeightedTime;
+            events += unWeight;
+        }
+    }
+    if (events > 0) {
+        return time / events;
+    } else {
+        return 0;
+    }
+}
+
+- (float)dailyAverageForTag:(int)period :(NSString *)tag {
+    float time = 0;
+    NSArray *allEvents = [self eventsForTag:tag];
+    
+    for (int i = 0; i < [allEvents count]; i++) {
+        Event *event = [allEvents objectAtIndex:i];
+        float offset = [[event timeStamp] timeIntervalSinceNow];
+        if (-offset < 24 * 60 * 60 * period) {
+            float unWeight = sqrtf([event weight]);
+            float unWeightedTime = [event weightedTime] / [event weight] * unWeight;
+            time += unWeightedTime;
+        }
+    }
+    return time / (float)period / 60;
+}
+
+- (float)speedAverageForTag:(int)period :(NSString *)tag {
+    float time = 0;
+    float events = 0;
+    NSArray *allEvents = [self eventsForTag:tag];
+    
+    for (int i = 0; i < [allEvents count]; i++) {
+        Event *event = [allEvents objectAtIndex:i];
+        float offset = [[event timeStamp] timeIntervalSinceNow];
+        if (-offset < 24 * 60 * 60 * period) {
+            float unWeight = sqrtf([event weight]);
+            float unWeightedTime = [event weightedTime] / [event weight] * unWeight;
+            time += unWeightedTime;
+            events += unWeight;
+        }
+    }
+    if (events > 0) {
+        return time / events;
+    } else {
+        return 0;
+    }
 }
 
 - (void)clearHistory {
