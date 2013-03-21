@@ -10,7 +10,8 @@ Changes from Version 1.0 (alpha) 2013/3/16
 	- Adds confirmation for missed characters
 	  (So that if a character is missed, it can be checked)
 	- Added display for averages (per character, per day) over time
+	- Fixed bug where labels did not match sliders
+	- Fixed bug where settings weren't reset when changing packages
+	- Fixed bug where data set isn't reset when changing packages
 
 Changes from Version 1.0 (beta) 2013/3/20
-
-	- Fixed bug where labels did not match sliders

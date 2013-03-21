@@ -83,6 +83,7 @@
     graphTime = [[dict objectForKey:@"graphTime"] intValue];
     graphType = [[dict objectForKey:@"graphType"] intValue];
     currentDataIndex = [[dict objectForKey:@"dataSet"] intValue];
+    [settings setDataSetIndex:[[dict objectForKey:@"dataSet"] intValue]];
     [minLength setIntValue:[[dict objectForKey:@"minLength"] intValue]];
     [maxLength setIntValue:[[dict objectForKey:@"maxLength"] intValue]];
     [sessionLength setIntValue:[[dict objectForKey:@"sessionLength"] intValue]];
@@ -90,6 +91,14 @@
     [maxLengthStatus setIntValue:[[dict objectForKey:@"maxLength"] intValue]];
     [sessionLengthStatus setIntValue:[[dict objectForKey:@"sessionLength"] intValue]];
     [weightHistory setState:[[dict objectForKey:@"weightHistory"] intValue]];
+    [settings setMinLength:[[dict objectForKey:@"minLength"] intValue]];
+    [settings setMaxLength:[[dict objectForKey:@"maxLength"] intValue]];
+    [settings setSessionLength:[[dict objectForKey:@"sessionLength"] intValue]];
+    if ([[dict objectForKey:@"weightHistory"] intValue]) {
+        [settings enableAdaptiveDrill];
+    } else {
+        [settings disableAdaptiveDrill];
+    }
 }
 
 - (NSDictionary *)saveDictFromSettings {
