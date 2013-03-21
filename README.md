@@ -57,19 +57,6 @@ data used by the history graphs) or completely resetting the package
 (restoring it to the state it was in when freshly imported, losing any
 character weightings and history).  The other two buttons load graphs.
 
-If the history button is selected, you get the following window (which
-allows the user to see various graphs of recorded drill result
-statistics -- hey, look, bogus randomly generated data):
-
-![alt character window](Assets/graphwindow.png)
-
-If the character graph button is selected, you get the following
-window (which allows the user to see the average drill time for the
-characters in the package, including ten-second penalties for
-incorrect answers):
-
-![alt character window](Assets/characterwindow.png)
-
 Starting a drill is done by pressing "Go!" -- as should be fairly
 obvious -- and produces the following window.  To respond to each
 set of characters, type the pronunciation into the box (which should
