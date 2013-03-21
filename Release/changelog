@@ -1,0 +1,14 @@
+Changes from Version 1.0 (alpha) 2013/3/16
+
+	- Switched weighting from linear to squared
+	  (Slower characters now show up more often during drills)
+	- Drill no longer repeats characters
+	  (But don't try drilling on single character sets)
+	- Changed repetitions per day (wrong) to characters per day (correct)
+	- Now remembers graph window settings after closing
+	- Now remembers package settings when switching packages
+	- Adds confirmation for missed characters
+	  (So that if a character is missed, it can be checked)
+	- Added display for averages (per character, per day) over time
+
+Changes from Version 1.0 (beta) 2013/3/20
