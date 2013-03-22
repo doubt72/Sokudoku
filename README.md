@@ -26,6 +26,47 @@ as a bonus).  It's not as useful as a general/configurable drill
 program like Anki, but possibly still useful as a complement -- I
 mean, I know why I wanted it, but YMMV.
 
+## Application DMG
+
+If you just want to install the program, there's a barebones DMG with
+the application in the release directory; the current latest version is [1.0b (beta)](Release/Sokudoku-1.0b.dmg).
+
+
+## XCode Project
+
+This repository contains an XCode project in the following
+directories; if you have XCode installed, it should be possible to
+load the project from the checked out repository and then build or
+modify it.
+
+- Sokudoku/ : source files
+- SokudokuTests/ : unit tests
+- Sokudoku.xcodeproj/ : XCode project files
+
+## Packages
+
+This repository contains several package files that can be drilled on
+in the main program.
+
+- Packages/ : package files
+- Packages/Source/ : ruby programs that generate those package files
+
+So far a Japanese kana and Korean Hangul and Jomo packages are
+included; more may follow (as I build packages to practice on, or
+maybe other people do if anyone besides me ever uses the program).
+
+Packages are encoded as plists (Apple's XML format that Cocoa supports
+natively).  The format is actually fairly simple: a dictionary with a
+name, an array of tags, an array of descriptions, and an array of
+characters (each made up of a dictionary containing a literal, tags,
+and pronunciations).  It's unlikely I'll fully document the format
+anytime soon, but for the curious there are obviously several examples
+in the repository of both programs that will generate packages and
+packages themselves.
+
+Once packages are loaded, the application handles storing the package
+and history internally in the user's account.
+
 ## Usage
 
 The first time the program is run, it will prompt you to load a
@@ -63,47 +104,6 @@ set of characters, type the pronunciation into the box (which should
 start selected, and clears itself after each question).
 
 ![alt drill window](Assets/drillwindow.png)
-
-## Packages
-
-This repository contains several package files that can be drilled on
-in the main program.
-
-- Packages/ : package files
-- Packages/Source/ : ruby programs that generate those package files
-
-So far a Japanese kana and Korean Hangul and Jomo packages are
-included; more may follow (as I build packages to practice on, or
-maybe other people do if anyone besides me ever uses the program).
-
-Packages are encoded as plists (Apple's XML format that Cocoa supports
-natively).  The format is actually fairly simple: a dictionary with a
-name, an array of tags, an array of descriptions, and an array of
-characters (each made up of a dictionary containing a literal, tags,
-and pronunciations).  It's unlikely I'll fully document the format
-anytime soon, but for the curious there are obviously several examples
-in the repository of both programs that will generate packages and
-packages themselves.
-
-Once packages are loaded, the application handles storing the package
-and history internally in the user's account.
-
-## Application DMG
-
-If you just want to install the program, there's a barebones DMG with
-the application in the release directory; the current latest version is [1.0b (beta)](Release/Sokudoku-1.0b.dmg).
-
-
-## XCode Project
-
-This repository contains an XCode project in the following
-directories; if you have XCode installed, it should be possible to
-load the project from the checked out repository and then build or
-modify it.
-
-- Sokudoku/ : source files
-- SokudokuTests/ : unit tests
-- Sokudoku.xcodeproj/ : XCode project files
 
 ## License
 
