@@ -23,20 +23,30 @@
 @implementation Character
 
 @synthesize literal;
+@synthesize incorrectAnswers, correctAnswers;
 
 // Because characters are only tested in isolation when the string being tested is
 // one character long, we weigh the results so that long strings affect the average
 // time less than shorter strings
-- (Event *)newEvent:(float)forLength :(float)time {
+- (Event *)newEvent:(int)forLength :(float)time :(BOOL)correct {
     float weight = 1.0 / (forLength * forLength);
     timesTested += weight;
     totalTime += time / forLength * weight;
-    
+
     Event *event = [[Event alloc] init];
     [event setCharacter:[NSString stringWithString:literal]];
     [event setTimeStamp:[NSDate date]];
     [event setWeight:weight];
-    [event setWeightedTime:time * weight];
+    [event setPartialTime:time / forLength];
+    [event setCorrect:correct];
+    if (correct) {
+        correctAnswers++;
+        [event setWeightedTime:time / forLength * weight];
+    } else {
+        totalTime += 10.0 / forLength * weight;
+        incorrectAnswers++;
+        [event setWeightedTime:(time + 10) / forLength * weight];
+    }
     return event;
 }
 
@@ -74,6 +84,8 @@
     [dict setValue:[NSArray arrayWithArray:tags] forKey:@"tags"];
     [dict setValue:[NSNumber numberWithFloat:timesTested] forKey:@"timesTested"];
     [dict setValue:[NSNumber numberWithFloat:totalTime] forKey:@"totalTimes"];
+    [dict setValue:[NSNumber numberWithInt:correctAnswers] forKey:@"correctAnswers"];
+    [dict setValue:[NSNumber numberWithInt:incorrectAnswers] forKey:@"incorrectAnswers"];
     return dict;
 }
 
@@ -83,6 +95,8 @@
     tags = [NSMutableArray arrayWithArray:[dict objectForKey:@"tags"]];
     timesTested = [[dict objectForKey:@"timesTested"] floatValue];
     totalTime = [[dict objectForKey:@"totalTimes"] floatValue];
+    correctAnswers = [[dict objectForKey:@"correctAnswers"] intValue];
+    incorrectAnswers = [[dict objectForKey:@"incorrectAnswers"] intValue];
 }
 
 // This is used for generating all possible pronunciations (for testing correct answers).

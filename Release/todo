@@ -1,0 +1,20 @@
+1. Simplify graphing view render:
+
+Currently it does way too much; some of the complexity could be
+abstracted a bit.  Graph types are confusing and arbitray, and it does
+too much of its own calculations (not to mention the calculations are
+repeated in several other places, e.g., the statistics shown at the
+bottom of the main page).  The "histogram" (character window) could
+probably use similar simplification, but it isn't as extreme.
+
+2. Return answers for missed characters:
+
+First, this is helpful, but also (at least) the 0xB5xx UTF code page
+(Hangul) contains rendering errors in the default system font under
+OSX 10.8, so you're for those the drills are showing incorrect
+characters -- it'd be nice if I could identify those more easily.
+
+3. Render a different font for Hangul:
+
+Because of rendering errors in the Hangul system font under OSX 10.8.
+Or even make this configurable for different packages?

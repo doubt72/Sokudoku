@@ -181,10 +181,10 @@
 }
 
 // Generates events for each character and stores them in the package history
-- (void)event:(NSMutableArray *)forCharacters :(float)time {
+- (void)event:(NSMutableArray *)forCharacters :(float)time :(BOOL)correct {
     for (int i = 0; i < [forCharacters count]; i++) {
         Character *current = [forCharacters objectAtIndex:i];
-        Event *event = [current newEvent:[forCharacters count] :time];
+        Event *event = [current newEvent:(int)[forCharacters count] :time :correct];
         [history addEvent:event];
     }
 }
@@ -209,13 +209,13 @@
     // Any match results in a positive result
     for (int i = 0; i < [allPron count]; i++) {
         if ([[allPron objectAtIndex:i] isEqualToString:answer]) {
-            [self event:qChars:time];
+            [self event:qChars:time:YES];
             return YES;
         }
     }
 
     // Incorect answers get a ten-second penalty
-    [self event:qChars:time + 10.0 * [qChars count]];
+    [self event:qChars:time:NO];
     return NO;
 }
 
@@ -284,9 +284,7 @@
         Event *event = [allEvents objectAtIndex:i];
         float offset = [[event timeStamp] timeIntervalSinceNow];
         if (-offset < 24 * 60 * 60 * period) {
-            float unWeight = sqrtf([event weight]);
-            float unWeightedTime = [event weightedTime] / [event weight] * unWeight;
-            time += unWeightedTime;
+            time += [event partialTime];
         }
     }
     return time / (float)period / 60;
@@ -301,10 +299,8 @@
         Event *event = [allEvents objectAtIndex:i];
         float offset = [[event timeStamp] timeIntervalSinceNow];
         if (-offset < 24 * 60 * 60 * period) {
-            float unWeight = sqrtf([event weight]);
-            float unWeightedTime = [event weightedTime] / [event weight] * unWeight;
-            time += unWeightedTime;
-            events += unWeight;
+            time += [event weightedTime];
+            events += [event weight];
         }
     }
     if (events > 0) {
@@ -322,9 +318,7 @@
         Event *event = [allEvents objectAtIndex:i];
         float offset = [[event timeStamp] timeIntervalSinceNow];
         if (-offset < 24 * 60 * 60 * period) {
-            float unWeight = sqrtf([event weight]);
-            float unWeightedTime = [event weightedTime] / [event weight] * unWeight;
-            time += unWeightedTime;
+            time += [event partialTime];
         }
     }
     return time / (float)period / 60;
@@ -339,10 +333,8 @@
         Event *event = [allEvents objectAtIndex:i];
         float offset = [[event timeStamp] timeIntervalSinceNow];
         if (-offset < 24 * 60 * 60 * period) {
-            float unWeight = sqrtf([event weight]);
-            float unWeightedTime = [event weightedTime] / [event weight] * unWeight;
-            time += unWeightedTime;
-            events += unWeight;
+            time += [event weightedTime];
+            events += [event weight];
         }
     }
     if (events > 0) {

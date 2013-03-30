@@ -15,3 +15,6 @@ Changes from Version 1.0 (alpha) 2013/3/16
 	- Fixed bug where data set isn't reset when changing packages
 
 Changes from Version 1.0 (beta) 2013/3/20
+
+	- Refactored/simplified handling of incorrect answers/events and timing
+	  (so that the time penalty doesn't show up in graphs as time studied)

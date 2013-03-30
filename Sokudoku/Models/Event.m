@@ -23,8 +23,8 @@
 
 @synthesize character;
 @synthesize timeStamp;
-
-@synthesize weight, weightedTime;
+@synthesize weight, weightedTime, partialTime;
+@synthesize correct;
 
 - (NSMutableDictionary *)toDictionary {
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:4];
@@ -32,6 +32,8 @@
     [dict setObject:timeStamp forKey:@"timeStamp"];
     [dict setObject:[NSNumber numberWithFloat:weight] forKey:@"weight"];
     [dict setObject:[NSNumber numberWithFloat:weightedTime] forKey:@"weightedTime"];
+    [dict setObject:[NSNumber numberWithFloat:partialTime] forKey:@"partialTime"];
+    [dict setObject:[NSNumber numberWithBool:correct] forKey:@"correct"];
     return dict;
 }
 
@@ -40,6 +42,8 @@
     timeStamp = [dict objectForKey:@"timeStamp"];
     weight = [[dict objectForKey:@"weight"] floatValue];
     weightedTime = [[dict objectForKey:@"weightedTime"] floatValue];
+    partialTime = [[dict objectForKey:@"partialTime"] floatValue];
+    correct = [[dict objectForKey:@"correct"] boolValue];
 }
 
 @end

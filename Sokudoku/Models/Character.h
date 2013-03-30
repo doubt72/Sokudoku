@@ -28,13 +28,17 @@
     
     float timesTested;
     float totalTime;
+    
+    int incorrectAnswers;
+    int correctAnswers;
 }
 
 @property(copy) NSString *literal;
+@property int incorrectAnswers, correctAnswers;
 
 // withLength is the length of the total string that was tested; time is the total
 // time.  From that, newEvent calculates the weighting internally
-- (Event *) newEvent:(float)forLength:(float)time;
+- (Event *) newEvent:(int)forLength:(float)time:(BOOL)correct;
 
 // Average Speed; for character selection purposes (when picking which characters to
 // drill) returns 5.0 for not-yet-drilled characters

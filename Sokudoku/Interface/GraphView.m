@@ -64,6 +64,7 @@
     [line setLineWidth:1];
     [line stroke];
 
+    // Set text attributes
     NSFont *font = [NSFont systemFontOfSize:scale];
     NSDictionary *attr = [[NSDictionary alloc] initWithObjectsAndKeys:font,
                           NSFontAttributeName, baseColor,
@@ -86,13 +87,17 @@
     // Calculate data to graph -- initialize array for graph elements
     NSMutableArray *data = [NSMutableArray arrayWithCapacity:timeFrame];
     for (int i = 0; i < timeFrame; i++) {
-        if (graphType == 0 || graphType == 3) {
+        if (graphType == 0) {
             [data addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0],
-                             [NSNumber numberWithInt:0], nil]];
+                             [NSNumber numberWithFloat:0], nil]];
         } else if (graphType == 1) {
             [data addObject:[NSNumber numberWithFloat:0]];
         } else if (graphType == 2) {
             [data addObject:[NSNumber numberWithInt:0]];
+        } else if (graphType == 3) {
+            [data addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0],
+                             [NSNumber numberWithFloat:0],
+                             [NSNumber numberWithFloat:0], nil]];
         }
     }
     NSArray *events = [package eventsForTag:tag];
@@ -112,16 +117,24 @@
         if (bucket >= timeFrame) {
             continue;
         }
-        float unWeight = sqrtf([event weight]);
-        float unWeightedTime = [event weightedTime] / [event weight] * unWeight;
-        if (graphType == 0 || graphType == 3) {
+        float weight = [event weight];
+        float weightedTime = [event weightedTime];
+        float partialTime = [event partialTime];
+        if (graphType == 0) {
             NSArray *oldObject = [data objectAtIndex:bucket];
-            NSArray *newObject = [NSArray arrayWithObjects:[NSNumber numberWithFloat:[[oldObject objectAtIndex:0] floatValue] + unWeightedTime], [NSNumber numberWithInt:[[oldObject objectAtIndex:1] intValue] + 1], nil];
+            NSArray *newObject = [NSArray arrayWithObjects:[NSNumber numberWithFloat:[[oldObject objectAtIndex:0] floatValue] + weightedTime],
+                                  [NSNumber numberWithFloat:[[oldObject objectAtIndex:1] floatValue] + weight], nil];
             [data replaceObjectAtIndex:bucket withObject:newObject];
         } else if (graphType == 1) {
-            [data replaceObjectAtIndex:bucket withObject:[NSNumber numberWithFloat:[[data objectAtIndex:bucket] floatValue] + unWeightedTime]];
+            [data replaceObjectAtIndex:bucket withObject:[NSNumber numberWithFloat:[[data objectAtIndex:bucket] floatValue] + partialTime]];
         } else if (graphType == 2) {
             [data replaceObjectAtIndex:bucket withObject:[NSNumber numberWithInt:[[data objectAtIndex:bucket] intValue] + 1]];
+        } else if (graphType == 3) {
+            NSArray *oldObject = [data objectAtIndex:bucket];
+            NSArray *newObject = [NSArray arrayWithObjects:[NSNumber numberWithFloat:[[oldObject objectAtIndex:0] floatValue] + weightedTime],
+                                  [NSNumber numberWithFloat:[[oldObject objectAtIndex:1] floatValue] + weight],
+                                  [NSNumber numberWithFloat:[[oldObject objectAtIndex:2] floatValue] + partialTime], nil];
+            [data replaceObjectAtIndex:bucket withObject:newObject];
         }
     }
 
@@ -151,7 +164,7 @@
             if (average > altMaxValue) {
                 altMaxValue = average;
             }
-            float value = [[[data objectAtIndex:i] objectAtIndex:0] floatValue];
+            float value = [[[data objectAtIndex:i] objectAtIndex:2] floatValue];
             if (value > maxValue) {
                 maxValue = value;
             }
@@ -184,7 +197,7 @@
         } else if (graphType == 2) {
             value = [[data objectAtIndex:i] intValue];
         } else if (graphType == 3) {
-            value = [[[data objectAtIndex:i] objectAtIndex:0] floatValue];
+            value = [[[data objectAtIndex:i] objectAtIndex:2] floatValue];
         }
         float width = (boundsX - scale*4) / (float)timeFrame;
         float start = scale*3 + (boundsX - scale*4) * (1 - (float)i / (float)timeFrame) - width;
