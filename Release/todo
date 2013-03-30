@@ -7,7 +7,7 @@ repeated in several other places, e.g., the statistics shown at the
 bottom of the main page).  The "histogram" (character window) could
 probably use similar simplification, but it isn't as extreme.
 
-2. Return answers for missed characters:
+2. (DONE) Return answers for missed characters
 
 First, this is helpful, but also (at least) the 0xB5xx UTF code page
 (Hangul) contains rendering errors in the default system font under
