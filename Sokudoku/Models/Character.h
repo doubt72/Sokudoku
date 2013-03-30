@@ -59,7 +59,7 @@
 // This is used for generating all possible pronunciations (for testing correct answers).
 // This takes a list and appends all the possible pronunciation to the end of the
 // supplied strings and returns them in a list
-- (NSArray *)appendAllPronunciations:(NSArray *)list;
+- (NSArray *)appendAllPronunciations:(NSArray *)list:(BOOL)includeLiteral;
 
 - (void)reset;
 

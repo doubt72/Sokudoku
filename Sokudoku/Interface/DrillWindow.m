@@ -87,8 +87,8 @@
         NSAlert *alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:@"Continue"];
         [alert setMessageText:@"Incorrect Answer"];
-        [alert setInformativeText:[NSString stringWithFormat:@"Answer %@ incorrect",
-                                   answer]];
+        [alert setInformativeText:[NSString stringWithFormat:@"Answer %@ incorrect, the following answers would be accepted: %@ (as well as literal characters themselves)",
+                                   answer, [package allPronunciations:literals]]];
         [alert setAlertStyle:NSInformationalAlertStyle];
         [alert beginSheetModalForWindow:[self window] modalDelegate:self didEndSelector:@selector(finishAnswer:returnCode:contextInfo:) contextInfo:nil];
     }

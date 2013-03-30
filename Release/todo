@@ -17,4 +17,15 @@ characters -- it'd be nice if I could identify those more easily.
 3. Render a different font for Hangul:
 
 Because of rendering errors in the Hangul system font under OSX 10.8.
-Or even make this configurable for different packages?
+Might not be a bad idea to make this configurable for different packages?
+
+4. Replace global settings with package settings:
+
+Given that packages now remember settings, there's really no reason
+to have both.  It makes things more complicated, and introduced a number
+of bugs (which have not been completely stomped).
+
+5. Unit tests
+
+While some of the interface can't be so easily tested, a lot of the
+low-level functions certainly could be.

@@ -181,7 +181,7 @@
 }
 
 // Generates events for each character and stores them in the package history
-- (void)event:(NSMutableArray *)forCharacters :(float)time :(BOOL)correct {
+- (void)event:(NSArray *)forCharacters :(float)time :(BOOL)correct {
     for (int i = 0; i < [forCharacters count]; i++) {
         Character *current = [forCharacters objectAtIndex:i];
         Event *event = [current newEvent:(int)[forCharacters count] :time :correct];
@@ -189,22 +189,43 @@
     }
 }
 
-- (BOOL)test:(NSArray *)question :(NSString *)answer :(float)time {
-    // Get characters to match question
-    NSMutableArray *qChars = [[NSMutableArray alloc] initWithCapacity:[question count]];
-    for (int i = 0; i < [question count]; i++) {
+// Return an array of characters for the given literals
+- (NSArray *)charactersForLiterals:(NSArray *)literals {
+    NSMutableArray *qChars = [[NSMutableArray alloc] initWithCapacity:[literals count]];
+    for (int i = 0; i < [literals count]; i++) {
         for (int j = 0; j < [characters count]; j++) {
-            if ([[[characters objectAtIndex:j] literal] isEqualToString:[question objectAtIndex:i]]) {
+            if ([[[characters objectAtIndex:j] literal] isEqualToString:[literals objectAtIndex:i]]) {
                 [qChars addObject:[characters objectAtIndex:j]];
             }
         }
     }
+    return [NSArray arrayWithArray:qChars];
+}
 
-    // Generate all pronunciations to test against
+// Return all the possible pronunciations for the given characters
+- (NSArray *)getPronunciations:(NSArray *)qChars:(BOOL)includeLiteral {
     NSArray *allPron = [[NSArray alloc] initWithObjects:@"", nil];
     for (int i = 0; i < [qChars count]; i++) {
-        allPron = [[qChars objectAtIndex:i] appendAllPronunciations:allPron];
+        allPron = [[qChars objectAtIndex:i] appendAllPronunciations:allPron:includeLiteral];
     }
+    return allPron;
+}
+
+- (NSString *)allPronunciations:(NSArray *)literals {
+    NSArray *qChars = [self charactersForLiterals:literals];
+
+    NSArray *allPron = [self getPronunciations:qChars:NO];
+    NSString *rc = [allPron componentsJoinedByString:@", "];
+    
+    return rc;
+}
+
+- (BOOL)test:(NSArray *)question :(NSString *)answer :(float)time {
+    // Get characters to match question
+    NSArray *qChars = [self charactersForLiterals:question];
+
+    // Generate all pronunciations to test against
+    NSArray *allPron = [self getPronunciations:qChars:YES];
 
     // Any match results in a positive result
     for (int i = 0; i < [allPron count]; i++) {

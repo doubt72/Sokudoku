@@ -53,6 +53,9 @@
 // Test answer against question and record event as appropriate
 - (BOOL) test:(NSArray *)question:(NSString *)answer:(float)time;
 
+// Get all pronunciations (in a comma delimited string) for a set of literals
+- (NSString *) allPronunciations:(NSArray *)literals;
+
 // Array of character information for displaying average speeds in the character window
 - (NSArray *) statsForTag:(NSString *)tag:(BOOL)top;
 

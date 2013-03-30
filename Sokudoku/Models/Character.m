@@ -102,15 +102,17 @@
 // This is used for generating all possible pronunciations (for testing correct answers).
 // This takes a list and appends all the possible pronunciation to the end of the
 // supplied strings and returns them in a list
-- (NSArray *)appendAllPronunciations:(NSArray *)list {
+- (NSArray *)appendAllPronunciations:(NSArray *)list:(BOOL)includeLiteral {
     NSMutableArray *rc = [[NSMutableArray alloc] initWithCapacity:[list count] * [pronunciations count]];
     for (int i = 0; i < [list count]; i++) {
         for (int j = 0; j < [pronunciations count]; j++) {
             [rc addObject:[NSString stringWithFormat:@"%@%@",
                            [list objectAtIndex:i], [pronunciations objectAtIndex:j]]];
         }
-        [rc addObject:[NSString stringWithFormat:@"%@%@",
-                       [list objectAtIndex:i], literal]];
+        if (includeLiteral) {
+            [rc addObject:[NSString stringWithFormat:@"%@%@",
+                           [list objectAtIndex:i], literal]];
+        }
     }
     return [NSArray arrayWithArray:rc];
 }
