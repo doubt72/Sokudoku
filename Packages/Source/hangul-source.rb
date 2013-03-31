@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-tags = ["vowel", "initial", "simple", "compound", "all"]
-desc = ["Simple Vowels", "Initial Only", "Simple Final", "Complex Final", "All Hangul"]
+tags = ["vowel", "initial", "simple", "basic", "compound", "all"]
+desc = ["Vowels", "Initial Consonant Only", "Simple Final Consonant", "All Simple Characters", "Complex Final Consonant", "All Characters"]
 
 base = 0xAC00
 
@@ -49,9 +49,9 @@ initial.each do |i_jamo|
 
       ctags = []
       if (i_jamo == ["", "x"] && f_jamo == [""])
-        ctags = ["vowel"]
+        ctags = ["vowel", "basic"]
       elsif (f_jamo == [""])
-        ctags = ["initial"]
+        ctags = ["initial", "basic"]
       elsif (f_jamo.include?("gs") || f_jamo.include?("nj") ||
              f_jamo.include?("nh") || f_jamo.include?("lg") ||
              f_jamo.include?("lm") || f_jamo.include?("lb") ||
@@ -60,7 +60,7 @@ initial.each do |i_jamo|
              f_jamo.include?("bs"))
         ctags = ["compound"]
       else
-        ctags = ["simple"]
+        ctags = ["simple", "basic"]
       end
 
       ctags.push("all")
