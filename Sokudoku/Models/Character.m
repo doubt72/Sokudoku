@@ -28,31 +28,31 @@
 // Because characters are only tested in isolation when the string being tested is
 // one character long, we weigh the results so that long strings affect the average
 // time less than shorter strings
-- (Event *)newEvent:(int)forLength :(float)time :(BOOL)correct {
-    float weight = 1.0 / (forLength * forLength);
+- (Event *)newEventForLength:(int)length withTime:(float)time wasCorrect:(BOOL)correct {
+    float weight = 1.0 / (length * length);
     timesTested += weight;
-    totalTime += time / forLength * weight;
+    totalTime += time / length * weight;
 
     Event *event = [[Event alloc] init];
     [event setCharacter:[NSString stringWithString:literal]];
     [event setTimeStamp:[NSDate date]];
     [event setWeight:weight];
-    [event setPartialTime:time / forLength];
+    [event setPartialTime:time / length];
     [event setCorrect:correct];
     if (correct) {
         correctAnswers++;
-        [event setWeightedTime:time / forLength * weight];
+        [event setWeightedTime:time / length * weight];
     } else {
-        totalTime += 10.0 / forLength * weight;
+        totalTime += 10.0 / length * weight;
         incorrectAnswers++;
-        [event setWeightedTime:(time + 10) / forLength * weight];
+        [event setWeightedTime:(time + 10) / length * weight];
     }
     return event;
 }
 
 - (float)averageSpeed {
     if (timesTested == 0.0) {
-        return 5.0;
+        return 10.0;
     }
     return totalTime / timesTested;
 }
@@ -102,7 +102,7 @@
 // This is used for generating all possible pronunciations (for testing correct answers).
 // This takes a list and appends all the possible pronunciation to the end of the
 // supplied strings and returns them in a list
-- (NSArray *)appendAllPronunciations:(NSArray *)list:(BOOL)includeLiteral {
+- (NSArray *)appendAllPronunciations:(NSArray *)list withLiterals:(BOOL)includeLiteral {
     NSMutableArray *rc = [[NSMutableArray alloc] initWithCapacity:[list count] * [pronunciations count]];
     for (int i = 0; i < [list count]; i++) {
         for (int j = 0; j < [pronunciations count]; j++) {

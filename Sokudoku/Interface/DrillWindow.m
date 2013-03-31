@@ -73,7 +73,7 @@
     timeLeft += elapsed;
     NSString *answer = [answerField stringValue];
     NSString *status;
-    if ([package test:literals:answer:-elapsed]) {
+    if ([package test:literals against:answer withTime:-elapsed]) {
         correctAnswers++;
         status = [NSString stringWithFormat:@"Answer %@ correct (in %.2f seconds)",
                   answer, -elapsed];
@@ -127,7 +127,8 @@
     [timer setStringValue:[NSString stringWithFormat:@"%.2d:%.2d", minutes, seconds]];
     lastQuestion = literals;
     while ([self compare]) {
-        literals = [package generate:minLength:maxLength:weighted:tag];
+        literals = [package generateWithMin:minLength withMax:maxLength
+                                 withWeight:weighted forTag:tag];
     }
     [testString setStringValue:[self literalStrings]];
 

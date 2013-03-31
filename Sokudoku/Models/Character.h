@@ -38,10 +38,10 @@
 
 // withLength is the length of the total string that was tested; time is the total
 // time.  From that, newEvent calculates the weighting internally
-- (Event *) newEvent:(int)forLength:(float)time:(BOOL)correct;
+- (Event *) newEventForLength:(int)length withTime:(float)time wasCorrect:(BOOL)correct;
 
 // Average Speed; for character selection purposes (when picking which characters to
-// drill) returns 5.0 for not-yet-drilled characters
+// drill) returns 10.0 for not-yet-drilled characters
 - (float) averageSpeed;
 
 // Whether or not the character has been drilled on yet
@@ -59,7 +59,7 @@
 // This is used for generating all possible pronunciations (for testing correct answers).
 // This takes a list and appends all the possible pronunciation to the end of the
 // supplied strings and returns them in a list
-- (NSArray *)appendAllPronunciations:(NSArray *)list:(BOOL)includeLiteral;
+- (NSArray *)appendAllPronunciations:(NSArray *)list withLiterals:(BOOL)includeLiteral;
 
 - (void)reset;
 

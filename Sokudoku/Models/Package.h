@@ -34,7 +34,7 @@
 @property(copy) NSString *name;
 
 - (void) addCharacter:(Character *)character;
-- (void) addTag:(NSString *)tag:(NSString *)description;
+- (void) addTag:(NSString *)tag withDescription:(NSString *)description;
 - (NSArray *) allTagDescriptions;
 
 - (NSString *) tagForDescription:(NSString *)description;
@@ -48,24 +48,24 @@
 
 // Generate new "question" for drill within the specific length for the given tag
 // wieght = whether or not to prioritize slower characters
-- (NSArray *) generate:(int)min:(int)max:(BOOL)weight:(NSString *)tag;
+- (NSArray *) generateWithMin:(int)min withMax:(int)max withWeight:(BOOL)weight forTag:(NSString *)tag;
 
 // Test answer against question and record event as appropriate
-- (BOOL) test:(NSArray *)question:(NSString *)answer:(float)time;
+- (BOOL) test:(NSArray *)question against:(NSString *)answer withTime:(float)time;
 
 // Get all pronunciations (in a comma delimited string) for a set of literals
 - (NSString *) allPronunciations:(NSArray *)literals;
 
 // Array of character information for displaying average speeds in the character window
-- (NSArray *) statsForTag:(NSString *)tag:(BOOL)top;
+- (NSArray *) statsForTag:(NSString *)tag fromTop:(BOOL)top;
 
 // Array of events filtered by tag for history graph
 - (NSArray *) eventsForTag:(NSString *)tag;
 
 - (float) dailyAverage:(int)period;
 - (float) speedAverage:(int)period;
-- (float) dailyAverageForTag:(int)period:(NSString *)tag;
-- (float) speedAverageForTag:(int)period:(NSString *)tag;
+- (float) dailyAverage:(int)period forTag:(NSString *)tag;
+- (float) speedAverage:(int)period forTag:(NSString *)tag;
 
 - (void) clearHistory;
 - (void) reset;

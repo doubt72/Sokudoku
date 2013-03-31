@@ -42,7 +42,7 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     // Get characters for graph
-    NSArray *array = [package statsForTag:tag:top];
+    NSArray *array = [package statsForTag:tag fromTop:top];
     
     NSScrollView *scrollView = [self enclosingScrollView];
     NSSize size = [scrollView contentSize];

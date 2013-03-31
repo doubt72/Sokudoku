@@ -21,3 +21,7 @@ Changes from Version 1.0 (beta) 2013/3/20
   studied)
 - Added display of correct answer for incorrect drill answers (and
   related option for displaying only non-literal answers)
+- Changed internal "speed" value from 5s to 10s for undrilled
+  characters (thus making them four times more likely to be drilled on
+  over previously drilled characters).
+- Changed anonymous function calls to have named parameters

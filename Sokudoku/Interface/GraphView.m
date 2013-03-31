@@ -184,7 +184,7 @@
 
     // Draw data bars
     for (int i = 0; i < timeFrame; i++) {
-        float value;
+        float value = 0;
         if (graphType == 0) {
             if ([[[data objectAtIndex:i] objectAtIndex:1] intValue] != 0) {
                 value = ([[[data objectAtIndex:i] objectAtIndex:0] floatValue] /

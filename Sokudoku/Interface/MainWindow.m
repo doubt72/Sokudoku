@@ -60,18 +60,18 @@
     body = [NSString stringWithFormat:@"%.2fs (%.1fm/day)", speed, daily];
     [displayYearPackage setStringValue:body];
     
-    speed = [currentPackage speedAverageForTag:7 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
-    daily = [currentPackage dailyAverageForTag:7 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    speed = [currentPackage speedAverage:7 forTag:[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    daily = [currentPackage dailyAverage:7 forTag:[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
     body = [NSString stringWithFormat:@"%.2fs (%.1fm/day)", speed, daily];
     [displayWeekSet setStringValue:body];
     
-    speed = [currentPackage speedAverageForTag:30 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
-    daily = [currentPackage dailyAverageForTag:30 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    speed = [currentPackage speedAverage:30 forTag:[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    daily = [currentPackage dailyAverage:30 forTag:[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
     body = [NSString stringWithFormat:@"%.2fs (%.1fm/day)", speed, daily];
     [displayMonthSet setStringValue:body];
     
-    speed = [currentPackage speedAverageForTag:365 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
-    daily = [currentPackage dailyAverageForTag:365 :[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    speed = [currentPackage speedAverage:365 forTag:[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
+    daily = [currentPackage dailyAverage:365 forTag:[currentPackage tagForDescription:[dataSet titleOfSelectedItem]]];
     body = [NSString stringWithFormat:@"%.2fs (%.1fm/day)", speed, daily];
     [displayYearSet setStringValue:body];
 }
@@ -217,7 +217,7 @@
     [self updateStats];
 }
 
-- (void)displayAlertForImport:(NSString *)fileName:(NSString *)why {
+- (void)displayAlertForImport:(NSString *)fileName reason:(NSString *)why {
     NSAlert *alert = [[NSAlert alloc] init];
     [alert addButtonWithTitle:@"Continue"];
     [alert setMessageText:@"Failed to Import File"];
@@ -242,13 +242,13 @@
         Package *package = [[Package alloc] init];
         NSString *rc = [package import:fileName];
         if (rc != nil) {
-            [self displayAlertForImport:fileName:rc];
+            [self displayAlertForImport:fileName reason:rc];
         } else {
             NSString *name = [package name];
             if ([[settings availablePackages] containsObject:name]) {
-                [self displayAlertForImport:fileName:@"package with the same name already exists"];
+                [self displayAlertForImport:fileName reason:@"package with the same name already exists"];
             } else if ([[settings allPackages] containsObject:name]) {
-                [self displayAlertForImport:fileName:@"forgotten package with the same name already exists, please recall that package instead"];
+                [self displayAlertForImport:fileName reason:@"forgotten package with the same name already exists, please recall that package instead"];
             } else {
                 [package save:[self saveDictFromSettings]];
                 [settings setCurrentPackageName:name];

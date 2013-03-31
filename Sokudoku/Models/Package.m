@@ -30,7 +30,7 @@
     [characters addObject:character];
 }
 
-- (void)addTag:(NSString *)tag :(NSString *)description {
+- (void)addTag:(NSString *)tag withDescription:(NSString *)description {
     [tags addObject:tag];
     [tagDescriptions addObject:description];
 }
@@ -59,7 +59,7 @@
         return @"Tag and Tag Description arrays have different counts";
     }
     for (int i = 0; i < [importTags count]; i++) {
-        [self addTag:[importTags objectAtIndex:i]:[importTagDescriptions objectAtIndex:i]];
+        [self addTag:[importTags objectAtIndex:i] withDescription:[importTagDescriptions objectAtIndex:i]];
     }
     NSArray *importCharacters = [import objectForKey:@"characters"];
     for (int i = 0; i < [importCharacters count]; i++) {
@@ -139,7 +139,7 @@
 }
 
 // Used for selecting characters by average speed when generating questions
-- (NSString *)objectForIndex:(float)index:(NSArray *)list {
+- (NSString *)objectForIndex:(float)index fromList:(NSArray *)list {
     float left = index;
     for (int i = 0; i < [list count]; i++) {
         left -= [[[list objectAtIndex:i] objectAtIndex:1] floatValue];
@@ -152,7 +152,7 @@
 
 // Generate new "question" for drill within the specific length for the given tag
 // wieght = whether or not to prioritize slower characters
-- (NSArray *)generate:(int)min:(int)max:(BOOL)weight:(NSString *)tag {
+- (NSArray *)generateWithMin:(int)min withMax:(int)max withWeight:(BOOL)weight forTag:(NSString *)tag {
     float totalWeight = 0;
     NSMutableArray *charSet = [NSMutableArray arrayWithCapacity:[characters count]];
     for (int i = 0; i < [characters count]; i++) {
@@ -175,7 +175,7 @@
     NSMutableArray *rc = [[NSMutableArray alloc] initWithCapacity:length];
     for (int i = 0; i < length; i++) {
         float index = (float)(arc4random() % (uint)(totalWeight * 1000)) / 1000;
-        [rc addObject:[self objectForIndex:index:charSet]];
+        [rc addObject:[self objectForIndex:index fromList:charSet]];
     }
     return [NSArray arrayWithArray:rc];
 }
@@ -184,7 +184,7 @@
 - (void)event:(NSArray *)forCharacters :(float)time :(BOOL)correct {
     for (int i = 0; i < [forCharacters count]; i++) {
         Character *current = [forCharacters objectAtIndex:i];
-        Event *event = [current newEvent:(int)[forCharacters count] :time :correct];
+        Event *event = [current newEventForLength:(int)[forCharacters count] withTime:time wasCorrect:correct];
         [history addEvent:event];
     }
 }
@@ -203,10 +203,10 @@
 }
 
 // Return all the possible pronunciations for the given characters
-- (NSArray *)getPronunciations:(NSArray *)qChars:(BOOL)includeLiteral {
+- (NSArray *)getPronunciations:(NSArray *)qChars withLiteral:(BOOL)includeLiteral {
     NSArray *allPron = [[NSArray alloc] initWithObjects:@"", nil];
     for (int i = 0; i < [qChars count]; i++) {
-        allPron = [[qChars objectAtIndex:i] appendAllPronunciations:allPron:includeLiteral];
+        allPron = [[qChars objectAtIndex:i] appendAllPronunciations:allPron withLiterals:includeLiteral];
     }
     return allPron;
 }
@@ -214,18 +214,18 @@
 - (NSString *)allPronunciations:(NSArray *)literals {
     NSArray *qChars = [self charactersForLiterals:literals];
 
-    NSArray *allPron = [self getPronunciations:qChars:NO];
+    NSArray *allPron = [self getPronunciations:qChars withLiteral:NO];
     NSString *rc = [allPron componentsJoinedByString:@", "];
     
     return rc;
 }
 
-- (BOOL)test:(NSArray *)question :(NSString *)answer :(float)time {
+- (BOOL)test:(NSArray *)question against:(NSString *)answer withTime:(float)time {
     // Get characters to match question
     NSArray *qChars = [self charactersForLiterals:question];
 
     // Generate all pronunciations to test against
-    NSArray *allPron = [self getPronunciations:qChars:YES];
+    NSArray *allPron = [self getPronunciations:qChars withLiteral:YES];
 
     // Any match results in a positive result
     for (int i = 0; i < [allPron count]; i++) {
@@ -241,7 +241,7 @@
 }
 
 // Character stats for character window
-- (NSArray *)statsForTag:(NSString *)tag:(BOOL)top {
+- (NSArray *)statsForTag:(NSString *)tag fromTop:(BOOL)top {
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:[characters count]];
     for (int i = 0; i < [characters count]; i++) {
         Character *character = [characters objectAtIndex:i];
@@ -331,7 +331,7 @@
     }
 }
 
-- (float)dailyAverageForTag:(int)period :(NSString *)tag {
+- (float)dailyAverage:(int)period forTag:(NSString *)tag {
     float time = 0;
     NSArray *allEvents = [self eventsForTag:tag];
     
@@ -345,7 +345,7 @@
     return time / (float)period / 60;
 }
 
-- (float)speedAverageForTag:(int)period :(NSString *)tag {
+- (float)speedAverage:(int)period forTag:(NSString *)tag {
     float time = 0;
     float events = 0;
     NSArray *allEvents = [self eventsForTag:tag];
