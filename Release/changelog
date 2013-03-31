@@ -1,20 +1,23 @@
 Changes from Version 1.0 (alpha) 2013/3/16
 
-	- Switched weighting from linear to squared
-	  (Slower characters now show up more often during drills)
-	- Drill no longer repeats characters
-	  (But don't try drilling on single character sets)
-	- Changed repetitions per day (wrong) to characters per day (correct)
-	- Now remembers graph window settings after closing
-	- Now remembers package settings when switching packages
-	- Adds confirmation for missed characters
-	  (So that if a character is missed, it can be checked)
-	- Added display for averages (per character, per day) over time
-	- Fixed bug where labels did not match sliders
-	- Fixed bug where settings weren't reset when changing packages
-	- Fixed bug where data set isn't reset when changing packages
+- Switched weighting from linear to squared (Slower characters now
+  show up more often during drills)
+- Drill no longer repeats characters (But don't try drilling on single
+  character sets)
+- Changed repetitions per day (wrong) to characters per day (correct)
+- Now remembers graph window settings after closing
+- Now remembers package settings when switching packages
+- Adds confirmation for missed characters (So that if a character is
+  missed, it can be checked)
+- Added display for averages (per character, per day) over time
+- Fixed bug where labels did not match sliders
+- Fixed bug where settings weren't reset when changing packages
+- Fixed bug where data set isn't reset when changing packages
 
 Changes from Version 1.0 (beta) 2013/3/20
 
-	- Refactored/simplified handling of incorrect answers/events and timing
-	  (so that the time penalty doesn't show up in graphs as time studied)
+- Refactored/simplified handling of incorrect answers/events and
+  timing (so that the time penalty doesn't show up in graphs as time
+  studied)
+- Added display of correct answer for incorrect drill answers (and
+  related option for displaying only non-literal answers)
