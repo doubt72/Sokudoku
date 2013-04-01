@@ -28,3 +28,5 @@ Changes from Version 1.0 (beta) 2013/3/20
 - Switched to top 150 characters instead of 100 in character view
 - Added color coding for character view based on percent correct
   answers
+- Added two graphs, one for rate of incorrect answers, one for total
+  answers overlaid with rates
