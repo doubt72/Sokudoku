@@ -250,8 +250,13 @@
             if ([character tested] == NO) {
                 time = 0;
             }
+            float percentage = 1.0;
+            if ([character correctAnswers] + [character incorrectAnswers] > 0) {
+                percentage = (float)[character correctAnswers] / (float)([character correctAnswers] + [character incorrectAnswers]);
+            }
             [array addObject:[NSArray arrayWithObjects:[character literal],
-                              [NSNumber numberWithFloat:time], nil]];
+                              [NSNumber numberWithFloat:time],
+                              [NSNumber numberWithFloat:percentage], nil]];
         }
     }
     NSArray *fullArray;
@@ -268,8 +273,8 @@
     }
 
     // Limit to 100 characters (too many more overwhelms the window view)
-    if ([fullArray count] > 100) {
-        NSRange range = NSMakeRange(0, 100);
+    if ([fullArray count] > 150) {
+        NSRange range = NSMakeRange(0, 150);
         return [fullArray subarrayWithRange:range];
     } else {
         return fullArray;

@@ -23,5 +23,8 @@ Changes from Version 1.0 (beta) 2013/3/20
   related option for displaying only non-literal answers)
 - Changed internal "speed" value from 5s to 10s for undrilled
   characters (thus making them four times more likely to be drilled on
-  over previously drilled characters).
+  over previously drilled characters when drilling by weight).
 - Changed anonymous function calls to have named parameters
+- Switched to top 150 characters instead of 100 in character view
+- Added color coding for character view based on percent correct
+  answers

@@ -29,3 +29,7 @@ of bugs (which have not been completely stomped).
 
 While some of the interface can't be so easily tested, a lot of the
 low-level functions certainly could be.
+
+6. Graph missed characters
+
+Events now contain the information.  Wouldn't be hard to do.

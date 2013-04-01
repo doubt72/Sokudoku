@@ -119,7 +119,10 @@
         float height = textSize.height * 0.5;
         float offset = textSize.height * 0.25;
         NSRect rect = NSMakeRect(timeSize.width + 15, currentY + offset, length, height);
-        [[NSColor darkGrayColor] set];
+        float percent = [[[array objectAtIndex:i] objectAtIndex:2] floatValue];
+        [[NSColor colorWithCalibratedRed:(0.75 * (1 - percent))
+                                          green:(0.6 * percent)
+                                           blue:0.0 alpha:1.0] set];
         [NSBezierPath fillRect:rect];
         currentY += textSize.height;
     }

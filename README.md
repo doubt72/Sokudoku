@@ -5,13 +5,16 @@
 
 Sokudoku is a program for practicing reading random characters.
 Although probably best for syllable-based character sets like Japanese
-Katakana or Hiragana, or Korean Hangul, it probably would work fine
-with "regular" phonetic character sets as well (or something like
-Korean Jomo), taking into account the fact that it more or less
-produces strings of random gibberish.  Things like Japanese or Chinese
-compound words would work as well, although those are probably more
-suited for a general flashcard test program like
-[Anki](http://ankisrs.net/).
+Katakana or Hiragana, or Korean Hangul (for which it is primarily
+intended), it more or less works fine with "regular" phonetic
+character sets as well (or something like Korean Jomo), taking into
+account the fact that it more or less produces strings of random
+gibberish (alternately, instead of drilling on longer strings, it's
+always possible to simply drill on single characters).  Things like
+Japanese or Chinese compound words would also work reasonably well,
+although those are probably more suited for a general flashcard test
+program like [Anki](http://ankisrs.net/) which has the further
+advantage of allowing you to drill in the other direction as well.
 
 The program itself is fairly simple: it displays a set of characters,
 the user attempts to type in the pronunciation of those characters as
@@ -21,22 +24,26 @@ optionally preferentially feeds the user characters they have trouble
 with.
 
 Really, the program is a bit of a gadget thrown together over a couple
-weeks so I could drill down on Hangul reading practice (with Katakana
-as a bonus).  It's not as useful as a general/configurable drill
-program like Anki, but possibly still useful as a complement -- I
-mean, I know why I wanted it, but YMMV.
+weeks (and refined a bit as I've used it) so I could drill down on
+Hangul reading practice (with Katakana as a bonus).  It's not as
+generally useful as a general/configurable drill program like Anki,
+but I believe it's still useful as a complement (I've been using both)
+-- after all, I know why I wanted it, but your mileage may vary.
 
 ## Application DMG
 
 If you just want to install the program, there's a barebones DMG with
-the application in the release directory; the current latest version is [1.0b (beta)](Release/Sokudoku-1.0b.dmg).
-
+the application in the release directory; the current latest version
+is [1.0b (beta)](Release/Sokudoku-1.0b.dmg).  There are, however, a
+number of bug fixes/enhancements since that version available if you
+build from the latest source (but not yet enough to justify a newer
+release).
 
 ## XCode Project
 
 This repository contains an XCode project in the following
 directories; if you have XCode installed, it should be possible to
-load the project from the checked out repository and then build or
+load the project from the checked out repository and then build and
 modify it.
 
 - Sokudoku/ : source files
@@ -54,6 +61,8 @@ in the main program.
 So far a Japanese kana and Korean Hangul and Jomo packages are
 included; more may follow (as I build packages to practice on, or
 maybe other people do if anyone besides me ever uses the program).
+The test package, of course, is mainly a simple package for testing
+and not of any particular interest beyond that.
 
 Packages are encoded as plists (Apple's XML format that Cocoa supports
 natively).  The format is actually fairly simple: a dictionary with a
@@ -62,7 +71,9 @@ characters (each made up of a dictionary containing a literal, tags,
 and pronunciations).  It's unlikely I'll fully document the format
 anytime soon, but for the curious there are obviously several examples
 in the repository of both programs that will generate packages and
-packages themselves.
+packages themselves -- if you build a new package that contains any
+errors, the program should supply somewhat meaningful error messages
+when you attempt to load it that should help you fix it.
 
 Once packages are loaded, the application handles storing the package
 and history internally in the user's account.

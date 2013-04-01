@@ -70,8 +70,8 @@
     [histogramView setTop:top];
     
     [subset removeAllItems];
-    [subset addItemWithTitle:@"Slowest 100 characters"];
-    [subset addItemWithTitle:@"Fastest 100 characters"];
+    [subset addItemWithTitle:@"Slowest 150 characters"];
+    [subset addItemWithTitle:@"Fastest 150 characters"];
     [subset selectItemAtIndex:0];
 }
 
