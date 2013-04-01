@@ -20,17 +20,28 @@
 #import <Cocoa/Cocoa.h>
 @class Package;
 
+typedef enum
+{
+    AVG_SPEED = 0,
+    STUDY_TIME = 1,
+    CHARACTER_COUNT = 2,
+    CORRECT_RATE = 3,
+    STUDY_TIME_WITH_SPEED = 4,
+    CORRECT_RATE_WITH_COUNT = 5
+} graphTypes;
+
 @interface GraphView : NSView {
 @private
     Package *package;
 
     NSString *tag;
     int timeFrame;
-    int graphType;
+    graphTypes graphType;
 }
 
 @property Package *package;
 @property NSString *tag;
-@property int timeFrame, graphType;
+@property int timeFrame;
+@property graphTypes graphType;
 
 @end

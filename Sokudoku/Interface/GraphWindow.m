@@ -70,7 +70,9 @@
     [graphType addItemWithTitle:@"Average Answer Speed"];
     [graphType addItemWithTitle:@"Study Time Per Day"];
     [graphType addItemWithTitle:@"Characters Per Day"];
+    [graphType addItemWithTitle:@"Percent Incorrect"];
     [graphType addItemWithTitle:@"Average Speed + Study Time"];
+    [graphType addItemWithTitle:@"Answers + Percent Incorrect"];
     
     [timeFrame removeAllItems];
     [timeFrame addItemWithTitle:@"One Week"];

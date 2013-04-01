@@ -34,7 +34,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         timeFrame = 7;
-        graphType = 0;
+        graphType = AVG_SPEED;
     }
     
     return self;
@@ -87,17 +87,20 @@
     // Calculate data to graph -- initialize array for graph elements
     NSMutableArray *data = [NSMutableArray arrayWithCapacity:timeFrame];
     for (int i = 0; i < timeFrame; i++) {
-        if (graphType == 0) {
+        if (graphType == AVG_SPEED) {
             [data addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0],
                              [NSNumber numberWithFloat:0], nil]];
-        } else if (graphType == 1) {
+        } else if (graphType == STUDY_TIME) {
             [data addObject:[NSNumber numberWithFloat:0]];
-        } else if (graphType == 2) {
+        } else if (graphType == CHARACTER_COUNT) {
             [data addObject:[NSNumber numberWithInt:0]];
-        } else if (graphType == 3) {
+        } else if (graphType == STUDY_TIME_WITH_SPEED) {
             [data addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0],
                              [NSNumber numberWithFloat:0],
                              [NSNumber numberWithFloat:0], nil]];
+        } else if (graphType == CORRECT_RATE_WITH_COUNT || graphType == CORRECT_RATE) {
+            [data addObject:[NSArray arrayWithObjects:[NSNumber numberWithInt:0],
+                             [NSNumber numberWithInt:0], nil]];
         }
     }
     NSArray *events = [package eventsForTag:tag];
@@ -120,21 +123,31 @@
         float weight = [event weight];
         float weightedTime = [event weightedTime];
         float partialTime = [event partialTime];
-        if (graphType == 0) {
+        if (graphType == AVG_SPEED) {
             NSArray *oldObject = [data objectAtIndex:bucket];
             NSArray *newObject = [NSArray arrayWithObjects:[NSNumber numberWithFloat:[[oldObject objectAtIndex:0] floatValue] + weightedTime],
                                   [NSNumber numberWithFloat:[[oldObject objectAtIndex:1] floatValue] + weight], nil];
             [data replaceObjectAtIndex:bucket withObject:newObject];
-        } else if (graphType == 1) {
+        } else if (graphType == STUDY_TIME) {
             [data replaceObjectAtIndex:bucket withObject:[NSNumber numberWithFloat:[[data objectAtIndex:bucket] floatValue] + partialTime]];
-        } else if (graphType == 2) {
+        } else if (graphType == CHARACTER_COUNT) {
             [data replaceObjectAtIndex:bucket withObject:[NSNumber numberWithInt:[[data objectAtIndex:bucket] intValue] + 1]];
-        } else if (graphType == 3) {
+        } else if (graphType == STUDY_TIME_WITH_SPEED) {
             NSArray *oldObject = [data objectAtIndex:bucket];
             NSArray *newObject = [NSArray arrayWithObjects:[NSNumber numberWithFloat:[[oldObject objectAtIndex:0] floatValue] + weightedTime],
                                   [NSNumber numberWithFloat:[[oldObject objectAtIndex:1] floatValue] + weight],
                                   [NSNumber numberWithFloat:[[oldObject objectAtIndex:2] floatValue] + partialTime], nil];
             [data replaceObjectAtIndex:bucket withObject:newObject];
+        } else if (graphType == CORRECT_RATE_WITH_COUNT || graphType == CORRECT_RATE) {
+            int currCorrect = [[[data objectAtIndex:bucket] objectAtIndex:0] intValue];
+            int currInCorrect = [[[data objectAtIndex:bucket] objectAtIndex:1] intValue];
+            if ([event correct] == YES) {
+                currCorrect++;
+            } else {
+                currInCorrect++;
+            }
+            [data replaceObjectAtIndex:bucket
+                            withObject:[NSArray arrayWithObjects:[NSNumber numberWithInt:currCorrect], [NSNumber numberWithInt:currInCorrect], nil]];
         }
     }
 
@@ -142,23 +155,23 @@
     float maxValue = 0;
     float altMaxValue = 0;
     for (int i = 0; i < [data count]; i++) {
-        if (graphType == 0) {
+        if (graphType == AVG_SPEED) {
             float average = ([[[data objectAtIndex:i] objectAtIndex:0] floatValue] /
                              [[[data objectAtIndex:i] objectAtIndex:1] floatValue]);
             if (average > maxValue) {
                 maxValue = average;
             }
-        } else if (graphType == 1) {
+        } else if (graphType == STUDY_TIME) {
             float value = [[data objectAtIndex:i] floatValue];
             if (value > maxValue) {
                 maxValue = value;
             }
-        } else if (graphType == 2) {
+        } else if (graphType == CHARACTER_COUNT) {
             int value = [[data objectAtIndex:i] intValue];
             if (value > maxValue) {
                 maxValue = value;
             }
-        } else if (graphType == 3) {
+        } else if (graphType == STUDY_TIME_WITH_SPEED) {
             float average = ([[[data objectAtIndex:i] objectAtIndex:0] floatValue] /
                              [[[data objectAtIndex:i] objectAtIndex:1] floatValue]);
             if (average > altMaxValue) {
@@ -168,13 +181,30 @@
             if (value > maxValue) {
                 maxValue = value;
             }
+        } else if (graphType == CORRECT_RATE_WITH_COUNT) {
+            int currCorrect = [[[data objectAtIndex:i] objectAtIndex:0] intValue];
+            int currInCorrect = [[[data objectAtIndex:i] objectAtIndex:1] intValue];
+            if (currCorrect + currInCorrect > maxValue) {
+                maxValue = currInCorrect + currCorrect;
+            }
+            if ((float)currInCorrect / (float)(currCorrect + currInCorrect) > altMaxValue) {
+                altMaxValue = (float)currInCorrect / (float)(currCorrect + currInCorrect);
+            }
+        } else if (graphType == CORRECT_RATE) {
+            int currCorrect = [[[data objectAtIndex:i] objectAtIndex:0] intValue];
+            int currInCorrect = [[[data objectAtIndex:i] objectAtIndex:1] intValue];
+            if ((float)currInCorrect / (float)(currCorrect + currInCorrect) > maxValue) {
+                maxValue = (float)currInCorrect / (float)(currCorrect + currInCorrect);
+            }
         }
     }
     // Display maximum value on graph
-    if (graphType == 1 || graphType == 3) {
+    if (graphType == STUDY_TIME || graphType == STUDY_TIME_WITH_SPEED) {
         text = [NSString stringWithFormat:@"%d", (int)maxValue / 60];
-    } else if (graphType == 2) {
+    } else if (graphType == CHARACTER_COUNT || graphType == CORRECT_RATE_WITH_COUNT) {
         text = [NSString stringWithFormat:@"%d", (int)maxValue];
+    } else if (graphType == CORRECT_RATE) {
+        text = [NSString stringWithFormat:@"%.1f", maxValue * 100];
     } else {
         text = [NSString stringWithFormat:@"%.1f", maxValue];
     }
@@ -185,25 +215,46 @@
     // Draw data bars
     for (int i = 0; i < timeFrame; i++) {
         float value = 0;
-        if (graphType == 0) {
+        if (graphType == AVG_SPEED) {
             if ([[[data objectAtIndex:i] objectAtIndex:1] intValue] != 0) {
                 value = ([[[data objectAtIndex:i] objectAtIndex:0] floatValue] /
                                 [[[data objectAtIndex:i] objectAtIndex:1] floatValue]);
             } else {
                 value = 0;
             }
-        } else if (graphType == 1) {
+        } else if (graphType == STUDY_TIME) {
             value = [[data objectAtIndex:i] floatValue];
-        } else if (graphType == 2) {
+        } else if (graphType == CHARACTER_COUNT) {
             value = [[data objectAtIndex:i] intValue];
-        } else if (graphType == 3) {
+        } else if (graphType == STUDY_TIME_WITH_SPEED) {
             value = [[[data objectAtIndex:i] objectAtIndex:2] floatValue];
+        } else if (graphType == CORRECT_RATE_WITH_COUNT) {
+            value = ([[[data objectAtIndex:i] objectAtIndex:0] intValue] +
+                     [[[data objectAtIndex:i] objectAtIndex:1] intValue]);
+        } else if (graphType == CORRECT_RATE) {
+            int currCorrect = [[[data objectAtIndex:i] objectAtIndex:0] intValue];
+            int currInCorrect = [[[data objectAtIndex:i] objectAtIndex:1] intValue];
+            if (currCorrect + currInCorrect > 0) {
+                value = (float)currInCorrect / (float)(currCorrect + currInCorrect);
+            }
         }
         float width = (boundsX - scale*4) / (float)timeFrame;
         float start = scale*3 + (boundsX - scale*4) * (1 - (float)i / (float)timeFrame) - width;
-        [[NSColor colorWithCalibratedRed:0.5 green:0.5 blue:0.5 alpha:1.0] set];
+        if (graphType == CORRECT_RATE_WITH_COUNT) {
+            [[NSColor colorWithCalibratedRed:0.25 green:0.5 blue:0.25 alpha:1.0] set];
+        } else {
+            [[NSColor colorWithCalibratedRed:0.5 green:0.5 blue:0.5 alpha:1.0] set];
+        }
         rect = NSMakeRect(start + 1, scale + (boundsY - scale*3) * (1 - value / maxValue), width, (boundsY - scale*3) * (value / maxValue) - 1);
         [NSBezierPath fillRect:rect];
+        
+        if (graphType == CORRECT_RATE_WITH_COUNT) {
+            value = [[[data objectAtIndex:i] objectAtIndex:1] intValue];
+            start = scale*3 + (boundsX - scale*4) * (1 - (float)i / (float)timeFrame) - width;
+            [[NSColor colorWithCalibratedRed:0.65 green:0.25 blue:0.25 alpha:1.0] set];
+            rect = NSMakeRect(start + 1, scale + (boundsY - scale*3) * (1 - value / maxValue), width, (boundsY - scale*3) * (value / maxValue) - 1);
+            [NSBezierPath fillRect:rect];
+        }
     }
 
     // Draw line for average speed for combination graph
@@ -211,13 +262,22 @@
 
     float lastValue = 0;
     line = nil;
-    if (graphType == 3) {
+    if (graphType == STUDY_TIME_WITH_SPEED || graphType == CORRECT_RATE_WITH_COUNT) {
         for (int i = timeFrame - 1; i >= 0; i--) {
             float value = lastValue;
-            if ([[[data objectAtIndex:i] objectAtIndex:1] intValue] != 0) {
-                value = ([[[data objectAtIndex:i] objectAtIndex:0] floatValue] /
-                         [[[data objectAtIndex:i] objectAtIndex:1] floatValue]);
-                lastValue = value;
+            if (graphType == STUDY_TIME_WITH_SPEED) {
+                if ([[[data objectAtIndex:i] objectAtIndex:1] intValue] != 0) {
+                    value = ([[[data objectAtIndex:i] objectAtIndex:0] floatValue] /
+                             [[[data objectAtIndex:i] objectAtIndex:1] floatValue]);
+                    lastValue = value;
+                }
+            } else if (graphType == CORRECT_RATE_WITH_COUNT) {
+                int currCorrect = [[[data objectAtIndex:i] objectAtIndex:0] intValue];
+                int currInCorrect = [[[data objectAtIndex:i] objectAtIndex:1] intValue];
+                if (currCorrect + currInCorrect > 0) {
+                    value = (float)currInCorrect / (float)(currCorrect + currInCorrect);
+                    lastValue = value;
+                }
             }
             float width = (boundsX - scale*4) / (float)timeFrame;
             float start = scale*3 + (boundsX - scale*4) * (1 - ((float)i - 0.5) / (float)timeFrame) - width;
@@ -229,10 +289,10 @@
                 [line lineToPoint:NSMakePoint(start + 1, scale + (boundsY - scale*3) * (1 - value / altMaxValue) - 1)];
             }
         }
+        [line lineToPoint:NSMakePoint(boundsX - scale, scale + (boundsY - scale*3) * (1 - lastValue / altMaxValue) - 1)];
+        [line setLineWidth:1];
+        [line stroke];
     }
-    [line lineToPoint:NSMakePoint(boundsX - scale, scale + (boundsY - scale*3) * (1 - lastValue / altMaxValue) - 1)];
-    [line setLineWidth:1];
-    [line stroke];
 }
 
 @end
