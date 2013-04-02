@@ -5,7 +5,7 @@
 
 Sokudoku is a program for practicing reading random characters.
 Although probably best for syllable-based character sets like Japanese
-Katakana or Hiragana, or Korean Hangul (for which it is primarily
+Katakana or Hiragana or Korean Hangul (for which it is primarily
 intended), it more or less works fine with "regular" phonetic
 character sets as well (or something like Korean Jomo), taking into
 account the fact that it more or less produces strings of random
@@ -73,7 +73,7 @@ anytime soon, but for the curious there are obviously several examples
 in the repository of both programs that will generate packages and
 packages themselves -- if you build a new package that contains any
 errors, the program should supply somewhat meaningful error messages
-when you attempt to load it that should help you fix it.
+when you attempt to load it (which should help you fix it).
 
 Once packages are loaded, the application handles storing the package
 and history internally in the user's account.

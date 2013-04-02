@@ -205,6 +205,8 @@
 }
 
 - (void)save {
+    [self saveSettings];
+
     NSMutableArray *characterArray = [NSMutableArray arrayWithCapacity:[characters count]];
     for (int i = 0; i < [characters count]; i++) {
         [characterArray addObject:[[characters objectAtIndex:i] toDictionary]];
