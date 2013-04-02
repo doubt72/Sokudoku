@@ -25,6 +25,8 @@
 @private
     NSString *name;
     
+    NSMutableDictionary *packageSettings;
+    
     History *history;
     NSMutableArray *characters;
     NSMutableArray *tags;
@@ -34,17 +36,41 @@
 @property(copy) NSString *name;
 
 - (void) addCharacter:(Character *)character;
+
+// Tags
 - (void) addTag:(NSString *)tag withDescription:(NSString *)description;
 - (NSArray *) allTagDescriptions;
-
 - (NSString *) tagForDescription:(NSString *)description;
-
 - (BOOL) hasTag:(NSString *)tag;
 
-- (void) save:(NSDictionary *)settings;
+// Settings
+- (void) setDataSetIndex:(int)index;
+- (void) setMinLength:(int)length;
+- (void) setMaxLength:(int)length;
+- (void) setSessionLength:(int)length;
+- (void) enableAdaptiveDrill;
+- (void) disableAdaptiveDrill;
 
+- (void) setCharacterOrder:(BOOL)order;
+- (void) setGraphType:(int)type;
+- (void) setGraphTime:(int)time;
+
+- (int) dataSetIndex;
+- (int) minLength;
+- (int) maxLength;
+- (int) sessionLength;
+- (BOOL) adaptiveDrillEnabled;
+
+- (BOOL) characterOrder;
+- (int) graphType;
+- (int) graphTime;
+
+- (void) saveSettings;
+
+// File access
 - (NSString *) import:(NSString *)fileName;
-- (NSDictionary *) load:(NSString *)packageName;
+- (void) load:(NSString *)packageName;
+- (void) save;
 
 // Generate new "question" for drill within the specific length for the given tag
 // wieght = whether or not to prioritize slower characters

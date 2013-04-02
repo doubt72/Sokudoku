@@ -50,11 +50,6 @@
     DrillWindow *drillWindow;
     HistogramWindow *histogramWindow;
     GraphWindow *graphWindow;
-    
-    int characterOrder;
-    int graphTime;
-    int graphType;
-    int currentDataIndex;
 }
 
 @property IBOutlet NSPopUpButton *dataSet;
@@ -83,8 +78,6 @@
 @property IBOutlet NSTextField *displayWeekSet;
 @property IBOutlet NSTextField *displayMonthSet;
 @property IBOutlet NSTextField *displayYearSet;
-
-@property int characterOrder, graphTime, graphType;
 
 // Need these for saving setting to...  Settings
 -(IBAction)updateMaxLength:(id)sender;
@@ -115,5 +108,9 @@
 
 -(IBAction)startDrill:(id)sender;
 -(void)endDrill;
+
+-(void)setGraphTime:(int)time;
+-(void)setGraphType:(int)type;
+-(void)setCharacterOrder:(BOOL)order;
 
 @end

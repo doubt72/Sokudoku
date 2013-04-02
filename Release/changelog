@@ -30,3 +30,5 @@ Changes from Version 1.0 (beta) 2013/3/20
   answers
 - Added two graphs, one for rate of incorrect answers, one for total
   answers overlaid with rates
+- Refactored settings to move all non-global settings to packages (and
+  removed all duplicated settings)

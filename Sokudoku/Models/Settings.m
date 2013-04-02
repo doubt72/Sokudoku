@@ -82,36 +82,6 @@
     [self saveSettings];
 }
 
-- (void)setDataSetIndex:(int)index {
-    [activeSettings setValue:[NSNumber numberWithInt:index] forKey:@"dataSetIndex"];
-    [self saveSettings];
-}
-
-- (void)setMinLength:(int)length {
-    [activeSettings setValue:[NSNumber numberWithInt:length] forKey:@"minLength"];
-    [self saveSettings];
-}
-
-- (void)setMaxLength:(int)length {
-    [activeSettings setValue:[NSNumber numberWithInt:length] forKey:@"maxLength"];
-    [self saveSettings];
-}
-
-- (void)setSessionLength:(int)length {
-    [activeSettings setValue:[NSNumber numberWithInt:length] forKey:@"sessionLength"];
-    [self saveSettings];
-}
-
-- (void)enableAdaptiveDrill {
-    [activeSettings setValue:[NSNumber numberWithBool:YES] forKey:@"adaptiveDrillEnabled"];
-    [self saveSettings];
-}
-
-- (void)disableAdaptiveDrill {
-    [activeSettings setValue:[NSNumber numberWithBool:NO] forKey:@"adaptiveDrillEnabled"];
-    [self saveSettings];
-}
-
 - (NSString *)currentPackageName {
     return [activeSettings valueForKey:@"packageName"];
 }
@@ -122,26 +92,6 @@
 
 - (NSArray *)allPackages {
     return [NSArray arrayWithArray:[activeSettings valueForKey:@"allPackages"]];
-}
-
-- (int)dataSetIndex {
-    return [[activeSettings valueForKey:@"dataSetIndex"] intValue];
-}
-
-- (int)minLength {
-    return [[activeSettings valueForKey:@"minLength"] intValue];
-}
-
-- (int)maxLength {
-    return [[activeSettings valueForKey:@"maxLength"] intValue];
-}
-
-- (int)sessionLength {
-    return [[activeSettings valueForKey:@"sessionLength"] intValue];
-}
-
-- (BOOL)adaptiveDrillEnabled {
-    return [[activeSettings valueForKey:@"adaptiveDrillEnabled"] boolValue];
 }
 
 - (id)init {
@@ -155,12 +105,6 @@
             [activeSettings setValue:nil forKey:@"packageName"];
             [activeSettings setValue:[NSMutableArray arrayWithCapacity:1] forKey:@"availablePackages"];
             [activeSettings setValue:[NSMutableArray arrayWithCapacity:1] forKey:@"allPackages"];
-            [activeSettings setValue:[NSNumber numberWithInt:2] forKey:@"minLength"];
-            [activeSettings setValue:[NSNumber numberWithInt:5] forKey:@"maxLength"];
-            [activeSettings setValue:[NSNumber numberWithInt:5] forKey:@"sessionLength"];
-            [activeSettings setValue:[NSNumber numberWithInt:0] forKey:@"dataSetIndex"];
-            [activeSettings setValue:[NSNumber numberWithBool:NO]
-                              forKey:@"adaptiveDrillEnabled"];
         }
     }
     return self;

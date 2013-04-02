@@ -32,20 +32,9 @@
 - (void) rememberPackage:(NSString *)packageName;
 
 - (void) setCurrentPackageName:(NSString *)name;
-- (void) setDataSetIndex:(int)index;
-- (void) setMinLength:(int)length;
-- (void) setMaxLength:(int)length;
-- (void) setSessionLength:(int)length;
-- (void) enableAdaptiveDrill;
-- (void) disableAdaptiveDrill;
 
 - (NSString *) currentPackageName;
 - (NSArray *) availablePackages;
 - (NSArray *) allPackages;
-- (int) dataSetIndex;
-- (int) minLength;
-- (int) maxLength;
-- (int) sessionLength;
-- (BOOL) adaptiveDrillEnabled;
 
 @end

@@ -48,6 +48,83 @@
     return [tags containsObject:tag];
 }
 
+- (void)setDataSetIndex:(int)index {
+    [packageSettings setValue:[NSNumber numberWithInt:index] forKey:@"dataSetIndex"];
+    [self saveSettings];
+}
+
+- (void)setMinLength:(int)length {
+    [packageSettings setValue:[NSNumber numberWithInt:length] forKey:@"minLength"];
+    [self saveSettings];
+}
+
+- (void)setMaxLength:(int)length {
+    [packageSettings setValue:[NSNumber numberWithInt:length] forKey:@"maxLength"];
+    [self saveSettings];
+}
+
+- (void)setSessionLength:(int)length {
+    [packageSettings setValue:[NSNumber numberWithInt:length] forKey:@"sessionLength"];
+    [self saveSettings];
+}
+
+- (void)enableAdaptiveDrill {
+    [packageSettings setValue:[NSNumber numberWithBool:YES] forKey:@"adaptiveDrill"];
+    [self saveSettings];
+}
+
+- (void)disableAdaptiveDrill {
+    [packageSettings setValue:[NSNumber numberWithBool:NO] forKey:@"adaptiveDrill"];
+    [self saveSettings];
+}
+
+- (void)setCharacterOrder:(BOOL)order {
+    [packageSettings setValue:[NSNumber numberWithBool:order] forKey:@"characterOrder"];
+    [self saveSettings];
+}
+
+- (void)setGraphType:(int)type {
+    [packageSettings setValue:[NSNumber numberWithInt:type] forKey:@"graphType"];
+    [self saveSettings];
+}
+
+- (void)setGraphTime:(int)time {
+    [packageSettings setValue:[NSNumber numberWithInt:time] forKey:@"graphTime"];
+    [self saveSettings];
+}
+
+- (int)dataSetIndex {
+    return [[packageSettings valueForKey:@"dataSetIndex"] intValue];
+}
+
+- (int)minLength {
+    return [[packageSettings valueForKey:@"minLength"] intValue];
+}
+
+- (int)maxLength {
+    return [[packageSettings valueForKey:@"maxLength"] intValue];
+}
+
+- (int)sessionLength {
+    return [[packageSettings valueForKey:@"sessionLength"] intValue];
+}
+
+- (BOOL)adaptiveDrillEnabled {
+    return [[packageSettings valueForKey:@"adaptiveDrill"] boolValue];
+}
+
+- (BOOL)characterOrder {
+    return [[packageSettings valueForKey:@"characterOrder"] boolValue];
+}
+
+- (int)graphType {
+    return [[packageSettings valueForKey:@"graphType"] intValue];
+}
+
+- (int)graphTime {
+    return [[packageSettings valueForKey:@"graphTime"] intValue];
+}
+
 - (NSString *)import:(NSString *)fileName {
     NSDictionary *import = [NSDictionary dictionaryWithContentsOfFile:fileName];
     if (import == nil) {
@@ -99,33 +176,12 @@
     return [dir stringByAppendingPathComponent:fileName];
 }
 
-- (void)save:(NSDictionary *)settings {
-    NSMutableDictionary *packageDict = [NSMutableDictionary dictionaryWithCapacity:4];
-    [packageDict setValue:[NSArray arrayWithArray:tags] forKey:@"tags"];
-    [packageDict setValue:[NSArray arrayWithArray:tagDescriptions]
-                   forKey:@"tagDescriptions"];
-    [packageDict setValue:[NSDictionary dictionaryWithDictionary:settings]
-                   forKey:@"settings"];
-    NSString *packageFile = [self packageFile:@"package.plist"];
-    [packageDict writeToFile:packageFile atomically:YES];
-    
-    NSMutableArray *characterArray = [NSMutableArray arrayWithCapacity:[characters count]];
-    for (int i = 0; i < [characters count]; i++) {
-        [characterArray addObject:[[characters objectAtIndex:i] toDictionary]];
-    }
-    NSString *characterFile = [self packageFile:@"characters.plist"];
-    [characterArray writeToFile:characterFile atomically:YES];
-
-    NSString *historyFile = [self packageFile:@"history.plist"];
-    [history save:historyFile];
-}
-
-- (NSDictionary *)load:(NSString *)packageName {
+- (void)load:(NSString *)packageName {
     name = packageName;
     NSDictionary *packageDict = [NSDictionary dictionaryWithContentsOfFile:[self packageFile:@"package.plist"]];
     tags = [NSMutableArray arrayWithArray:[packageDict objectForKey:@"tags"]];
     tagDescriptions = [NSMutableArray arrayWithArray:[packageDict objectForKey:@"tagDescriptions"]];
-    NSDictionary *settings = [packageDict objectForKey:@"settings"];
+    packageSettings = [packageDict objectForKey:@"settings"];
     
     NSArray *characterArray = [NSArray arrayWithContentsOfFile:[self packageFile:@"characters.plist"]];
     [characters removeAllObjects];
@@ -135,7 +191,29 @@
         [self addCharacter:character];
     }
     [history load:[self packageFile:@"history.plist"]];
-    return settings;
+}
+
+- (void)saveSettings {
+    NSMutableDictionary *packageDict = [NSMutableDictionary dictionaryWithCapacity:4];
+    [packageDict setValue:[NSArray arrayWithArray:tags] forKey:@"tags"];
+    [packageDict setValue:[NSArray arrayWithArray:tagDescriptions]
+                   forKey:@"tagDescriptions"];
+    [packageDict setValue:[NSDictionary dictionaryWithDictionary:packageSettings]
+                   forKey:@"settings"];
+    NSString *packageFile = [self packageFile:@"package.plist"];
+    [packageDict writeToFile:packageFile atomically:YES];
+}
+
+- (void)save {
+    NSMutableArray *characterArray = [NSMutableArray arrayWithCapacity:[characters count]];
+    for (int i = 0; i < [characters count]; i++) {
+        [characterArray addObject:[[characters objectAtIndex:i] toDictionary]];
+    }
+    NSString *characterFile = [self packageFile:@"characters.plist"];
+    [characterArray writeToFile:characterFile atomically:YES];
+
+    NSString *historyFile = [self packageFile:@"history.plist"];
+    [history save:historyFile];
 }
 
 // Used for selecting characters by average speed when generating questions
@@ -390,6 +468,16 @@
         characters = [NSMutableArray arrayWithCapacity:10];
         tags = [NSMutableArray arrayWithCapacity:1];
         tagDescriptions = [NSMutableArray arrayWithCapacity:1];
+        packageSettings = [NSMutableDictionary dictionaryWithCapacity:5];
+        
+        [packageSettings setValue:[NSNumber numberWithInt:0] forKey:@"dataSetIndex"];
+        [packageSettings setValue:[NSNumber numberWithInt:2] forKey:@"minLength"];
+        [packageSettings setValue:[NSNumber numberWithInt:5] forKey:@"maxLength"];
+        [packageSettings setValue:[NSNumber numberWithInt:5] forKey:@"sessionLength"];
+        [packageSettings setValue:[NSNumber numberWithBool:NO] forKey:@"adaptiveDrill"];
+        [packageSettings setValue:[NSNumber numberWithBool:NO] forKey:@"characterOrder"];
+        [packageSettings setValue:[NSNumber numberWithInt:0] forKey:@"graphType"];
+        [packageSettings setValue:[NSNumber numberWithInt:0] forKey:@"graphTime"];
     }
     return self;
 }

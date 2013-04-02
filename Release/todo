@@ -1,4 +1,4 @@
-1. Simplify graphing view render:
+- Simplify graphing view render:
 
 Currently it does way too much; some of the complexity could be
 abstracted a bit.  Graph types are confusing and arbitray, and it does
@@ -7,29 +7,17 @@ repeated in several other places, e.g., the statistics shown at the
 bottom of the main page).  The "histogram" (character window) could
 probably use similar simplification, but it isn't as extreme.
 
-2. (DONE) Return answers for missed characters
-
-First, this is helpful, but also (at least) the 0xB5xx UTF code page
-(Hangul) contains rendering errors in the default system font under
-OSX 10.8, so you're for those the drills are showing incorrect
-characters -- it'd be nice if I could identify those more easily.
-
-3. Render a different font for Hangul:
+- Render a different font for Hangul:
 
 Because of rendering errors in the Hangul system font under OSX 10.8.
 Might not be a bad idea to make this configurable for different packages?
 
-4. Replace global settings with package settings:
-
-Given that packages now remember settings, there's really no reason
-to have both.  It makes things more complicated, and introduced a number
-of bugs (which have not been completely stomped).
-
-5. Unit tests
+- Unit tests
 
 While some of the interface can't be so easily tested, a lot of the
 low-level functions certainly could be.
 
-6. (DONE) Graph missed characters
+- Color Blind Settings
 
-Events now contain the information.  Wouldn't be hard to do.
+Might be nice to have an option to use colors other than red-green for
+character display and or graphs
