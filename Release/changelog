@@ -32,3 +32,4 @@ Changes from Version 1.0 (beta) 2013/3/20
   answers overlaid with rates
 - Refactored settings to move all non-global settings to packages (and
   removed all duplicated settings)
+- Added a bit of color to main and drill windows

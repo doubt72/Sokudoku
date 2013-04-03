@@ -61,7 +61,7 @@
     if (timeLeft < 0) {
         [self finish];
     } else {
-        [testString setTextColor:[NSColor blackColor]];
+        [testString setTextColor:[NSColor colorWithCalibratedRed:0.0 green:0.375 blue:0.0 alpha:1.0]];
         [answerField setStringValue:@""];
         [self nextQuestion];
     }

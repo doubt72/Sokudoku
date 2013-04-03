@@ -109,6 +109,7 @@
 -(IBAction)startDrill:(id)sender;
 -(void)endDrill;
 
+// Propogated back to the current package
 -(void)setGraphTime:(int)time;
 -(void)setGraphType:(int)type;
 -(void)setCharacterOrder:(BOOL)order;

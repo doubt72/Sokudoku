@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">12C3006</string>
-		<string key="IBDocument.InterfaceBuilderVersion">2844</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
+		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">2844</string>
+			<string key="NS.object.0">3084</string>
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>IBNSLayoutConstraint</string>
@@ -397,14 +397,9 @@
 										<string key="NSCellIdentifier">_NS:1535</string>
 										<reference key="NSControlView" ref="159949077"/>
 										<reference key="NSBackgroundColor" ref="527716157"/>
-										<object class="NSColor" key="NSTextColor" id="1055725136">
-											<int key="NSColorSpace">6</int>
-											<string key="NSCatalogName">System</string>
-											<string key="NSColorName">alternateSelectedControlColor</string>
-											<object class="NSColor" key="NSColor" id="632191178">
-												<int key="NSColorSpace">1</int>
-												<bytes key="NSRGB">MCAwIDEAA</bytes>
-											</object>
+										<object class="NSColor" key="NSTextColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MC4yNDcwNTg4MjM1IDAuNDk4MDM5MjE1NyAwLjI0NzA1ODgyMzUAA</bytes>
 										</object>
 									</object>
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
@@ -426,7 +421,10 @@
 										<string key="NSCellIdentifier">_NS:1535</string>
 										<reference key="NSControlView" ref="850657946"/>
 										<reference key="NSBackgroundColor" ref="527716157"/>
-										<reference key="NSTextColor" ref="1055725136"/>
+										<object class="NSColor" key="NSTextColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MC4zNzI1NDkwMTk2IDAuMjQ3MDU4ODIzNSAwLjI0NzA1ODgyMzUAA</bytes>
+										</object>
 									</object>
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								</object>
@@ -447,7 +445,10 @@
 										<string key="NSCellIdentifier">_NS:1535</string>
 										<reference key="NSControlView" ref="735682985"/>
 										<reference key="NSBackgroundColor" ref="527716157"/>
-										<reference key="NSTextColor" ref="1055725136"/>
+										<object class="NSColor" key="NSTextColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MC43NDkwMTk2MDc4IDAuMjQ3MDU4ODIzNSAwLjI0NzA1ODgyMzUAA</bytes>
+										</object>
 									</object>
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								</object>
@@ -468,7 +469,10 @@
 										<string key="NSCellIdentifier">_NS:1535</string>
 										<reference key="NSControlView" ref="755064857"/>
 										<reference key="NSBackgroundColor" ref="527716157"/>
-										<reference key="NSTextColor" ref="1055725136"/>
+										<object class="NSColor" key="NSTextColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MC43NDkwMTk2MDc4IDAgMAA</bytes>
+										</object>
 									</object>
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								</object>
@@ -489,7 +493,10 @@
 										<string key="NSCellIdentifier">_NS:1535</string>
 										<reference key="NSControlView" ref="1034402570"/>
 										<reference key="NSBackgroundColor" ref="527716157"/>
-										<reference key="NSTextColor" ref="1055725136"/>
+										<object class="NSColor" key="NSTextColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MC4zNzI1NDkwMTk2IDAuMjQ3MDU4ODIzNSAwAA</bytes>
+										</object>
 									</object>
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								</object>
@@ -510,7 +517,10 @@
 										<string key="NSCellIdentifier">_NS:1535</string>
 										<reference key="NSControlView" ref="380573789"/>
 										<reference key="NSBackgroundColor" ref="527716157"/>
-										<reference key="NSTextColor" ref="1055725136"/>
+										<object class="NSColor" key="NSTextColor">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MCAwLjQ5ODAzOTIxNTcgMAA</bytes>
+										</object>
 									</object>
 									<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 								</object>
@@ -560,7 +570,10 @@
 								<reference key="NSControlView" ref="1062335202"/>
 								<bool key="NSDrawsBackground">YES</bool>
 								<reference key="NSBackgroundColor" ref="527716157"/>
-								<reference key="NSTextColor" ref="632191178"/>
+								<object class="NSColor" key="NSTextColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDEAA</bytes>
+								</object>
 							</object>
 							<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 						</object>
