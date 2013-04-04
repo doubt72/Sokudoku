@@ -27,14 +27,15 @@
     float weight;
     float weightedTime;
     float partialTime;
-    
-    BOOL correct;
+
+    // This is weighted; positive = correct, negative = incorrect
+    float correct;
 }
 
 @property(copy) NSString *character;
 @property(copy) NSDate *timeStamp;
 @property float weight, weightedTime, partialTime;
-@property BOOL correct;
+@property float correct;
 
 // For loading and saving records
 - (NSMutableDictionary *) toDictionary;

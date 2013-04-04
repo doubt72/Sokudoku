@@ -99,8 +99,8 @@
                              [NSNumber numberWithFloat:0],
                              [NSNumber numberWithFloat:0], nil]];
         } else if (graphType == CORRECT_RATE_WITH_COUNT || graphType == CORRECT_RATE) {
-            [data addObject:[NSArray arrayWithObjects:[NSNumber numberWithInt:0],
-                             [NSNumber numberWithInt:0], nil]];
+            [data addObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0],
+                             [NSNumber numberWithFloat:0], nil]];
         }
     }
     NSArray *events = [package eventsForTag:tag];
@@ -139,15 +139,16 @@
                                   [NSNumber numberWithFloat:[[oldObject objectAtIndex:2] floatValue] + partialTime], nil];
             [data replaceObjectAtIndex:bucket withObject:newObject];
         } else if (graphType == CORRECT_RATE_WITH_COUNT || graphType == CORRECT_RATE) {
-            int currCorrect = [[[data objectAtIndex:bucket] objectAtIndex:0] intValue];
-            int currInCorrect = [[[data objectAtIndex:bucket] objectAtIndex:1] intValue];
-            if ([event correct] == YES) {
-                currCorrect++;
+            float currCorrect = [[[data objectAtIndex:bucket] objectAtIndex:0] floatValue];
+            float currInCorrect = [[[data objectAtIndex:bucket] objectAtIndex:1] floatValue];
+            float currEvent = [event correct];
+            if (currEvent > 0) {
+                currCorrect += currEvent;
             } else {
-                currInCorrect++;
+                currInCorrect += -currEvent;
             }
             [data replaceObjectAtIndex:bucket
-                            withObject:[NSArray arrayWithObjects:[NSNumber numberWithInt:currCorrect], [NSNumber numberWithInt:currInCorrect], nil]];
+                            withObject:[NSArray arrayWithObjects:[NSNumber numberWithFloat:currCorrect], [NSNumber numberWithFloat:currInCorrect], nil]];
         }
     }
 

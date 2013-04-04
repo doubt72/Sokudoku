@@ -33,7 +33,7 @@
     [dict setObject:[NSNumber numberWithFloat:weight] forKey:@"weight"];
     [dict setObject:[NSNumber numberWithFloat:weightedTime] forKey:@"weightedTime"];
     [dict setObject:[NSNumber numberWithFloat:partialTime] forKey:@"partialTime"];
-    [dict setObject:[NSNumber numberWithBool:correct] forKey:@"correct"];
+    [dict setObject:[NSNumber numberWithFloat:correct] forKey:@"correct"];
     return dict;
 }
 
@@ -43,7 +43,7 @@
     weight = [[dict objectForKey:@"weight"] floatValue];
     weightedTime = [[dict objectForKey:@"weightedTime"] floatValue];
     partialTime = [[dict objectForKey:@"partialTime"] floatValue];
-    correct = [[dict objectForKey:@"correct"] boolValue];
+    correct = [[dict objectForKey:@"correct"] floatValue];
 }
 
 @end

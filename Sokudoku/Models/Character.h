@@ -29,12 +29,12 @@
     float timesTested;
     float totalTime;
     
-    int incorrectAnswers;
-    int correctAnswers;
+    float incorrectAnswers;
+    float correctAnswers;
 }
 
 @property(copy) NSString *literal;
-@property int incorrectAnswers, correctAnswers;
+@property float incorrectAnswers, correctAnswers;
 
 // withLength is the length of the total string that was tested; time is the total
 // time.  From that, newEvent calculates the weighting internally

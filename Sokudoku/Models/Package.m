@@ -332,7 +332,8 @@
             }
             float percentage = 1.0;
             if ([character correctAnswers] + [character incorrectAnswers] > 0) {
-                percentage = (float)[character correctAnswers] / (float)([character correctAnswers] + [character incorrectAnswers]);
+                percentage = [character correctAnswers] / ([character correctAnswers] +
+                                                           [character incorrectAnswers]);
             }
             [array addObject:[NSArray arrayWithObjects:[character literal],
                               [NSNumber numberWithFloat:time],

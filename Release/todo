@@ -21,5 +21,3 @@ low-level functions certainly could be.
 
 Might be nice to have an option to use colors other than red-green for
 character display and or graphs
-
-- Refactor errors to match weightings

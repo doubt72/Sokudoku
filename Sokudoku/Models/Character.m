@@ -38,14 +38,15 @@
     [event setTimeStamp:[NSDate date]];
     [event setWeight:weight];
     [event setPartialTime:time / length];
-    [event setCorrect:correct];
     if (correct) {
-        correctAnswers++;
+        correctAnswers += 1.0 / (float)length;
         [event setWeightedTime:time / length * weight];
+        [event setCorrect:1.0 / (float)length];
     } else {
         totalTime += 10.0 / length * weight;
-        incorrectAnswers++;
+        incorrectAnswers += 1.0 / (float)length;
         [event setWeightedTime:(time + 10) / length * weight];
+        [event setCorrect:-1.0 / (float)length];
     }
     return event;
 }
@@ -84,8 +85,8 @@
     [dict setValue:[NSArray arrayWithArray:tags] forKey:@"tags"];
     [dict setValue:[NSNumber numberWithFloat:timesTested] forKey:@"timesTested"];
     [dict setValue:[NSNumber numberWithFloat:totalTime] forKey:@"totalTimes"];
-    [dict setValue:[NSNumber numberWithInt:correctAnswers] forKey:@"correctAnswers"];
-    [dict setValue:[NSNumber numberWithInt:incorrectAnswers] forKey:@"incorrectAnswers"];
+    [dict setValue:[NSNumber numberWithFloat:correctAnswers] forKey:@"correctAnswers"];
+    [dict setValue:[NSNumber numberWithFloat:incorrectAnswers] forKey:@"incorrectAnswers"];
     return dict;
 }
 
@@ -95,8 +96,8 @@
     tags = [NSMutableArray arrayWithArray:[dict objectForKey:@"tags"]];
     timesTested = [[dict objectForKey:@"timesTested"] floatValue];
     totalTime = [[dict objectForKey:@"totalTimes"] floatValue];
-    correctAnswers = [[dict objectForKey:@"correctAnswers"] intValue];
-    incorrectAnswers = [[dict objectForKey:@"incorrectAnswers"] intValue];
+    correctAnswers = [[dict objectForKey:@"correctAnswers"] floatValue];
+    incorrectAnswers = [[dict objectForKey:@"incorrectAnswers"] floatValue];
 }
 
 // This is used for generating all possible pronunciations (for testing correct answers).
@@ -120,6 +121,8 @@
 - (void)reset {
     timesTested = 0;
     totalTime = 0;
+    incorrectAnswers = 0;
+    correctAnswers = 0;
 }
 
 - (id)init {
@@ -131,6 +134,8 @@
         
         timesTested = 0;
         totalTime = 0;
+        incorrectAnswers = 0;
+        correctAnswers = 0;
     }
     return self;
 }
