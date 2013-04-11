@@ -30,14 +30,15 @@ generally useful as a general/configurable drill program like Anki,
 but I believe it's still useful as a complement (I've been using both)
 -- after all, I know why I wanted it, but your mileage may vary.
 
+At this point, I'm probably done working on it (minus any bugs I find
+while using it, except for maybe adding a character package or two to
+test myself on).
+
 ## Application DMG
 
 If you just want to install the program, there's a barebones DMG with
-the application in the release directory; the current latest version
-is [1.0b (beta)](Release/Sokudoku-1.0b.dmg).  There are, however, a
-number of bug fixes/enhancements since that version available if you
-build from the latest source (but not yet enough to justify a newer
-release).
+the application (and character packages) in the release directory; the
+current latest version is [1.0.0](Release/Sokudoku-1.0.0.dmg).
 
 ## XCode Project
 

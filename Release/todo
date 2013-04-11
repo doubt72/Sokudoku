@@ -17,7 +17,12 @@ Might not be a bad idea to make this configurable for different packages?
 While some of the interface can't be so easily tested, a lot of the
 low-level functions certainly could be.
 
-- Color Blind Settings
+- Color blind settings
 
 Might be nice to have an option to use colors other than red-green for
-character display and or graphs
+character display and or graphs.
+
+- More sophisticated error detection
+
+Might be nice to determin where exactly in the answer an error occurs
+and penalize that character only.

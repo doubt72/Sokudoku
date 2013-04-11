@@ -34,3 +34,5 @@ Changes from Version 1.0 (beta) 2013/3/20
   removed all duplicated settings)
 - Added a bit of color to main and drill windows
 - Refactored error code to weight answers/fixed graphs
+
+Changes from Version 1.0.0 2013/4/10
